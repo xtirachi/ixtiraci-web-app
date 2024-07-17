@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const uploadForm = document.getElementById('upload-form');
     const signupForm = document.getElementById('signup-form');
     const loginForm = document.getElementById('login-form');
-    
+
     // Event Listeners
     signupForm.addEventListener('submit', handleSignup);
     loginForm.addEventListener('submit', handleLogin);
@@ -24,14 +24,11 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     // Show the appropriate page based on user's action
     function showPage(page) {
-        introPage.style.display = 'none';
-        languagePage.style.display = 'none';
-        categoryPage.style.display = 'none';
-        uploadPage.style.display = 'none';
-        signupPage.style.display = 'none';
-        loginPage.style.display = 'none';
-        profilePage.style.display = 'none';
-        ixtiracilarPage.style.display = 'none';
+        const pages = [
+            introPage, languagePage, categoryPage, uploadPage,
+            signupPage, loginPage, profilePage, ixtiracilarPage
+        ];
+        pages.forEach(p => p.style.display = 'none');
         page.style.display = 'block';
     }
 
@@ -101,7 +98,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         const name = event.target.elements.name.value;
         const file = event.target.elements.document.files[0];
         const isPublic = event.target.elements.public.checked ? 'yes' : 'no';
-        let userId = event.target.elements.userId.value || localStorage.getItem('currentUser');
+        let userId = localStorage.getItem('currentUser');
 
         if (file && name) {
             const reader = new FileReader();
