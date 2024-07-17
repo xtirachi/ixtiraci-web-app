@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     signupForm.addEventListener('submit', handleSignup);
     loginForm.addEventListener('submit', handleLogin);
     uploadForm.addEventListener('submit', handleUpload);
+    
 
     loginButton.addEventListener('click', showLoginPage);
     profileButton.addEventListener('click', showProfilePage);
