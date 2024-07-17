@@ -64,16 +64,16 @@ document.addEventListener('DOMContentLoaded', (event) => {
     // Handle Login
     function handleLogin(event) {
         event.preventDefault();
-        const email = event.target.elements.email.value;
+        const loginIdentifier = event.target.elements.loginIdentifier.value;
         const password = event.target.elements.password.value;
 
         const formData = new FormData();
         formData.append('action', 'login');
-        formData.append('email', email);
+        formData.append('loginIdentifier', loginIdentifier);
         formData.append('password', password);
 
         console.log('Login data:', {
-            email,
+            loginIdentifier,
             password
         });
 
@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             console.log('Login response:', data);
             if (data.status === 'success') {
                 alert('Uğurla daxil oldunuz!');
-                localStorage.setItem('currentUser', email);
+                localStorage.setItem('currentUser', loginIdentifier);
                 localStorage.setItem('currentUserId', data.userId);
                 userIdDisplay.textContent = `Sizin ID: ${data.userId}`;
                 userIdDisplay.style.display = 'block';
@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 showPage('intro-page');
                 updateRankings();
             } else {
-                alert(`Email və ya şifrə yanlışdır: ${data.message}`);
+                alert(`ID, Email və ya şifrə yanlışdır: ${data.message}`);
             }
         })
         .catch(error => console.error('Error:', error));
