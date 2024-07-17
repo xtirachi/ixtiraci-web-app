@@ -8,6 +8,12 @@ function showLoginPage() {
     document.getElementById('login-page').style.display = 'block';
 }
 
+function showAdminPage() {
+    document.getElementById('signup-page').style.display = 'none';
+    document.getElementById('login-page').style.display = 'none';
+    document.getElementById('admin-page').style.display = 'block';
+}
+
 function showIntroPage() {
     document.getElementById('signup-page').style.display = 'none';
     document.getElementById('login-page').style.display = 'none';
@@ -36,13 +42,29 @@ function returnToMainPage() {
     document.getElementById('intro-page').style.display = 'block';
 }
 
+function editIntroPage() {
+    alert('Giriş səhifəsini redaktə etmək üçün kodu buraya daxil edin.');
+}
+
+function editLanguagePage() {
+    alert('Dil seçim səhifəsini redaktə etmək üçün kodu buraya daxil edin.');
+}
+
+function editCategoryPage() {
+    alert('Kateqoriya seçim səhifəsini redaktə etmək üçün kodu buraya daxil edin.');
+}
+
+function editUploadPage() {
+    alert('Yükləmə səhifəsini redaktə etmək üçün kodu buraya daxil edin.');
+}
+
 document.getElementById('signup-form').addEventListener('submit', function(e) {
     e.preventDefault();
     const name = e.target.elements.name.value;
     const email = e.target.elements.email.value;
     const password = e.target.elements.password.value;
 
-    const user = { name, email, password, points: 0 };
+    const user = { name, email, password, points: 0, isAdmin: email === 'admin@example.com' };
     localStorage.setItem(email, JSON.stringify(user));
 
     alert('Qeydiyyatdan uğurla keçdiniz!');
@@ -58,7 +80,11 @@ document.getElementById('login-form').addEventListener('submit', function(e) {
     if (user && user.password === password) {
         localStorage.setItem('currentUser', email);
         alert('Uğurla daxil oldunuz!');
-        showIntroPage();
+        if (user.isAdmin) {
+            showAdminPage();
+        } else {
+            showIntroPage();
+        }
         updateRankings();
     } else {
         alert('Email və ya şifrə yanlışdır.');
@@ -88,7 +114,7 @@ document.getElementById('upload-form').addEventListener('submit', function(e) {
 });
 
 function generateUserId() {
-    return Math.floor(10000 + Math.random() * 90000).toString();
+    return Math.floor(10010 + Math.random() * 89999).toString();
 }
 
 function uploadToGoogleSheets(name, userId, file, base64File, mimeType) {
