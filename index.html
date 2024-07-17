@@ -3,115 +3,125 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>İxtiraçı Panelinə xoş gəlmisiniz!</title>
+    <title>İxtiraçı Paneli</title>
     <link rel="stylesheet" href="styles.css">
-    <script defer src="script.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="script.js"></script>
 </head>
 <body>
     <header>
-        <button id="login-button" onclick="showLoginPage()">Giriş</button>
-        <button id="profile-button" style="display:none;" onclick="showProfilePage()">Profilim</button>
-        <div id="user-id" class="user-id" style="display:none;"></div>
+        <img src="path/to/Ixtirachi-Logo.svg" alt="İxtiraçı Logo" class="logo">
+        <button id="loginButton">Giriş</button>
+        <button id="profileButton" style="display:none;">Profilim</button>
     </header>
 
-   <!-- Sign Up Page -->
-<form id="signup-form">
-    <input type="text" name="name" placeholder="Ad" required>
-    <input type="tel" name="phone" placeholder="Telefon nömrəsi (050 100 10 10)" required pattern="[0-9]{3} [0-9]{3} [0-9]{2} [0-9]{2}">
-    <input type="password" name="password" placeholder="Şifrə" required>
-    <button type="submit">Qeydiyyatdan keç</button>
-</form>
-
-<!-- Login Page -->
-<form id="login-form">
-    <input type="tel" name="phone" placeholder="Telefon nömrəsi (050 100 10 10)" required pattern="[0-9]{3} [0-9]{3} [0-9]{2} [0-9]{2}">
-    <input type="password" name="password" placeholder="Şifrə" required>
-    <button type="submit">Daxil ol</button>
-</form>
-        <p>Hesabınız yoxdur? <a href="#" onclick="showSignUpPage()">Qeydiyyat</a></p>
-    </div>
-
-    <!-- Introduction Page -->
-    <div id="intro-page" class="page" style="display:none;">
-        <img src="Xtirachi - Vector.svg" alt="İxtiraçı Logo" class="logo">
-        <h1>İxtiraçı Panelinə xoş gəlmisiniz!</h1>
-        <h2>Zəhmət olmasa səyahət etdiyiniz ölkəni seçin.</h2>
-        <div class="options">
-            <button onclick="showLanguageOptions('england')">İngiltərəyə səyahət</button>
-            <button onclick="showLanguageOptions('japan')">Yaponiyaya səyahət</button>
-            <button onclick="showLanguageOptions('egypt')">Misirə səyahət</button>
-            <button onclick="showLanguageOptions('italy')">İtaliyaya səyahət</button>
+    <main>
+        <!-- Introduction Page -->
+        <div id="introductionPage" class="page">
+            <h1>İxtiraçı Panelinə xoş gəlmisiniz!</h1>
+            <p>Zəhmət olmasa səyahət etdiyiniz ölkəni seçin.</p>
+            <div class="options">
+                <div class="option" id="england">
+                    <img src="path/to/england-image.jpg" alt="England">
+                    <p>İngiltərəyə səyahət</p>
+                </div>
+                <div class="option" id="japan">
+                    <img src="path/to/japan-image.jpg" alt="Japan">
+                    <p>Yaponiyaya səyahət</p>
+                </div>
+                <div class="option" id="egypt">
+                    <img src="path/to/egypt-image.jpg" alt="Egypt">
+                    <p>Misirə səyahət</p>
+                </div>
+                <div class="option" id="italy">
+                    <img src="path/to/italy-image.jpg" alt="Italy">
+                    <p>İtaliyaya səyahət</p>
+                </div>
+            </div>
+            <button id="kidInventorsButton">Kiddy İxtiraçılar</button>
         </div>
-        <button onclick="showIxtiracilarPage()">İxtiraçılar</button>
-    </div>
 
-    <!-- Language Selection Page -->
-    <div id="language-page" class="page" style="display:none;">
-        <h2>Dili Seçin</h2>
-        <div class="options">
-            <button onclick="showCategoryOptions('Azərbaycan dili')">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/d/dd/Flag_of_Azerbaijan.svg" alt="Azərbaycan dili">
-            </button>
-            <button onclick="showCategoryOptions('Rus dili')">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Russia.svg" alt="Rus dili">
-            </button>
-            <button onclick="showCategoryOptions('İngilis dili')">
-                <img src="https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg" alt="İngilis dili">
-            </button>
+        <!-- Admin Page -->
+        <div id="adminPage" class="page" style="display:none;">
+            <h1>Admin Paneli</h1>
+            <div id="adminOptions">
+                <!-- Admin options will be dynamically added here -->
+            </div>
         </div>
-    </div>
 
-    <!-- Category Selection Page -->
-    <div id="category-page" class="page" style="display:none;">
-        <h2>Kateqoriyanı Seçin</h2>
-        <div class="options">
-            <button onclick="showUploadPage()">Mədəni irs və səyahət</button>
-            <button onclick="showUploadPage()">İncəsənət və yaradıcılıq</button>
-            <button onclick="showUploadPage()">STEAM və innovasiya</button>
-            <button onclick="showUploadPage()">Eksperiment və tədqiqat</button>
+        <!-- Language Selection Page -->
+        <div id="languagePage" class="page" style="display:none;">
+            <h1>Dili Seçin</h1>
+            <div class="languages">
+                <div class="language" id="az">
+                    <img src="path/to/azerbaijan-flag.jpg" alt="Azərbaycan dili">
+                </div>
+                <div class="language" id="ru">
+                    <img src="path/to/russian-flag.jpg" alt="Rus dili">
+                </div>
+                <div class="language" id="en">
+                    <img src="path/to/english-flag.jpg" alt="İngilis dili">
+                </div>
+            </div>
         </div>
-    </div>
 
-    <!-- Upload Page -->
-    <div id="upload-page" class="page" style="display:none;">
-        <h2>Sənədlərinizi Yükləyin</h2>
-        <form id="upload-form">
-            <input type="file" name="document" required>
-            <input type="text" name="name" placeholder="Adınızı daxil edin" required>
-            <input type="text" name="userId" placeholder="İstifadəçi ID (əgər varsa)">
-            <label>
-                <input type="checkbox" name="public" value="yes"> Yükləmənin başqaları tərəfindən görülməsinə icazə verin
-            </label>
-            <button type="submit">Yüklə</button>
-        </form>
-        <button onclick="returnToMainPage()">Əsas səhifə</button>
-    </div>
-
-    <!-- My Profile Page -->
-    <div id="profile-page" class="page" style="display:none;">
-        <h2>Yükləmələriniz</h2>
-        <div id="user-uploads">
-            <!-- User uploads will be displayed here -->
+        <!-- Category Selection Page -->
+        <div id="categoryPage" class="page" style="display:none;">
+            <h1>Kateqoriyanı Seçin</h1>
+            <div class="categories">
+                <div class="category" id="heritageTravel">
+                    <p>Mədəni irs və səyahət</p>
+                </div>
+                <div class="category" id="artCreativity">
+                    <p>İncəsənət və yaradıcılıq</p>
+                </div>
+                <div class="category" id="steamInnovation">
+                    <p>STEAM və innovasiya</p>
+                </div>
+                <div class="category" id="experimentResearch">
+                    <p>Eksperiment və tədqiqat</p>
+                </div>
+            </div>
         </div>
-        <button onclick="returnToMainPage()">Əsas səhifə</button>
-    </div>
 
-    <!-- İxtiraçılar Page -->
-    <div id="ixtiracilar-page" class="page" style="display:none;">
-        <h2>İxtiraçılar</h2>
-        <div id="ranking-list">
-            <!-- Ranking will be populated here -->
+        <!-- Upload and Registration Page -->
+        <div id="uploadPage" class="page" style="display:none;">
+            <h1>Fayl Yüklə</h1>
+            <form id="uploadForm">
+                <label for="fileToUpload">Fayl seçin:</label>
+                <input type="file" id="fileToUpload" name="fileToUpload" required>
+                <label for="userId">İstifadəçi ID:</label>
+                <input type="text" id="userId" name="userId" required>
+                <label for="visibility">Görünürlük:</label>
+                <select id="visibility" name="visibility" required>
+                    <option value="public">İctimai</option>
+                    <option value="private">Şəxsi</option>
+                </select>
+                <input type="hidden" id="selectedLanguage" name="selectedLanguage">
+                <input type="hidden" id="selectedCategory" name="selectedCategory">
+                <button type="submit">Yüklə</button>
+            </form>
         </div>
-        <button onclick="returnToMainPage()">Əsas səhifə</button>
-    </div>
 
-    <!-- Admin Page -->
-    <div id="admin-page" class="page" style="display:none;">
-        <h2>Admin Panel</h2>
-        <div id="all-uploads">
-            <!-- All uploads will be displayed here with options to accept or decline -->
+        <!-- My Profile Page -->
+        <div id="profilePage" class="page" style="display:none;">
+            <h1>Profilim</h1>
+            <div id="myUploads">
+                <!-- User uploads will be dynamically added here -->
+            </div>
         </div>
-        <button onclick="returnToMainPage()">Əsas səhifə</button>
+
+        <!-- İxtiraçılar Page -->
+        <div id="ixtirachilarPage" class="page" style="display:none;">
+            <h1>İxtiraçılar</h1>
+            <div id="publicUploads">
+                <!-- Public uploads will be dynamically added here -->
+            </div>
+        </div>
+    </main>
+
+    <div id="popup" style="display:none;">
+        <p>Məlumatlar yüklənir...</p>
     </div>
 </body>
 </html>
