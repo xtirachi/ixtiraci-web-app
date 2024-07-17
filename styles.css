@@ -18,6 +18,10 @@ h2 {
     color: #ff6347;
 }
 
+h3 {
+    color: #ff4500;
+}
+
 .ranking-container {
     text-align: left;
     position: absolute;
@@ -100,4 +104,33 @@ button[type="submit"]:hover {
 
 #main-page-btn:hover {
     background-color: #1c86ee;
+}
+
+.upload-item {
+    margin: 10px;
+    border: 2px solid #ff69b4;
+    border-radius: 12px;
+    padding: 10px;
+    display: inline-block;
+    text-align: left;
+    background-color: #fff;
+}
+
+.upload-item img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+#user-uploads {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.upload-item h3 {
+    font-size: 16px;
+    color: #ff69b4;
+    margin-bottom: 5px;
 }
