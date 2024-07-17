@@ -146,8 +146,21 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }
 
     function updateRankings() {
-        // Fetch rankings from Google Sheets and update the DOM
-        // You need to implement this function
+        fetch('https://script.google.com/macros/s/AKfycbyJW4oRQyyms_w00g5400RYTqbbrf9cgrEOq4BTT6VAB6qVGHwDLqcyRn9cOitL-_aK/exec?action=getRankings')
+        .then(response => response.json())
+        .then(data => {
+            const rankingList = document.getElementById('ranking-list');
+            rankingList.innerHTML = '';
+            data.rankings.forEach(ranking => {
+                const listItem = document.createElement('div');
+                listItem.innerHTML = `
+                    <h3>${ranking.name} (ID: ${ranking.userId}): ${ranking.points} xal</h3>
+                    ${ranking.publicUploads.map(upload => `<img src="${upload.fileUrl}" alt="${upload.fileName}" />`).join('')}
+                `;
+                rankingList.appendChild(listItem);
+            });
+        })
+        .catch(error => console.error('Error:', error));
     }
 
     // Utility functions to show pages
@@ -203,24 +216,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
                     `;
                     userUploads.appendChild(uploadItem);
                 }
-            });
-        })
-        .catch(error => console.error('Error:', error));
-    }
-
-    function loadRankings() {
-        fetch('https://script.google.com/macros/s/AKfycbyJW4oRQyyms_w00g5400RYTqbbrf9cgrEOq4BTT6VAB6qVGHwDLqcyRn9cOitL-_aK/exec?action=getRankings')
-        .then(response => response.json())
-        .then(data => {
-            const rankingList = document.getElementById('ranking-list');
-            rankingList.innerHTML = '';
-            data.rankings.forEach(ranking => {
-                const listItem = document.createElement('div');
-                listItem.innerHTML = `
-                    <h3>${ranking.name} (ID: ${ranking.userId}): ${ranking.points} xal</h3>
-                    ${ranking.publicUploads.map(upload => `<img src="${upload.fileUrl}" alt="${upload.fileName}" />`).join('')}
-                `;
-                rankingList.appendChild(listItem);
             });
         })
         .catch(error => console.error('Error:', error));
