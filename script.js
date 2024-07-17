@@ -36,12 +36,19 @@ document.addEventListener('DOMContentLoaded', (event) => {
         formData.append('email', email);
         formData.append('password', password);
 
+        console.log('Signup data:', {
+            name,
+            email,
+            password
+        });
+
         fetch('https://script.google.com/macros/s/AKfycbxOoWuNTh8T16i2BAnGS5reWPr0dd69IOXAZ-4YkfJOgxl2dcnrfrH6DoDz_MQgG6fy/exec', {
             method: 'POST',
             body: formData
         })
         .then(response => response.json())
         .then(data => {
+            console.log('Signup response:', data);
             if (data.status === 'success') {
                 alert(`Qeydiyyatdan uğurla keçdiniz! ID: ${data.userId}`);
                 userIdDisplay.textContent = `Sizin ID: ${data.userId}`;
@@ -65,12 +72,18 @@ document.addEventListener('DOMContentLoaded', (event) => {
         formData.append('email', email);
         formData.append('password', password);
 
+        console.log('Login data:', {
+            email,
+            password
+        });
+
         fetch('https://script.google.com/macros/s/AKfycbxOoWuNTh8T16i2BAnGS5reWPr0dd69IOXAZ-4YkfJOgxl2dcnrfrH6DoDz_MQgG6fy/exec', {
             method: 'POST',
             body: formData
         })
         .then(response => response.json())
         .then(data => {
+            console.log('Login response:', data);
             if (data.status === 'success') {
                 alert('Uğurla daxil oldunuz!');
                 localStorage.setItem('currentUser', email);
@@ -122,12 +135,23 @@ document.addEventListener('DOMContentLoaded', (event) => {
         formData.append('language', language);
         formData.append('category', category);
 
+        console.log('Upload data:', {
+            name,
+            userId,
+            fileName: file.name,
+            mimeType,
+            isPublic,
+            language,
+            category
+        });
+
         fetch('https://script.google.com/macros/s/AKfycbxOoWuNTh8T16i2BAnGS5reWPr0dd69IOXAZ-4YkfJOgxl2dcnrfrH6DoDz_MQgG6fy/exec', {
             method: 'POST',
             body: formData
         })
         .then(response => response.json())
         .then(data => {
+            console.log('Upload response:', data);
             if (data.status === 'success') {
                 alert('Məlumat uğurla yükləndi.');
                 updateUserPoints(userId);
@@ -149,6 +173,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         fetch('https://script.google.com/macros/s/AKfycbxOoWuNTh8T16i2BAnGS5reWPr0dd69IOXAZ-4YkfJOgxl2dcnrfrH6DoDz_MQgG6fy/exec?action=getRankings')
         .then(response => response.json())
         .then(data => {
+            console.log('Rankings response:', data);
             const rankingList = document.getElementById('ranking-list');
             rankingList.innerHTML = '';
             data.rankings.forEach(ranking => {
@@ -206,6 +231,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         fetch('https://script.google.com/macros/s/AKfycbxOoWuNTh8T16i2BAnGS5reWPr0dd69IOXAZ-4YkfJOgxl2dcnrfrH6DoDz_MQgG6fy/exec?action=getUploads')
         .then(response => response.json())
         .then(data => {
+            console.log('User uploads response:', data);
             const userUploads = document.getElementById('user-uploads');
             userUploads.innerHTML = '';
             data.uploads.forEach(upload => {
