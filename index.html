@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İxtiraçı Panelinə xoş gəlmisiniz!</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Sign Up Page -->
+    <div id="signup-page">
+        <img src="Xtirachi - Vector.svg" alt="İxtiraçı Logo" class="logo">
+        <h1>Qeydiyyat</h1>
+        <form id="signup-form">
+            <input type="text" name="name" placeholder="Adınız" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Şifrə" required>
+            <button type="submit">Qeydiyyatdan keç</button>
+        </form>
+        <p>Artıq hesabınız var? <a href="#" onclick="showLoginPage()">Giriş</a></p>
+    </div>
+
+    <!-- Login Page -->
+    <div id="login-page" style="display: none;">
+        <img src="Xtirachi - Vector.svg" alt="İxtiraçı Logo" class="logo">
+        <h1>Giriş</h1>
+        <form id="login-form">
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Şifrə" required>
+            <button type="submit">Daxil ol</button>
+        </form>
+        <p>Hesabınız yoxdur? <a href="#" onclick="showSignUpPage()">Qeydiyyat</a></p>
+    </div>
+
+    <!-- Introduction Page -->
+    <div id="intro-page" style="display: none;">
+        <img src="Xtirachi - Vector.svg" alt="İxtiraçı Logo" class="logo">
+        <h1>İxtiraçı Panelinə xoş gəlmisiniz!</h1>
+        <h2>Zəhmət olmasa səyahət etdiyiniz ölkəni seçin.</h2>
+        <div class="ranking-container">
+            <h3>Reytinq</h3>
+            <ol id="ranking-list">
+                <!-- Rankings will be populated here -->
+            </ol>
+        </div>
+        <div class="options">
+            <button onclick="showLanguageOptions('england')">
+                <img src="england.png" alt="İngiltərə" class="country-icon">
+                İngiltərəyə səyahət
+            </button>
+            <button onclick="showLanguageOptions('japan')">
+                <img src="japan.png" alt="Yaponiya" class="country-icon">
+                Yaponiyaya səyahət
+            </button>
+            <button onclick="showLanguageOptions('egypt')">
+                <img src="egypt.png" alt="Misir" class="country-icon">
+                Misirə səyahət
+            </button>
+            <button onclick="showLanguageOptions('italy')">
+                <img src="italy.png" alt="İtaliya" class="country-icon">
+                İtaliyaya səyahət
+            </button>
+        </div>
+    </div>
+
+    <!-- Language Selection Page -->
+    <div id="language-page" style="display: none;">
+        <h2>Dili Seçin</h2>
+        <div class="options">
+            <button onclick="showCategoryOptions('Azərbaycan dili')">
+                <img src="azerbaijan.png" alt="Azərbaycan dili" class="language-icon">
+            </button>
+            <button onclick="showCategoryOptions('Rus dili')">
+                <img src="russia.png" alt="Rus dili" class="language-icon">
+            </button>
+            <button onclick="showCategoryOptions('İngilis dili')">
+                <img src="uk.png" alt="İngilis dili" class="language-icon">
+            </button>
+        </div>
+    </div>
+
+    <!-- Category Selection Page -->
+    <div id="category-page" style="display: none;">
+        <h2>Kateqoriyanı Seçin</h2>
+        <div class="options">
+            <button onclick="showUploadPage()">Mədəni irs və səyahət</button>
+            <button onclick="showUploadPage()">İncəsənət və yaradıcılıq</button>
+            <button onclick="showUploadPage()">STEAM və innovasiya</button>
+            <button onclick="showUploadPage()">Eksperiment və tədqiqat</button>
+        </div>
+    </div>
+
+    <!-- Upload and Registration Page -->
+    <div id="upload-page" style="display: none;">
+        <h2>Sənədlərinizi Yükləyin</h2>
+        <form id="upload-form">
+            <input type="file" name="document" required>
+            <input type="text" name="name" placeholder="Adınızı daxil edin" required>
+            <input type="text" name="userId" placeholder="İstifadəçi ID (əgər varsa)">
+            <button type="submit">Yüklə</button>
+        </form>
+        <button id="main-page-btn" onclick="returnToMainPage()">Əsas səhifə</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
