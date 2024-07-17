@@ -32,6 +32,17 @@
         <p>Hesabınız yoxdur? <a href="#" onclick="showSignUpPage()">Qeydiyyat</a></p>
     </div>
 
+    <!-- Admin Page -->
+    <div id="admin-page" style="display: none;">
+        <img src="Xtirachi - Vector.svg" alt="İxtiraçı Logo" class="logo">
+        <h1>Admin Paneli</h1>
+        <button onclick="editIntroPage()">Giriş Səhifəsini Redaktə Et</button>
+        <button onclick="editLanguagePage()">Dil Seçim Səhifəsini Redaktə Et</button>
+        <button onclick="editCategoryPage()">Kateqoriya Seçim Səhifəsini Redaktə Et</button>
+        <button onclick="editUploadPage()">Yükləmə Səhifəsini Redaktə Et</button>
+        <button onclick="returnToMainPage()">Əsas Səhifəyə Qayıt</button>
+    </div>
+
     <!-- Introduction Page -->
     <div id="intro-page" style="display: none;">
         <img src="Xtirachi - Vector.svg" alt="İxtiraçı Logo" class="logo">
@@ -97,9 +108,21 @@
             <input type="file" name="document" required>
             <input type="text" name="name" placeholder="Adınızı daxil edin" required>
             <input type="text" name="userId" placeholder="İstifadəçi ID (əgər varsa)">
+            <label>
+                <input type="checkbox" name="public" value="yes"> Yükləmənin başqaları tərəfindən görülməsinə icazə verin
+            </label>
             <button type="submit">Yüklə</button>
         </form>
         <button id="main-page-btn" onclick="returnToMainPage()">Əsas səhifə</button>
+    </div>
+
+    <!-- Album Page -->
+    <div id="album-page" style="display: none;">
+        <h2>Yükləmələriniz</h2>
+        <div id="user-uploads">
+            <!-- User uploads will be displayed here -->
+        </div>
+        <button onclick="returnToMainPage()">Əsas səhifə</button>
     </div>
 
     <script src="script.js"></script>
