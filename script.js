@@ -1,167 +1,60 @@
-function showSignUpPage() {
-    document.getElementById('login-page').style.display = 'none';
-    document.getElementById('signup-page').style.display = 'block';
+function showPage(pageId) {
+  const pages = ['introductionPage', 'signupPage', 'loginPage', 'profilePage', 'ixtiracilarPage'];
+  pages.forEach(page => {
+    document.getElementById(page).classList.add('hidden');
+  });
+  document.getElementById(pageId).classList.remove('hidden');
 }
 
-function showLoginPage() {
-    document.getElementById('signup-page').style.display = 'none';
-    document.getElementById('login-page').style.display = 'block';
+function selectCountry(country) {
+  localStorage.setItem('selectedCountry', country);
+  alert('Seçilmiş ölkə: ' + country);
+  // Redirect to language selection page or next step
 }
 
-function showAdminPage() {
-    document.getElementById('signup-page').style.display = 'none';
-    document.getElementById('login-page').style.display = 'none';
-    document.getElementById('admin-page').style.display = 'block';
-}
+document.getElementById('signupForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+  var name = document.getElementById('name').value;
+  var email = document.getElementById('email').value;
+  var password = document.getElementById('password').value;
 
-function showIntroPage() {
-    document.getElementById('signup-page').style.display = 'none';
-    document.getElementById('login-page').style.display = 'none';
-    document.getElementById('intro-page').style.display = 'block';
-}
-
-function showLanguageOptions(destination) {
-    document.getElementById('intro-page').style.display = 'none';
-    document.getElementById('language-page').style.display = 'block';
-    localStorage.setItem('destination', destination);
-}
-
-function showCategoryOptions(language) {
-    document.getElementById('language-page').style.display = 'none';
-    document.getElementById('category-page').style.display = 'block';
-    localStorage.setItem('language', language);
-}
-
-function showUploadPage() {
-    document.getElementById('category-page').style.display = 'none';
-    document.getElementById('upload-page').style.display = 'block';
-}
-
-function returnToMainPage() {
-    document.getElementById('upload-page').style.display = 'none';
-    document.getElementById('intro-page').style.display = 'block';
-}
-
-function editIntroPage() {
-    alert('Giriş səhifəsini redaktə etmək üçün kodu buraya daxil edin.');
-}
-
-function editLanguagePage() {
-    alert('Dil seçim səhifəsini redaktə etmək üçün kodu buraya daxil edin.');
-}
-
-function editCategoryPage() {
-    alert('Kateqoriya seçim səhifəsini redaktə etmək üçün kodu buraya daxil edin.');
-}
-
-function editUploadPage() {
-    alert('Yükləmə səhifəsini redaktə etmək üçün kodu buraya daxil edin.');
-}
-
-document.getElementById('signup-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const name = e.target.elements.name.value;
-    const email = e.target.elements.email.value;
-    const password = e.target.elements.password.value;
-
-    const user = { name, email, password, points: 0, isAdmin: email === 'admin@example.com' };
-    localStorage.setItem(email, JSON.stringify(user));
-
-    alert('Qeydiyyatdan uğurla keçdiniz!');
-    showLoginPage();
+  google.script.run.withSuccessHandler(function(userId) {
+    localStorage.setItem('userId', userId);
+    document.getElementById('loginBtn').classList.add('hidden');
+    document.getElementById('profileBtn').classList.remove('hidden');
+    showPage('profilePage');
+  }).registerUser(name, email, password);
 });
 
-document.getElementById('login-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const email = e.target.elements.email.value;
-    const password = e.target.elements.password.value;
-    const user = JSON.parse(localStorage.getItem(email));
+document.getElementById('loginForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+  var email = document.getElementById('loginEmail').value;
+  var password = document.getElementById('loginPassword').value;
 
-    if (user && user.password === password) {
-        localStorage.setItem('currentUser', email);
-        alert('Uğurla daxil oldunuz!');
-        if (user.isAdmin) {
-            showAdminPage();
-        } else {
-            showIntroPage();
-        }
-        updateRankings();
+  google.script.run.withSuccessHandler(function(userId) {
+    if (userId) {
+      localStorage.setItem('userId', userId);
+      document.getElementById('loginBtn').classList.add('hidden');
+      document.getElementById('profileBtn').classList.remove('hidden');
+      showPage('profilePage');
     } else {
-        alert('Email və ya şifrə yanlışdır.');
+      alert('Yanlış e-poçt və ya şifrə');
     }
+  }).loginUser(email, password);
 });
 
-document.getElementById('upload-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const name = e.target.elements.name.value;
-    const file = e.target.elements.document.files[0];
-    let userId = e.target.elements.userId.value;
-
-    if (!userId) {
-        userId = generateUserId();
-    }
-
-    if (file && name) {
-        const reader = new FileReader();
-        reader.onload = function(event) {
-            const base64File = event.target.result.split(',')[1];
-            uploadToGoogleSheets(name, userId, file, base64File, file.type);
-        };
-        reader.readAsDataURL(file);
-    } else {
-        alert('Zəhmət olmasa adınızı daxil edin və fayl seçin.');
-    }
+document.addEventListener('DOMContentLoaded', function() {
+  var userId = localStorage.getItem('userId');
+  if (userId) {
+    document.getElementById('loginBtn').classList.add('hidden');
+    document.getElementById('profileBtn').classList.remove('hidden');
+    google.script.run.withSuccessHandler(function(user) {
+      document.getElementById('userName').innerText = user.name;
+      var uploadsHtml = '';
+      user.uploads.forEach(function(upload) {
+        uploadsHtml += '<div>' + upload.fileName + ' - ' + (upload.visibility ? 'İctimai' : 'Özəl') + '</div>';
+      });
+      document.getElementById('uploads').innerHTML = uploadsHtml;
+    }).getUserProfile(userId);
+  }
 });
-
-function generateUserId() {
-    return Math.floor(10010 + Math.random() * 89999).toString();
-}
-
-function uploadToGoogleSheets(name, userId, file, base64File, mimeType) {
-    const formData = new FormData();
-    formData.append('name', name);
-    formData.append('userId', userId);
-    formData.append('fileName', file.name);
-    formData.append('file', base64File);
-    formData.append('mimeType', mimeType);
-
-    fetch('https://script.google.com/macros/s/AKfycbzNWJWMwnKjYnfzOZ-YJbi8gbaS2lqMKl4_UJ_S_Kj_6DO2VCm5lyG4z4rEM8iJYqGIjw/exec', {
-        method: 'POST',
-        body: formData
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.status === 'success') {
-            alert('Məlumat uğurla yükləndi.');
-            updateUserPoints(userId);
-            updateRankings();
-        } else {
-            alert('Məlumatı yükləmək alınmadı: ' + data.message);
-        }
-    })
-    .catch(error => console.error('Error:', error));
-}
-
-function updateUserPoints(userId) {
-    const email = localStorage.getItem('currentUser');
-    const user = JSON.parse(localStorage.getItem(email));
-    user.points += 25;
-    localStorage.setItem(email, JSON.stringify(user));
-}
-
-function updateRankings() {
-    const rankingList = document.getElementById('ranking-list');
-    rankingList.innerHTML = '';
-    for (let i = 0; i < localStorage.length; i++) {
-        const key = localStorage.key(i);
-        if (key.includes('@')) {
-            const user = JSON.parse(localStorage.getItem(key));
-            const listItem = document.createElement('li');
-            listItem.textContent = `${user.name} (ID: ${key}): ${user.points} xal`;
-            rankingList.appendChild(listItem);
-        }
-    }
-}
-
-// Initial fetch to populate rankings
-updateRankings();
