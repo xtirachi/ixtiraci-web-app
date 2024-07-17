@@ -27,18 +27,18 @@ document.addEventListener('DOMContentLoaded', (event) => {
     function handleSignup(event) {
         event.preventDefault();
         const name = event.target.elements.name.value;
-        const email = event.target.elements.email.value;
+        const phone = event.target.elements.phone.value;
         const password = event.target.elements.password.value;
 
         const formData = new FormData();
         formData.append('action', 'register');
         formData.append('name', name);
-        formData.append('email', email);
+        formData.append('phone', phone);
         formData.append('password', password);
 
         console.log('Signup data:', {
             name,
-            email,
+            phone,
             password
         });
 
@@ -64,16 +64,16 @@ document.addEventListener('DOMContentLoaded', (event) => {
     // Handle Login
     function handleLogin(event) {
         event.preventDefault();
-        const loginIdentifier = event.target.elements.loginIdentifier.value;
+        const phone = event.target.elements.phone.value;
         const password = event.target.elements.password.value;
 
         const formData = new FormData();
         formData.append('action', 'login');
-        formData.append('loginIdentifier', loginIdentifier);
+        formData.append('phone', phone);
         formData.append('password', password);
 
         console.log('Login data:', {
-            loginIdentifier,
+            phone,
             password
         });
 
@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             console.log('Login response:', data);
             if (data.status === 'success') {
                 alert('Uğurla daxil oldunuz!');
-                localStorage.setItem('currentUser', loginIdentifier);
+                localStorage.setItem('currentUser', phone);
                 localStorage.setItem('currentUserId', data.userId);
                 userIdDisplay.textContent = `Sizin ID: ${data.userId}`;
                 userIdDisplay.style.display = 'block';
@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 showPage('intro-page');
                 updateRankings();
             } else {
-                alert(`ID, Email və ya şifrə yanlışdır: ${data.message}`);
+                alert(`Telefon nömrəsi və ya şifrə yanlışdır: ${data.message}`);
             }
         })
         .catch(error => console.error('Error:', error));
