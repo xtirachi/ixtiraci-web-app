@@ -1,47 +1,146 @@
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f0f8ff;
-  color: #333;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    background-color: #f0f8ff;
+    text-align: center;
+    padding: 20px;
+    margin: 0;
 }
 
 header {
-  display: flex;
-  justify-content: flex-end;
-  padding: 10px;
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+    background-color: #fff;
+    border-bottom: 2px solid #ddd;
 }
 
-button {
-  margin: 5px;
-  padding: 10px 20px;
-  background-color: #ff5722;
-  color: #fff;
-  border: none;
-  cursor: pointer;
+header button {
+    background-color: #ff6347;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: background-color 0.3s;
 }
 
-.container {
-  text-align: center;
-  padding: 50px;
+header button:hover {
+    background-color: #ff4500;
+}
+
+.logo {
+    width: 150px;
+    margin: 20px;
+}
+
+h1 {
+    color: #ff69b4;
+    font-size: 36px;
+}
+
+h2 {
+    color: #ff6347;
+    font-size: 24px;
+}
+
+h3 {
+    color: #ff4500;
+    font-size: 20px;
 }
 
 .options {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
+    margin-top: 20px;
 }
 
-.option {
-  margin: 10px;
-  padding: 20px;
-  background-color: #ffcc00;
-  cursor: pointer;
-  border: 1px solid #333;
+.options button {
+    background-color: #ff6347;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 15px 30px;
+    font-size: 18px;
+    margin: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-.option:hover {
-  background-color: #ff9900;
+.options button:hover {
+    background-color: #ff4500;
 }
 
-.hidden {
-  display: none;
+input[type="file"], input[type="text"], input[type="email"], input[type="password"] {
+    margin: 10px;
+    padding: 10px;
+    font-size: 16px;
+    width: calc(100% - 40px);
+    max-width: 400px;
+}
+
+input[type="text"], input[type="email"], input[type="password"] {
+    border: 2px solid #ff69b4;
+    border-radius: 12px;
+}
+
+button[type="submit"] {
+    background-color: #32cd32;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: #228b22;
+}
+
+.upload-item {
+    margin: 10px;
+    border: 2px solid #ff69b4;
+    border-radius: 12px;
+    padding: 10px;
+    display: inline-block;
+    text-align: left;
+    background-color: #fff;
+}
+
+.upload-item img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+#user-uploads {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.upload-item h3 {
+    font-size: 16px;
+    color: #ff69b4;
+    margin-bottom: 5px;
+}
+
+.ranking-container {
+    text-align: left;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.ranking-container ol {
+    padding-left: 20px;
+}
+
+.ranking-container ol li {
+    margin: 5px 0;
+    font-size: 16px;
 }
