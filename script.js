@@ -19,6 +19,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
     loginForm.addEventListener('submit', handleLogin);
     uploadForm.addEventListener('submit', handleUpload);
 
+    loginButton.addEventListener('click', () => showPage(loginPage));
+    profileButton.addEventListener('click', () => showPage(profilePage));
+
     // Show the appropriate page based on user's action
     function showPage(page) {
         introPage.style.display = 'none';
