@@ -125,7 +125,7 @@ function uploadToGoogleSheets(name, userId, file, base64File, mimeType) {
     formData.append('file', base64File);
     formData.append('mimeType', mimeType);
 
-    fetch('https://script.google.com/macros/s/AKfycbw1Pmg5Euo2TVlcnr33p8AxVWkpmVZXStQWs2bm3Cb-z1wcJxa13AwYjgd6be4OifdR0g/exec', {
+    fetch('https://script.google.com/macros/s/AKfycbzNWJWMwnKjYnfzOZ-YJbi8gbaS2lqMKl4_UJ_S_Kj_6DO2VCm5lyG4z4rEM8iJYqGIjw/exec', {
         method: 'POST',
         body: formData
     })
