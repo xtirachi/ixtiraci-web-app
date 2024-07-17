@@ -1,266 +1,100 @@
-document.addEventListener('DOMContentLoaded', (event) => {
-    // Elements
-    const loginButton = document.getElementById('login-button');
-    const profileButton = document.getElementById('profile-button');
-    const userIdDisplay = document.getElementById('user-id');
-    const pages = document.querySelectorAll('.page');
+$(document).ready(function() {
+    // Show Introduction Page on load
+    showPage('introductionPage');
 
-    const signupForm = document.getElementById('signup-form');
-    const loginForm = document.getElementById('login-form');
-    const uploadForm = document.getElementById('upload-form');
+    // Event listeners for page navigation
+    $('#loginButton').click(function() {
+        showPage('profilePage');
+    });
 
-    // Event Listeners
-    signupForm.addEventListener('submit', handleSignup);
-    loginForm.addEventListener('submit', handleLogin);
-    uploadForm.addEventListener('submit', handleUpload);
+    $('#profileButton').click(function() {
+        showPage('profilePage');
+    });
 
-    loginButton.addEventListener('click', showLoginPage);
-    profileButton.addEventListener('click', showProfilePage);
+    $('#kidInventorsButton').click(function() {
+        showPage('ixtirachilarPage');
+    });
 
-    // Show the appropriate page based on user's action
+    $('.option').click(function() {
+        showPage('languagePage');
+    });
+
+    $('.language').click(function() {
+        showPage('categoryPage');
+    });
+
+    $('.category').click(function() {
+        showPage('uploadPage');
+        $('#selectedLanguage').val($(this).attr('id'));
+        $('#selectedCategory').val($(this).attr('id'));
+    });
+
+    // Handle form submission for file upload
+    $('#uploadForm').submit(function(event) {
+        event.preventDefault();
+        $('#popup').show();
+        
+        var formData = new FormData(this);
+
+        $.ajax({
+            url: 'https://script.google.com/macros/s/AKfycby3lnAcoXWIxHPZugHBDB1Xka2DOhfXQ-NR2Wwb4XwcSJAW1su1saGwlMGlne7Kgy4XHw/exec',
+            type: 'POST',
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function(response) {
+                alert(response);
+                $('#popup').hide();
+                showPage('ixtirachilarPage');
+            },
+            error: function(response) {
+                alert('Error uploading file: ' + response.responseText);
+                $('#popup').hide();
+            }
+        });
+    });
+
+    // Fetch public uploads and display them
+    fetchPublicUploads();
+
+    // Function to show a specific page
     function showPage(pageId) {
-        pages.forEach(page => page.style.display = 'none');
-        document.getElementById(pageId).style.display = 'block';
+        $('.page').hide();
+        $('#' + pageId).show();
     }
 
-    // Handle Signup
-    function handleSignup(event) {
-        event.preventDefault();
-        const name = event.target.elements.name.value;
-        const phone = event.target.elements.phone.value;
-        const password = event.target.elements.password.value;
+    // Function to fetch public uploads
+    function fetchPublicUploads() {
+        $.ajax({
+            url: 'https://script.google.com/macros/s/AKfycby3lnAcoXWIxHPZugHBDB1Xka2DOhfXQ-NR2Wwb4XwcSJAW1su1saGwlMGlne7Kgy4XHw/exec',
+            type: 'GET',
+            data: { action: 'getPublicUploads' },
+            success: function(response) {
+                var uploads = JSON.parse(response);
+                var publicUploadsContainer = $('#publicUploads');
+                publicUploadsContainer.empty();
 
-        const formData = new FormData();
-        formData.append('action', 'register');
-        formData.append('name', name);
-        formData.append('phone', phone);
-        formData.append('password', password);
-
-        console.log('Signup data:', {
-            name,
-            phone,
-            password
-        });
-
-        fetch('https://script.google.com/macros/s/AKfycbxOoWuNTh8T16i2BAnGS5reWPr0dd69IOXAZ-4YkfJOgxl2dcnrfrH6DoDz_MQgG6fy/exec', {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log('Signup response:', data);
-            if (data.status === 'success') {
-                alert(`Qeydiyyatdan uğurla keçdiniz! ID: ${data.userId}`);
-                userIdDisplay.textContent = `Sizin ID: ${data.userId}`;
-                userIdDisplay.style.display = 'block';
-                showPage('login-page');
-            } else {
-                alert(`Qeydiyyat zamanı xəta baş verdi: ${data.message}`);
-            }
-        })
-        .catch(error => console.error('Error:', error));
-    }
-
-    // Handle Login
-    function handleLogin(event) {
-        event.preventDefault();
-        const phone = event.target.elements.phone.value;
-        const password = event.target.elements.password.value;
-
-        const formData = new FormData();
-        formData.append('action', 'login');
-        formData.append('phone', phone);
-        formData.append('password', password);
-
-        console.log('Login data:', {
-            phone,
-            password
-        });
-
-        fetch('https://script.google.com/macros/s/AKfycbxOoWuNTh8T16i2BAnGS5reWPr0dd69IOXAZ-4YkfJOgxl2dcnrfrH6DoDz_MQgG6fy/exec', {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log('Login response:', data);
-            if (data.status === 'success') {
-                alert('Uğurla daxil oldunuz!');
-                localStorage.setItem('currentUser', phone);
-                localStorage.setItem('currentUserId', data.userId);
-                userIdDisplay.textContent = `Sizin ID: ${data.userId}`;
-                userIdDisplay.style.display = 'block';
-                loginButton.style.display = 'none';
-                profileButton.style.display = 'block';
-                showPage('intro-page');
-                updateRankings();
-            } else {
-                alert(`Telefon nömrəsi və ya şifrə yanlışdır: ${data.message}`);
-            }
-        })
-        .catch(error => console.error('Error:', error));
-    }
-
-    // Handle Upload
-    function handleUpload(event) {
-        event.preventDefault();
-        const name = event.target.elements.name.value;
-        const file = event.target.elements.document.files[0];
-        const isPublic = event.target.elements.public.checked ? 'yes' : 'no';
-        const userId = localStorage.getItem('currentUserId');
-        const language = localStorage.getItem('selectedLanguage');
-        const category = localStorage.getItem('selectedCategory');
-
-        if (file && name) {
-            const reader = new FileReader();
-            reader.onload = function(event) {
-                const base64File = event.target.result.split(',')[1];
-                uploadToGoogleSheets(name, userId, file, base64File, file.type, isPublic, language, category);
-            };
-            reader.readAsDataURL(file);
-        } else {
-            alert('Zəhmət olmasa adınızı daxil edin və fayl seçin.');
-        }
-    }
-
-    function uploadToGoogleSheets(name, userId, file, base64File, mimeType, isPublic, language, category) {
-        const formData = new FormData();
-        formData.append('action', 'upload');
-        formData.append('name', name);
-        formData.append('userId', userId);
-        formData.append('fileName', file.name);
-        formData.append('file', base64File);
-        formData.append('mimeType', mimeType);
-        formData.append('public', isPublic);
-        formData.append('language', language);
-        formData.append('category', category);
-
-        console.log('Upload data:', {
-            name,
-            userId,
-            fileName: file.name,
-            mimeType,
-            isPublic,
-            language,
-            category
-        });
-
-        fetch('https://script.google.com/macros/s/AKfycbxOoWuNTh8T16i2BAnGS5reWPr0dd69IOXAZ-4YkfJOgxl2dcnrfrH6DoDz_MQgG6fy/exec', {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log('Upload response:', data);
-            if (data.status === 'success') {
-                alert('Məlumat uğurla yükləndi.');
-                updateUserPoints(userId);
-                updateRankings();
-                showPage('profile-page');
-            } else {
-                alert(`Məlumatı yükləmək alınmadı: ${data.message}`);
-            }
-        })
-        .catch(error => console.error('Error:', error));
-    }
-
-    function updateUserPoints(userId) {
-        // Function to fetch current user points and update them in the Google Sheet
-    }
-
-    function updateRankings() {
-        // Function to fetch rankings from Google Sheets and update the DOM
-        fetch('https://script.google.com/macros/s/AKfycbxOoWuNTh8T16i2BAnGS5reWPr0dd69IOXAZ-4YkfJOgxl2dcnrfrH6DoDz_MQgG6fy/exec?action=getRankings')
-        .then(response => response.json())
-        .then(data => {
-            console.log('Rankings response:', data);
-            const rankingList = document.getElementById('ranking-list');
-            rankingList.innerHTML = '';
-            data.rankings.forEach(ranking => {
-                const listItem = document.createElement('div');
-                listItem.innerHTML = `
-                    <h3>${ranking.name} (ID: ${ranking.userId}): ${ranking.points} xal</h3>
-                    ${ranking.publicUploads.map(upload => `<img src="${upload.fileUrl}" alt="${upload.fileName}" />`).join('')}
-                `;
-                rankingList.appendChild(listItem);
-            });
-        })
-        .catch(error => console.error('Error:', error));
-    }
-
-    // Utility functions to show pages
-    function showLanguageOptions(destination) {
-        localStorage.setItem('destination', destination);
-        showPage('language-page');
-    }
-
-    function showCategoryOptions(language) {
-        localStorage.setItem('selectedLanguage', language);
-        showPage('category-page');
-    }
-
-    function showUploadPage(event) {
-        const category = event.target.innerText;
-        localStorage.setItem('selectedCategory', category);
-        showPage('upload-page');
-    }
-
-    function showSignUpPage() {
-        showPage('signup-page');
-    }
-
-    function showLoginPage() {
-        showPage('login-page');
-    }
-
-    function showProfilePage() {
-        showPage('profile-page');
-        loadUserUploads();
-    }
-
-    function showIxtiracilarPage() {
-        showPage('ixtiracilar-page');
-        loadRankings();
-    }
-
-    function returnToMainPage() {
-        showPage('intro-page');
-    }
-
-    function loadUserUploads() {
-        fetch('https://script.google.com/macros/s/AKfycbxOoWuNTh8T16i2BAnGS5reWPr0dd69IOXAZ-4YkfJOgxl2dcnrfrH6DoDz_MQgG6fy/exec?action=getUploads')
-        .then(response => response.json())
-        .then(data => {
-            console.log('User uploads response:', data);
-            const userUploads = document.getElementById('user-uploads');
-            userUploads.innerHTML = '';
-            data.uploads.forEach(upload => {
-                if (upload.userId === localStorage.getItem('currentUserId') || upload.public === 'yes') {
-                    const uploadItem = document.createElement('div');
-                    uploadItem.className = 'upload-item';
-                    uploadItem.innerHTML = `
-                        <h3>${upload.name}</h3>
-                        <img src="${upload.fileUrl}" alt="${upload.fileName}" />
+                uploads.forEach(function(upload) {
+                    var uploadItem = `
+                        <div class="uploadItem">
+                            <img src="${upload.fileUrl}" alt="${upload.fileName}">
+                            <div class="details">
+                                <p><strong>File Name:</strong> ${upload.fileName}</p>
+                                <p><strong>User ID:</strong> ${upload.userId}</p>
+                                <p><strong>Points:</strong> ${upload.points}</p>
+                            </div>
+                            <div class="actions">
+                                <button class="likeButton">Like</button>
+                                <button class="commentButton">Comment</button>
+                            </div>
+                        </div>
                     `;
-                    userUploads.appendChild(uploadItem);
-                }
-            });
-        })
-        .catch(error => console.error('Error:', error));
-    }
-
-    // Initial setup
-    const currentUser = localStorage.getItem('currentUser');
-    const currentUserId = localStorage.getItem('currentUserId');
-    if (currentUser) {
-        loginButton.style.display = 'none';
-        profileButton.style.display = 'block';
-        userIdDisplay.textContent = `Sizin ID: ${currentUserId}`;
-        userIdDisplay.style.display = 'block';
-        showPage('intro-page');
-    } else {
-        loginButton.style.display = 'block';
-        profileButton.style.display = 'none';
-        showPage('signup-page');
+                    publicUploadsContainer.append(uploadItem);
+                });
+            },
+            error: function(response) {
+                alert('Error fetching public uploads: ' + response.responseText);
+            }
+        });
     }
 });
