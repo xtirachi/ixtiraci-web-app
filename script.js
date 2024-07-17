@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
     signupForm.addEventListener('submit', handleSignup);
     loginForm.addEventListener('submit', handleLogin);
     uploadForm.addEventListener('submit', handleUpload);
-    
 
     loginButton.addEventListener('click', showLoginPage);
     profileButton.addEventListener('click', showProfilePage);
@@ -37,7 +36,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         formData.append('email', email);
         formData.append('password', password);
 
-        fetch('https://script.google.com/macros/s/AKfycbxZmc5h0jg4iASQoxg6EGpsKHRjlN08gRcM4eoDhgV2lQPDKqpV4U60iAXBMPIe3Ei_-g/exec', {
+        fetch('https://script.google.com/macros/s/AKfycbxOoWuNTh8T16i2BAnGS5reWPr0dd69IOXAZ-4YkfJOgxl2dcnrfrH6DoDz_MQgG6fy/exec', {
             method: 'POST',
             body: formData
         })
@@ -66,7 +65,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         formData.append('email', email);
         formData.append('password', password);
 
-        fetch('https://script.google.com/macros/s/AKfycbxZmc5h0jg4iASQoxg6EGpsKHRjlN08gRcM4eoDhgV2lQPDKqpV4U60iAXBMPIe3Ei_-g/exec', {
+        fetch('https://script.google.com/macros/s/AKfycbxOoWuNTh8T16i2BAnGS5reWPr0dd69IOXAZ-4YkfJOgxl2dcnrfrH6DoDz_MQgG6fy/exec', {
             method: 'POST',
             body: formData
         })
@@ -123,7 +122,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         formData.append('language', language);
         formData.append('category', category);
 
-        fetch('https://script.google.com/macros/s/AKfycbxZmc5h0jg4iASQoxg6EGpsKHRjlN08gRcM4eoDhgV2lQPDKqpV4U60iAXBMPIe3Ei_-g/exec', {
+        fetch('https://script.google.com/macros/s/AKfycbxOoWuNTh8T16i2BAnGS5reWPr0dd69IOXAZ-4YkfJOgxl2dcnrfrH6DoDz_MQgG6fy/exec', {
             method: 'POST',
             body: formData
         })
@@ -147,7 +146,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     function updateRankings() {
         // Function to fetch rankings from Google Sheets and update the DOM
-        fetch('https://script.google.com/macros/s/AKfycbxZmc5h0jg4iASQoxg6EGpsKHRjlN08gRcM4eoDhgV2lQPDKqpV4U60iAXBMPIe3Ei_-g/exec?action=getRankings')
+        fetch('https://script.google.com/macros/s/AKfycbxOoWuNTh8T16i2BAnGS5reWPr0dd69IOXAZ-4YkfJOgxl2dcnrfrH6DoDz_MQgG6fy/exec?action=getRankings')
         .then(response => response.json())
         .then(data => {
             const rankingList = document.getElementById('ranking-list');
@@ -175,7 +174,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         showPage('category-page');
     }
 
-    function showUploadPage() {
+    function showUploadPage(event) {
         const category = event.target.innerText;
         localStorage.setItem('selectedCategory', category);
         showPage('upload-page');
@@ -204,7 +203,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }
 
     function loadUserUploads() {
-        fetch('https://script.google.com/macros/s/AKfycbxZmc5h0jg4iASQoxg6EGpsKHRjlN08gRcM4eoDhgV2lQPDKqpV4U60iAXBMPIe3Ei_-g/exec?action=getUploads')
+        fetch('https://script.google.com/macros/s/AKfycbxOoWuNTh8T16i2BAnGS5reWPr0dd69IOXAZ-4YkfJOgxl2dcnrfrH6DoDz_MQgG6fy/exec?action=getUploads')
         .then(response => response.json())
         .then(data => {
             const userUploads = document.getElementById('user-uploads');
