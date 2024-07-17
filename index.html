@@ -1,64 +1,109 @@
 <!DOCTYPE html>
-<html>
+<html lang="az">
 <head>
-  <title>İxtiraçı Paneli</title>
-  <link rel="stylesheet" type="text/css" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İxtiraçı Panelinə xoş gəlmisiniz!</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
 </head>
 <body>
-  <header>
-    <button id="loginBtn" onclick="showPage('loginPage')">Giriş</button>
-    <button id="profileBtn" class="hidden" onclick="showPage('profilePage')">Profilim</button>
-  </header>
+    <header>
+        <button id="login-button" onclick="showLoginPage()">Giriş</button>
+        <button id="profile-button" style="display:none;" onclick="showProfilePage()">Profilim</button>
+    </header>
 
-  <!-- Introduction Page -->
-  <div id="introductionPage" class="container">
-    <h1>İxtiraçı Panelinə xoş gəlmisiniz!</h1>
-    <p>Zəhmət olmasa səyahət etdiyiniz ölkəni seçin.</p>
-    <div class="options">
-      <div class="option" onclick="selectCountry('England')">İngiltərəyə səyahət</div>
-      <div class="option" onclick="selectCountry('Japan')">Yaponiyaya səyahət</div>
-      <div class="option" onclick="selectCountry('Egypt')">Misirə səyahət</div>
-      <div class="option" onclick="selectCountry('Italy')">İtaliyaya səyahət</div>
+    <!-- Introduction Page -->
+    <div id="intro-page">
+        <img src="Xtirachi - Vector.svg" alt="İxtiraçı Logo" class="logo">
+        <h1>İxtiraçı Panelinə xoş gəlmisiniz!</h1>
+        <h2>Zəhmət olmasa səyahət etdiyiniz ölkəni seçin.</h2>
+        <div class="options">
+            <button onclick="showLanguageOptions('england')">İngiltərəyə səyahət</button>
+            <button onclick="showLanguageOptions('japan')">Yaponiyaya səyahət</button>
+            <button onclick="showLanguageOptions('egypt')">Misirə səyahət</button>
+            <button onclick="showLanguageOptions('italy')">İtaliyaya səyahət</button>
+        </div>
+        <button onclick="showIxtiracilarPage()">İxtiraçılar</button>
     </div>
-    <button id="ixtiracilarBtn" onclick="showPage('ixtiracilarPage')">İxtiraçılar</button>
-  </div>
 
-  <!-- Sign Up Page -->
-  <div id="signupPage" class="container hidden">
-    <h1>Qeydiyyat</h1>
-    <form id="signupForm">
-      <input type="text" id="name" placeholder="Ad" required>
-      <input type="email" id="email" placeholder="E-poçt" required>
-      <input type="password" id="password" placeholder="Şifrə" required>
-      <button type="submit">Qeydiyyat</button>
-    </form>
-    <p>Hesabınız var? <button type="button" onclick="showPage('loginPage')">Giriş</button></p>
-  </div>
+    <!-- Language Selection Page -->
+    <div id="language-page" style="display: none;">
+        <h2>Dili Seçin</h2>
+        <div class="options">
+            <button onclick="showCategoryOptions('Azərbaycan dili')">Azərbaycan dili</button>
+            <button onclick="showCategoryOptions('Rus dili')">Rus dili</button>
+            <button onclick="showCategoryOptions('İngilis dili')">İngilis dili</button>
+        </div>
+    </div>
 
-  <!-- Login Page -->
-  <div id="loginPage" class="container hidden">
-    <h1>Giriş</h1>
-    <form id="loginForm">
-      <input type="email" id="loginEmail" placeholder="E-poçt" required>
-      <input type="password" id="loginPassword" placeholder="Şifrə" required>
-      <button type="submit">Giriş</button>
-    </form>
-    <p>Hesabınız yoxdur? <button type="button" onclick="showPage('signupPage')">Qeydiyyat</button></p>
-  </div>
+    <!-- Category Selection Page -->
+    <div id="category-page" style="display: none;">
+        <h2>Kateqoriyanı Seçin</h2>
+        <div class="options">
+            <button onclick="showUploadPage()">Mədəni irs və səyahət</button>
+            <button onclick="showUploadPage()">İncəsənət və yaradıcılıq</button>
+            <button onclick="showUploadPage()">STEAM və innovasiya</button>
+            <button onclick="showUploadPage()">Eksperiment və tədqiqat</button>
+        </div>
+    </div>
 
-  <!-- Profile Page -->
-  <div id="profilePage" class="container hidden">
-    <h1>Profilim</h1>
-    <p>Xoş gəldiniz, <span id="userName"></span></p>
-    <div id="uploads"></div>
-  </div>
+    <!-- Upload Page -->
+    <div id="upload-page" style="display: none;">
+        <h2>Sənədlərinizi Yükləyin</h2>
+        <form id="upload-form">
+            <input type="file" name="document" required>
+            <input type="text" name="name" placeholder="Adınızı daxil edin" required>
+            <input type="text" name="userId" placeholder="İstifadəçi ID (əgər varsa)">
+            <label>
+                <input type="checkbox" name="public" value="yes"> Yükləmənin başqaları tərəfindən görülməsinə icazə verin
+            </label>
+            <button type="submit">Yüklə</button>
+        </form>
+        <button onclick="returnToMainPage()">Əsas səhifə</button>
+    </div>
 
-  <!-- İxtiraçılar Page -->
-  <div id="ixtiracilarPage" class="container hidden">
-    <h1>İxtiraçılar</h1>
-    <div id="ranking"></div>
-  </div>
+    <!-- Sign Up Page -->
+    <div id="signup-page" style="display: none;">
+        <img src="Xtirachi - Vector.svg" alt="İxtiraçı Logo" class="logo">
+        <h1>Qeydiyyat</h1>
+        <form id="signup-form">
+            <input type="text" name="name" placeholder="Adınız" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Şifrə" required>
+            <button type="submit">Qeydiyyatdan keç</button>
+        </form>
+        <p>Artıq hesabınız var? <a href="#" onclick="showLoginPage()">Giriş</a></p>
+    </div>
 
-  <script src="scripts.js"></script>
+    <!-- Login Page -->
+    <div id="login-page" style="display: none;">
+        <img src="Xtirachi - Vector.svg" alt="İxtiraçı Logo" class="logo">
+        <h1>Giriş</h1>
+        <form id="login-form">
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Şifrə" required>
+            <button type="submit">Daxil ol</button>
+        </form>
+        <p>Hesabınız yoxdur? <a href="#" onclick="showSignUpPage()">Qeydiyyat</a></p>
+    </div>
+
+    <!-- My Profile Page -->
+    <div id="profile-page" style="display: none;">
+        <h2>Yükləmələriniz</h2>
+        <div id="user-uploads">
+            <!-- User uploads will be displayed here -->
+        </div>
+        <button onclick="returnToMainPage()">Əsas səhifə</button>
+    </div>
+
+    <!-- İxtiraçılar Page -->
+    <div id="ixtiracilar-page" style="display: none;">
+        <h2>İxtiraçılar</h2>
+        <div id="ranking-list">
+            <!-- Ranking will be populated here -->
+        </div>
+        <button onclick="returnToMainPage()">Əsas səhifə</button>
+    </div>
 </body>
 </html>
