@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="az">
 <head>
   <base target="_top">
   <link rel="stylesheet" href="styles.css">
@@ -12,7 +12,7 @@
       <h1>İxtiraçı Paneli</h1>
     </header>
     <section id="intro">
-      <h2>Choose Your Adventure</h2>
+      <h2>Macəranı Seçin</h2>
       <div class="options">
         <button onclick="showSubOptions('england')">İngiltərəyə səyahət</button>
         <button onclick="showSubOptions('japan')">Yaponiyaya səyahət</button>
@@ -21,7 +21,7 @@
       </div>
     </section>
     <section id="sub-options" style="display:none;">
-      <h2>Select Language</h2>
+      <h2>Dili Seçin</h2>
       <div class="options">
         <button onclick="showCategoryOptions()">Azərbaycan dili</button>
         <button onclick="showCategoryOptions()">Rus dili</button>
@@ -29,7 +29,7 @@
       </div>
     </section>
     <section id="categories" style="display:none;">
-      <h2>Choose Category</h2>
+      <h2>Kateqoriyanı Seçin</h2>
       <div class="options">
         <button onclick="showUploadForm()">Mədəni irs və səyahət</button>
         <button onclick="showUploadForm()">İncəsənət və yaradıcılıq</button>
@@ -38,18 +38,24 @@
       </div>
     </section>
     <section id="upload-form" style="display:none;">
-      <h2>Upload Your Document</h2>
+      <h2>Sənədi Yükləyin</h2>
       <form id="file-upload-form">
-        <label for="fullName">Full Name:</label>
+        <label for="fullName">Tam Ad:</label>
         <input type="text" id="fullName" name="fullName" required>
-        <label for="phoneNumber">Phone Number:</label>
+        <label for="phoneNumber">Telefon Nömrəsi:</label>
         <input type="text" id="phoneNumber" name="phoneNumber" required>
-        <label for="file">Upload File:</label>
+        <label for="file">Faylı Yükləyin:</label>
         <input type="file" id="file" name="file" required>
-        <button type="submit">Submit</button>
+        <button type="submit">Təqdim et</button>
       </form>
       <div id="upload-status"></div>
     </section>
+    <div id="popup" class="popup" style="display:none;">
+      <div class="popup-content">
+        <p id="popup-message"></p>
+        <button onclick="closePopup()">OK</button>
+      </div>
+    </div>
   </div>
 </body>
 </html>
