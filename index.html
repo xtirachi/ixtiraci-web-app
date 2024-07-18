@@ -1,64 +1,129 @@
 <!DOCTYPE html>
 <html lang="az">
 <head>
-  <base target="_top">
-  <link rel="stylesheet" href="styles.css">
-  <script src="script.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İxtiraçı Paneli</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://apis.google.com/js/api.js"></script>
+    <script src="script.js" defer></script>
 </head>
 <body>
-  <div class="container">
+    <!-- Header -->
     <header>
-      <img src="https://drive.google.com/uc?export=view&id=<YOUR_LOGO_FILE_ID>" alt="İxtiraci Logo" class="logo">
-      <h1>İxtiraçı Paneli</h1>
+        <nav>
+            <ul>
+                <li><a href="#" id="login-btn">Giriş</a></li>
+                <li><a href="#" id="profile-btn" style="display:none;">Profilim</a></li>
+            </ul>
+        </nav>
     </header>
-    <section id="intro">
-      <h2>Macəranı Seçin</h2>
-      <div class="options">
-        <button onclick="selectAdventure('İngiltərəyə səyahət')">İngiltərəyə səyahət</button>
-        <button onclick="selectAdventure('Yaponiyaya səyahət')">Yaponiyaya səyahət</button>
-        <button onclick="selectAdventure('Misirə səyahət')">Misirə səyahət</button>
-        <button onclick="selectAdventure('İtaliyaya səyahət')">İtaliyaya səyahət</button>
-      </div>
+
+    <!-- Introduction Page -->
+    <section id="intro-page">
+        <h1>İxtiraçı Panelinə xoş gəlmisiniz!</h1>
+        <p>Zəhmət olmasa səyahət etdiyiniz ölkəni seçin.</p>
+        <div class="options">
+            <div class="option" data-destination="england">
+                <img src="https://source.unsplash.com/random/300x200?england" alt="England">
+                <p>İngiltərəyə səyahət</p>
+            </div>
+            <div class="option" data-destination="japan">
+                <img src="https://source.unsplash.com/random/300x200?japan" alt="Japan">
+                <p>Yaponiyaya səyahət</p>
+            </div>
+            <div class="option" data-destination="egypt">
+                <img src="https://source.unsplash.com/random/300x200?egypt" alt="Egypt">
+                <p>Misirə səyahət</p>
+            </div>
+            <div class="option" data-destination="italy">
+                <img src="https://source.unsplash.com/random/300x200?italy" alt="Italy">
+                <p>İtaliyaya səyahət</p>
+            </div>
+        </div>
+        <button id="ixtiracilar-btn">İxtiraçılar</button>
     </section>
-    <section id="sub-options" style="display:none;">
-      <h2>Dili Seçin</h2>
-      <div class="options">
-        <button onclick="selectLanguage('Azərbaycan dili')">Azərbaycan dili</button>
-        <button onclick="selectLanguage('Rus dili')">Rus dili</button>
-        <button onclick="selectLanguage('İngilis dili')">İngilis dili</button>
-      </div>
+
+    <!-- Admin Page -->
+    <section id="admin-page" style="display:none;">
+        <h1>Admin Paneli</h1>
+        <div id="uploads">
+            <!-- Placeholder for uploads management -->
+        </div>
     </section>
-    <section id="categories" style="display:none;">
-      <h2>Kateqoriyanı Seçin</h2>
-      <div class="options">
-        <button onclick="selectPart('Mədəni irs və səyahət')">Mədəni irs və səyahət</button>
-        <button onclick="selectPart('İncəsənət və yaradıcılıq')">İncəsənət və yaradıcılıq</button>
-        <button onclick="selectPart('STEAM və innovasiya')">STEAM və innovasiya</button>
-        <button onclick="selectPart('Eksperiment və tədqiqat')">Eksperiment və tədqiqat</button>
-      </div>
+
+    <!-- Language Selection Page -->
+    <section id="language-page" style="display:none;">
+        <h1>Dil Seçimi</h1>
+        <div class="languages">
+            <div class="language" data-language="az">
+                <img src="https://source.unsplash.com/random/100x100?azerbaijan" alt="Azerbaijani Flag">
+                <p>Azərbaycan dili</p>
+            </div>
+            <div class="language" data-language="ru">
+                <img src="https://source.unsplash.com/random/100x100?russia" alt="Russian Flag">
+                <p>Rus dili</p>
+            </div>
+            <div class="language" data-language="en">
+                <img src="https://source.unsplash.com/random/100x100?england" alt="English Flag">
+                <p>İngilis dili</p>
+            </div>
+        </div>
     </section>
-    <section id="upload-form" style="display:none;">
-      <h2>Sənədi Yükləyin</h2>
-      <form id="file-upload-form">
-        <label for="fullName">Tam Ad:</label>
-        <input type="text" id="fullName" name="fullName" required>
-        <label for="phoneNumber">Telefon Nömrəsi:</label>
-        <input type="text" id="phoneNumber" name="phoneNumber" required>
-        <label for="file">Faylı Yükləyin:</label>
-        <input type="file" id="file" name="file" required>
-        <input type="hidden" id="adventure" name="adventure">
-        <input type="hidden" id="language" name="language">
-        <input type="hidden" id="part" name="part">
-        <button type="submit">Təqdim et</button>
-      </form>
-      <div id="upload-status"></div>
+
+    <!-- Category Selection Page -->
+    <section id="category-page" style="display:none;">
+        <h1>Kateqoriya Seçimi</h1>
+        <div class="categories">
+            <div class="category" data-category="heritage">
+                <p>Mədəni irs və səyahət</p>
+            </div>
+            <div class="category" data-category="art">
+                <p>İncəsənət və yaradıcılıq</p>
+            </div>
+            <div class="category" data-category="steam">
+                <p>STEAM və innovasiya</p>
+            </div>
+            <div class="category" data-category="experiment">
+                <p>Eksperiment və tədqiqat</p>
+            </div>
+        </div>
     </section>
-    <div id="popup" class="popup" style="display:none;">
-      <div class="popup-content">
-        <p id="popup-message"></p>
-        <button onclick="closePopup()">OK</button>
-      </div>
-    </div>
-  </div>
+
+    <!-- Upload and Registration Page -->
+    <section id="upload-page" style="display:none;">
+        <h1>Yükləmə və Qeydiyyat</h1>
+        <form id="upload-form">
+            <label for="file-upload">Faylı yüklə:</label>
+            <input type="file" id="file-upload" name="file-upload">
+            <label for="name">Ad:</label>
+            <input type="text" id="name" name="name">
+            <label for="user-id">İstifadəçi ID:</label>
+            <input type="text" id="user-id" name="user-id">
+            <label for="visibility">Faylı görünür et:</label>
+            <input type="checkbox" id="visibility" name="visibility">
+            <button type="submit">Yüklə</button>
+        </form>
+    </section>
+
+    <!-- Profile Page -->
+    <section id="profile-page" style="display:none;">
+        <h1>Profilim</h1>
+        <div id="user-uploads">
+            <!-- Placeholder for user uploads -->
+        </div>
+    </section>
+
+    <!-- Ixtiraçılar Page -->
+    <section id="ixtiracilar-page" style="display:none;">
+        <h1>İxtiraçılar</h1>
+        <div id="public-uploads">
+            <!-- Placeholder for public uploads -->
+        </div>
+        <div id="ranking">
+            <!-- Placeholder for ranking -->
+        </div>
+    </section>
 </body>
 </html>
