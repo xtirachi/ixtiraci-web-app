@@ -1,127 +1,55 @@
 <!DOCTYPE html>
-<html lang="az">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>İxtiraçı Paneli</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="script.js"></script>
+  <base target="_top">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js"></script>
 </head>
 <body>
+  <div class="container">
     <header>
-        <img src="path/to/Ixtirachi-Logo.svg" alt="İxtiraçı Logo" class="logo">
-        <button id="loginButton">Giriş</button>
-        <button id="profileButton" style="display:none;">Profilim</button>
+      <img src="https://drive.google.com/uc?export=view&id=<YOUR_LOGO_FILE_ID>" alt="İxtiraci Logo" class="logo">
+      <h1>İxtiraçı Paneli</h1>
     </header>
-
-    <main>
-        <!-- Introduction Page -->
-        <div id="introductionPage" class="page">
-            <h1>İxtiraçı Panelinə xoş gəlmisiniz!</h1>
-            <p>Zəhmət olmasa səyahət etdiyiniz ölkəni seçin.</p>
-            <div class="options">
-                <div class="option" id="england">
-                    <img src="path/to/england-image.jpg" alt="England">
-                    <p>İngiltərəyə səyahət</p>
-                </div>
-                <div class="option" id="japan">
-                    <img src="path/to/japan-image.jpg" alt="Japan">
-                    <p>Yaponiyaya səyahət</p>
-                </div>
-                <div class="option" id="egypt">
-                    <img src="path/to/egypt-image.jpg" alt="Egypt">
-                    <p>Misirə səyahət</p>
-                </div>
-                <div class="option" id="italy">
-                    <img src="path/to/italy-image.jpg" alt="Italy">
-                    <p>İtaliyaya səyahət</p>
-                </div>
-            </div>
-            <button id="kidInventorsButton">Kiddy İxtiraçılar</button>
-        </div>
-
-        <!-- Admin Page -->
-        <div id="adminPage" class="page" style="display:none;">
-            <h1>Admin Paneli</h1>
-            <div id="adminOptions">
-                <!-- Admin options will be dynamically added here -->
-            </div>
-        </div>
-
-        <!-- Language Selection Page -->
-        <div id="languagePage" class="page" style="display:none;">
-            <h1>Dili Seçin</h1>
-            <div class="languages">
-                <div class="language" id="az">
-                    <img src="path/to/azerbaijan-flag.jpg" alt="Azərbaycan dili">
-                </div>
-                <div class="language" id="ru">
-                    <img src="path/to/russian-flag.jpg" alt="Rus dili">
-                </div>
-                <div class="language" id="en">
-                    <img src="path/to/english-flag.jpg" alt="İngilis dili">
-                </div>
-            </div>
-        </div>
-
-        <!-- Category Selection Page -->
-        <div id="categoryPage" class="page" style="display:none;">
-            <h1>Kateqoriyanı Seçin</h1>
-            <div class="categories">
-                <div class="category" id="heritageTravel">
-                    <p>Mədəni irs və səyahət</p>
-                </div>
-                <div class="category" id="artCreativity">
-                    <p>İncəsənət və yaradıcılıq</p>
-                </div>
-                <div class="category" id="steamInnovation">
-                    <p>STEAM və innovasiya</p>
-                </div>
-                <div class="category" id="experimentResearch">
-                    <p>Eksperiment və tədqiqat</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Upload and Registration Page -->
-        <div id="uploadPage" class="page" style="display:none;">
-            <h1>Fayl Yüklə</h1>
-            <form id="uploadForm">
-                <label for="fileToUpload">Fayl seçin:</label>
-                <input type="file" id="fileToUpload" name="fileToUpload" required>
-                <label for="userId">İstifadəçi ID:</label>
-                <input type="text" id="userId" name="userId" required>
-                <label for="visibility">Görünürlük:</label>
-                <select id="visibility" name="visibility" required>
-                    <option value="public">İctimai</option>
-                    <option value="private">Şəxsi</option>
-                </select>
-                <input type="hidden" id="selectedLanguage" name="selectedLanguage">
-                <input type="hidden" id="selectedCategory" name="selectedCategory">
-                <button type="submit">Yüklə</button>
-            </form>
-        </div>
-
-        <!-- My Profile Page -->
-        <div id="profilePage" class="page" style="display:none;">
-            <h1>Profilim</h1>
-            <div id="myUploads">
-                <!-- User uploads will be dynamically added here -->
-            </div>
-        </div>
-
-        <!-- İxtiraçılar Page -->
-        <div id="ixtirachilarPage" class="page" style="display:none;">
-            <h1>İxtiraçılar</h1>
-            <div id="publicUploads">
-                <!-- Public uploads will be dynamically added here -->
-            </div>
-        </div>
-    </main>
-
-    <div id="popup" style="display:none;">
-        <p>Məlumatlar yüklənir...</p>
-    </div>
+    <section id="intro">
+      <h2>Choose Your Adventure</h2>
+      <div class="options">
+        <button onclick="showSubOptions('england')">İngiltərəyə səyahət</button>
+        <button onclick="showSubOptions('japan')">Yaponiyaya səyahət</button>
+        <button onclick="showSubOptions('egypt')">Misirə səyahət</button>
+        <button onclick="showSubOptions('italy')">İtaliyaya səyahət</button>
+      </div>
+    </section>
+    <section id="sub-options" style="display:none;">
+      <h2>Select Language</h2>
+      <div class="options">
+        <button onclick="showCategoryOptions()">Azərbaycan dili</button>
+        <button onclick="showCategoryOptions()">Rus dili</button>
+        <button onclick="showCategoryOptions()">İngilis dili</button>
+      </div>
+    </section>
+    <section id="categories" style="display:none;">
+      <h2>Choose Category</h2>
+      <div class="options">
+        <button onclick="showUploadForm()">Mədəni irs və səyahət</button>
+        <button onclick="showUploadForm()">İncəsənət və yaradıcılıq</button>
+        <button onclick="showUploadForm()">STEAM və innovasiya</button>
+        <button onclick="showUploadForm()">Eksperiment və tədqiqat</button>
+      </div>
+    </section>
+    <section id="upload-form" style="display:none;">
+      <h2>Upload Your Document</h2>
+      <form id="file-upload-form">
+        <label for="fullName">Full Name:</label>
+        <input type="text" id="fullName" name="fullName" required>
+        <label for="phoneNumber">Phone Number:</label>
+        <input type="text" id="phoneNumber" name="phoneNumber" required>
+        <label for="file">Upload File:</label>
+        <input type="file" id="file" name="file" required>
+        <button type="submit">Submit</button>
+      </form>
+      <div id="upload-status"></div>
+    </section>
+  </div>
 </body>
 </html>
