@@ -101,13 +101,27 @@ document.addEventListener('DOMContentLoaded', function() {
                 isPublic: visibilityInput.checked
             };
 
-            $.post('https://script.google.com/macros/s/AKfycby1HB3b0MHvouNh3sHRqLkztXxvR64UrsOg_K6mjhK9_A7pIvy9GFyJKMX6hM8OP4B4sQ/exec', payload, function(response) {
-                alert('File uploaded successfully.');
-                uploadForm.reset();
-                showProfilePage();
-            }).fail(function() {
-                alert('File upload failed.');
+            console.log('Payload:', payload); // Debug: Log the payload
+
+            $.ajax({
+                url: 'https://script.google.com/macros/s/AKfycby1HB3b0MHvouNh3sHRqLkztXxvR64UrsOg_K6mjhK9_A7pIvy9GFyJKMX6hM8OP4B4sQ/exec',
+                method: 'POST',
+                data: payload,
+                success: function(response) {
+                    console.log('Response:', response); // Debug: Log the response
+                    alert('File uploaded successfully.');
+                    uploadForm.reset();
+                    showProfilePage();
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.error('Upload failed:', textStatus, errorThrown); // Debug: Log the error details
+                    alert('File upload failed: ' + textStatus + ' ' + errorThrown);
+                }
             });
+        };
+        reader.onerror = function(error) {
+            console.error('FileReader error:', error); // Debug: Log FileReader error
+            alert('Error reading file: ' + error);
         };
         reader.readAsDataURL(fileInput.files[0]);
     }
