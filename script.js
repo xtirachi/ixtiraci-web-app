@@ -1,21 +1,32 @@
 // script.js
 
-// Function to show sub-options when a main option is clicked
-function showSubOptions(option) {
+// Store selected adventure, language, and part
+let selectedAdventure = '';
+let selectedLanguage = '';
+let selectedPart = '';
+
+// Function to set selected adventure and show sub-options
+function selectAdventure(adventure) {
+  selectedAdventure = adventure;
   document.getElementById('intro').style.display = 'none';
   document.getElementById('sub-options').style.display = 'block';
 }
 
-// Function to show category options when a language option is clicked
-function showCategoryOptions() {
+// Function to set selected language and show category options
+function selectLanguage(language) {
+  selectedLanguage = language;
   document.getElementById('sub-options').style.display = 'none';
   document.getElementById('categories').style.display = 'block';
 }
 
-// Function to show the upload form when a category option is clicked
-function showUploadForm() {
+// Function to set selected part and show the upload form
+function selectPart(part) {
+  selectedPart = part;
   document.getElementById('categories').style.display = 'none';
   document.getElementById('upload-form').style.display = 'block';
+  document.getElementById('adventure').value = selectedAdventure;
+  document.getElementById('language').value = selectedLanguage;
+  document.getElementById('part').value = selectedPart;
 }
 
 // Function to show the popup
