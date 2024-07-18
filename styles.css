@@ -1,180 +1,91 @@
-/* General Styles */
+/* styles.css */
 body {
-    font-family: 'Comic Sans MS', cursive, sans-serif;
-    background-color: #f0f8ff;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  font-family: Arial, sans-serif;
+  background-color: #f0f8ff;
+  color: #333;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  padding: 20px;
 }
 
 header {
-    width: 100%;
-    background-color: #ffcc00;
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 20px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  background-color: #4682b4;
+  color: #fff;
+  padding: 20px 0;
 }
 
 .logo {
-    height: 50px;
+  height: 80px;
 }
 
-header button {
-    background-color: #00aaff;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 16px;
+h1, h2 {
+  margin: 20px 0;
 }
 
-header button:hover {
-    background-color: #0088cc;
+.options {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-main {
-    width: 100%;
-    max-width: 1200px;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.options button {
+  background-color: #87cefa;
+  border: none;
+  color: white;
+  padding: 15px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 10px;
+  cursor: pointer;
+  border-radius: 10px;
 }
 
-.page {
-    display: none;
-}
-
-.page.active {
-    display: block;
-}
-
-h1 {
-    color: #ff6347;
-}
-
-p {
-    font-size: 18px;
-}
-
-.options, .languages, .categories {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    width: 100%;
-    max-width: 800px;
-    margin-top: 20px;
-}
-
-.option, .language, .category {
-    flex: 1;
-    max-width: 200px;
-    margin: 10px;
-    text-align: center;
-    cursor: pointer;
-    transition: transform 0.2s;
-}
-
-.option:hover, .language:hover, .category:hover {
-    transform: scale(1.05);
-}
-
-.option img, .language img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
+.options button:hover {
+  background-color: #1e90ff;
 }
 
 form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    max-width: 500px;
-    margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 form label {
-    font-size: 18px;
-    margin: 10px 0 5px 0;
+  margin: 10px 0 5px;
 }
 
-form input, form select {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 2px solid #00aaff;
-    border-radius: 5px;
+form input {
+  margin: 10px 0;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
 form button {
-    background-color: #00aaff;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 16px;
+  background-color: #4682b4;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
 }
 
 form button:hover {
-    background-color: #0088cc;
+  background-color: #1e90ff;
 }
 
-#popup {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: rgba(0, 0, 0, 0.8);
-    color: white;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
+#upload-status {
+  margin-top: 20px;
+  font-size: 18px;
+  color: #008000;
 }
 
-#popup p {
-    margin: 0;
-    font-size: 18px;
-}
-
-#adminOptions, #myUploads, #publicUploads {
-    width: 100%;
-    max-width: 800px;
-    margin-top: 20px;
-}
-
-.uploadItem {
-    background-color: #fff;
-    border: 2px solid #00aaff;
-    border-radius: 10px;
-    padding: 10px;
-    margin-bottom: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.uploadItem img {
-    max-width: 100px;
-    border-radius: 5px;
-}
-
-.uploadItem .details {
-    flex: 1;
-    margin-left: 20px;
-}
-
-.uploadItem .actions {
-    display: flex;
-    flex-direction: column;
-}
-
-.uploadItem .actions button {
-    margin-top: 5px;
-}
 
