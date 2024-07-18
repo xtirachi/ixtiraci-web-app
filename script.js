@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('Payload:', payload); // Debug: Log the payload
 
             $.ajax({
-                url: 'https://script.google.com/macros/s/AKfycby1HB3b0MHvouNh3sHRqLkztXxvR64UrsOg_K6mjhK9_A7pIvy9GFyJKMX6hM8OP4B4sQ/exec',
+                url: 'https://script.google.com/macros/s/AKfycbxlQVU4TBKHEwYQsaEsFzjDU6kd3AG4UX-CS9wdqyb0NyVUgBMSsGNJWSY-rtz9Ens/exec',
                 method: 'POST',
                 contentType: 'application/json', // Ensure the content type is set to JSON
                 data: payload,
