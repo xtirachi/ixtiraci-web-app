@@ -19,26 +19,28 @@ function showUploadForm() {
 }
 
 // Add event listener to the file upload form to handle form submission
-document.getElementById('file-upload-form').addEventListener('submit', function(event) {
-  event.preventDefault();
+document.addEventListener('DOMContentLoaded', function() {
+  document.getElementById('file-upload-form').addEventListener('submit', function(event) {
+    event.preventDefault();
 
-  // Get the form element and create FormData object
-  var form = document.getElementById('file-upload-form');
-  var formData = new FormData(form);
+    // Get the form element and create FormData object
+    var form = document.getElementById('file-upload-form');
+    var formData = new FormData(form);
 
-  // Perform the AJAX request to submit the form data
-  var xhr = new XMLHttpRequest();
-  xhr.open('POST', 'https://script.google.com/macros/s/AKfycbyrPEgeRo-nWBv636Hv18WaCzfwYJk0llKgDmNVKh-Cujw7mSCcc6G_I1Ux39zLS5lf/exec', true);
-  
-  // Handle the response from the server
-  xhr.onload = function() {
-    if (xhr.status === 200) {
-      document.getElementById('upload-status').innerText = 'File uploaded successfully';
-    } else {
-      document.getElementById('upload-status').innerText = 'File upload failed: ' + xhr.statusText;
-    }
-  };
-  
-  // Send the form data
-  xhr.send(formData);
+    // Perform the AJAX request to submit the form data
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'https://script.google.com/macros/s/AKfycbyrPEgeRo-nWBv636Hv18WaCzfwYJk0llKgDmNVKh-Cujw7mSCcc6G_I1Ux39zLS5lf/exec', true);
+    
+    // Handle the response from the server
+    xhr.onload = function() {
+      if (xhr.status === 200) {
+        document.getElementById('upload-status').innerText = 'File uploaded successfully';
+      } else {
+        document.getElementById('upload-status').innerText = 'File upload failed: ' + xhr.statusText;
+      }
+    };
+    
+    // Send the form data
+    xhr.send(formData);
+  });
 });
