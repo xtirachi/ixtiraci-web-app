@@ -14,27 +14,27 @@
     <section id="intro">
       <h2>Macəranı Seçin</h2>
       <div class="options">
-        <button onclick="showSubOptions('england')">İngiltərəyə səyahət</button>
-        <button onclick="showSubOptions('japan')">Yaponiyaya səyahət</button>
-        <button onclick="showSubOptions('egypt')">Misirə səyahət</button>
-        <button onclick="showSubOptions('italy')">İtaliyaya səyahət</button>
+        <button onclick="selectAdventure('İngiltərəyə səyahət')">İngiltərəyə səyahət</button>
+        <button onclick="selectAdventure('Yaponiyaya səyahət')">Yaponiyaya səyahət</button>
+        <button onclick="selectAdventure('Misirə səyahət')">Misirə səyahət</button>
+        <button onclick="selectAdventure('İtaliyaya səyahət')">İtaliyaya səyahət</button>
       </div>
     </section>
     <section id="sub-options" style="display:none;">
       <h2>Dili Seçin</h2>
       <div class="options">
-        <button onclick="showCategoryOptions()">Azərbaycan dili</button>
-        <button onclick="showCategoryOptions()">Rus dili</button>
-        <button onclick="showCategoryOptions()">İngilis dili</button>
+        <button onclick="selectLanguage('Azərbaycan dili')">Azərbaycan dili</button>
+        <button onclick="selectLanguage('Rus dili')">Rus dili</button>
+        <button onclick="selectLanguage('İngilis dili')">İngilis dili</button>
       </div>
     </section>
     <section id="categories" style="display:none;">
       <h2>Kateqoriyanı Seçin</h2>
       <div class="options">
-        <button onclick="showUploadForm()">Mədəni irs və səyahət</button>
-        <button onclick="showUploadForm()">İncəsənət və yaradıcılıq</button>
-        <button onclick="showUploadForm()">STEAM və innovasiya</button>
-        <button onclick="showUploadForm()">Eksperiment və tədqiqat</button>
+        <button onclick="selectPart('Mədəni irs və səyahət')">Mədəni irs və səyahət</button>
+        <button onclick="selectPart('İncəsənət və yaradıcılıq')">İncəsənət və yaradıcılıq</button>
+        <button onclick="selectPart('STEAM və innovasiya')">STEAM və innovasiya</button>
+        <button onclick="selectPart('Eksperiment və tədqiqat')">Eksperiment və tədqiqat</button>
       </div>
     </section>
     <section id="upload-form" style="display:none;">
@@ -46,6 +46,9 @@
         <input type="text" id="phoneNumber" name="phoneNumber" required>
         <label for="file">Faylı Yükləyin:</label>
         <input type="file" id="file" name="file" required>
+        <input type="hidden" id="adventure" name="adventure">
+        <input type="hidden" id="language" name="language">
+        <input type="hidden" id="part" name="part">
         <button type="submit">Təqdim et</button>
       </form>
       <div id="upload-status"></div>
