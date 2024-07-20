@@ -18,31 +18,31 @@ function selectLanguage(language) {
 function setThematicOptions() {
     const translations = {
         'Azərbaycan dili': {
-            'Mədəni irs və səyahət': 'Mədəni irs və səyahət',
-            'İncəsənət və yaradıcılıq': 'İncəsənət və yaradıcılıq',
-            'STEAM və innovasiya': 'STEAM və innovasiya',
-            'Eksperiment və tədqiqat': 'Eksperiment və tədqiqat'
+            'Cultural Heritage and Travel': 'Mədəni irs və səyahət',
+            'Art and Creativity': 'İncəsənət və yaradıcılıq',
+            'STEAM and Innovation': 'STEAM və innovasiya',
+            'Experiments and Research': 'Eksperiment və tədqiqat'
         },
         'Русский': {
-            'Mədəni irs və səyahət': 'Культурное наследие и путешествия',
-            'İncəsənət və yaradıcılıq': 'Искусство и творчество',
-            'STEAM və innovasiya': 'STEAM и инновации',
-            'Eksperiment və tədqiqat': 'Эксперименты и исследования'
+            'Cultural Heritage and Travel': 'Культурное наследие и путешествия',
+            'Art and Creativity': 'Искусство и творчество',
+            'STEAM and Innovation': 'STEAM и инновации',
+            'Experiments and Research': 'Эксперименты и исследования'
         },
         'English': {
-            'Mədəni irs və səyahət': 'Cultural Heritage and Travel',
-            'İncəsənət və yaradıcılıq': 'Art and Creativity',
-            'STEAM və innovasiya': 'STEAM and Innovation',
-            'Eksperiment və tədqiqat': 'Experiments and Research'
+            'Cultural Heritage and Travel': 'Cultural Heritage and Travel',
+            'Art and Creativity': 'Art and Creativity',
+            'STEAM and Innovation': 'STEAM and Innovation',
+            'Experiments and Research': 'Experiments and Research'
         }
     };
 
     const options = translations[selectedLanguage];
 
-    document.getElementById('btn-cultural').textContent = options['Mədəni irs və səyahət'];
-    document.getElementById('btn-art').textContent = options['İncəsənət və yaradıcılıq'];
-    document.getElementById('btn-steam').textContent = options['STEAM və innovasiya'];
-    document.getElementById('btn-experiments').textContent = options['Eksperiment və tədqiqat'];
+    document.getElementById('btn-cultural').textContent = options['Cultural Heritage and Travel'];
+    document.getElementById('btn-art').textContent = options['Art and Creativity'];
+    document.getElementById('btn-steam').textContent = options['STEAM and Innovation'];
+    document.getElementById('btn-experiments').textContent = options['Experiments and Research'];
 }
 
 function navigateToContent(part) {
@@ -50,79 +50,39 @@ function navigateToContent(part) {
     document.getElementById('thematic-options-page').classList.add('hidden');
     document.getElementById('content-page').classList.remove('hidden');
     document.getElementById('content-title').textContent = part;
-    setAudioPlaylist(part);
-}
 
-function setAudioPlaylist(part) {
+    // Update audio files based on the selected language and part
     const audioFiles = {
-        'Mədəni irs və səyahət': {
-            'Azərbaycan dili': [
-                'https://example.com/az-cultural1.mp3',
-                'https://example.com/az-cultural2.mp3'
-            ],
-            'Русский': [
-                'https://example.com/ru-cultural1.mp3',
-                'https://example.com/ru-cultural2.mp3'
-            ],
-            'English': [
-                'https://example.com/en-cultural1.mp3',
-                'https://example.com/en-cultural2.mp3'
-            ]
+        'Azərbaycan dili': {
+            'Mədəni irs və səyahət': ['audio/az_cultural1.mp3', 'audio/az_cultural2.mp3'],
+            'İncəsənət və yaradıcılıq': ['audio/az_art1.mp3', 'audio/az_art2.mp3'],
+            'STEAM və innovasiya': ['audio/az_steam1.mp3', 'audio/az_steam2.mp3'],
+            'Eksperiment və tədqiqat': ['audio/az_experiment1.mp3', 'audio/az_experiment2.mp3']
         },
-        'İncəsənət və yaradıcılıq': {
-            'Azərbaycan dili': [
-                'https://example.com/az-art1.mp3',
-                'https://example.com/az-art2.mp3'
-            ],
-            'Русский': [
-                'https://example.com/ru-art1.mp3',
-                'https://example.com/ru-art2.mp3'
-            ],
-            'English': [
-                'https://example.com/en-art1.mp3',
-                'https://example.com/en-art2.mp3'
-            ]
+        'Русский': {
+            'Культурное наследие и путешествия': ['audio/ru_cultural1.mp3', 'audio/ru_cultural2.mp3'],
+            'Искусство и творчество': ['audio/ru_art1.mp3', 'audio/ru_art2.mp3'],
+            'STEAM и инновации': ['audio/ru_steam1.mp3', 'audio/ru_steam2.mp3'],
+            'Эксперименты и исследования': ['audio/ru_experiment1.mp3', 'audio/ru_experiment2.mp3']
         },
-        'STEAM və innovasiya': {
-            'Azərbaycan dili': [
-                'https://example.com/az-steam1.mp3',
-                'https://example.com/az-steam2.mp3'
-            ],
-            'Русский': [
-                'https://example.com/ru-steam1.mp3',
-                'https://example.com/ru-steam2.mp3'
-            ],
-            'English': [
-                'https://example.com/en-steam1.mp3',
-                'https://example.com/en-steam2.mp3'
-            ]
-        },
-        'Eksperiment və tədqiqat': {
-            'Azərbaycan dili': [
-                'https://example.com/az-experiment1.mp3',
-                'https://example.com/az-experiment2.mp3'
-            ],
-            'Русский': [
-                'https://example.com/ru-experiment1.mp3',
-                'https://example.com/ru-experiment2.mp3'
-            ],
-            'English': [
-                'https://example.com/en-experiment1.mp3',
-                'https://example.com/en-experiment2.mp3'
-            ]
+        'English': {
+            'Cultural Heritage and Travel': ['audio/en_cultural1.mp3', 'audio/en_cultural2.mp3'],
+            'Art and Creativity': ['audio/en_art1.mp3', 'audio/en_art2.mp3'],
+            'STEAM and Innovation': ['audio/en_steam1.mp3', 'audio/en_steam2.mp3'],
+            'Experiments and Research': ['audio/en_experiment1.mp3', 'audio/en_experiment2.mp3']
         }
     };
 
-    const selectedAudioFiles = audioFiles[part][selectedLanguage];
-    const audioPlaylist = document.getElementById('audio-playlist');
+    const selectedAudioFiles = audioFiles[selectedLanguage][part];
+    document.getElementById('audio1').src = selectedAudioFiles[0];
+    document.getElementById('audio2').src = selectedAudioFiles[1];
+}
 
-    audioPlaylist.innerHTML = '<h3>Audio Siyahısı</h3>';
-    selectedAudioFiles.forEach((audioSrc, index) => {
-        const audioElement = document.createElement('audio');
-        audioElement.controls = true;
-        audioElement.innerHTML = `<source src="${audioSrc}" type="audio/mpeg"> Brauzeriniz audio elementini dəstəkləmir.`;
-        audioPlaylist.appendChild(audioElement);
-    });
+function navigateToIntroductionPage() {
+    document.getElementById('language-selection-page').classList.add('hidden');
+    document.getElementById('thematic-options-page').classList.add('hidden');
+    document.getElementById('content-page').classList.add('hidden');
+    document.getElementById('introduction-page').classList.remove('hidden');
 }
 
 function uploadFile(event) {
@@ -150,20 +110,13 @@ function uploadFile(event) {
         }).then(response => response.json())
           .then(data => {
               if (data.result === 'success') {
-                  alert('Fayl uğurla yükləndi!');
+                  alert('File uploaded successfully!');
               } else {
-                  alert('Fayl yüklənərkən xəta baş verdi: ' + data.error);
+                  alert('Error uploading file: ' + data.error);
               }
           }).catch(error => {
-              alert('Fayl yüklənərkən xəta baş verdi: ' + error);
+              alert('Error uploading file: ' + error);
           });
     };
     reader.readAsDataURL(fileUpload);
-}
-
-function goToMainPage() {
-    document.getElementById('language-selection-page').classList.add('hidden');
-    document.getElementById('thematic-options-page').classList.add('hidden');
-    document.getElementById('content-page').classList.add('hidden');
-    document.getElementById('introduction-page').classList.remove('hidden');
 }
