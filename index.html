@@ -8,55 +8,65 @@
     <script src="scripts.js" defer></script>
 </head>
 <body>
-    <header>
-        <img src="https://i.ibb.co/7XNQPGC/logo.png" alt="Logo" class="logo">
+    <!-- Logo and Page Title -->
+    <div id="header">
+        <img src="https://ibb.co/7XNQPGC" alt="Logo" id="logo">
         <h1>İxtiraçı paneli</h1>
-    </header>
+    </div>
+
     <!-- Introduction Page -->
     <div id="introduction-page" class="page">
-        <h2>Ölkəni seçin</h2>
+        <h2>Səyahət Seçin</h2>
         <div class="country-option">
-            <img src="https://i.ibb.co/bJ2XSb2/england.png" alt="İngiltərə">
+            <img src="https://ibb.co/bJ2XSb2" alt="İngiltərəyə səyahət">
             <button onclick="navigateToLanguageSelection('İngiltərəyə səyahət')">İngiltərəyə səyahət</button>
         </div>
         <div class="country-option">
-            <img src="https://i.ibb.co/zZq2Nsy/japan.png" alt="Yaponiya">
+            <img src="https://ibb.co/zZq2Nsy" alt="Yaponiyaya səyahət">
             <button onclick="navigateToLanguageSelection('Yaponiyaya səyahət')">Yaponiyaya səyahət</button>
         </div>
         <div class="country-option">
-            <img src="https://i.ibb.co/t4LnNRF/egypt.png" alt="Misir">
+            <img src="https://ibb.co/t4LnNRF" alt="Misirə səyahət">
             <button onclick="navigateToLanguageSelection('Misirə səyahət')">Misirə səyahət</button>
         </div>
         <div class="country-option">
-            <img src="https://i.ibb.co/H2bN039/italy.png" alt="İtaliya">
+            <img src="https://ibb.co/H2bN039" alt="İtaliyaya səyahət">
             <button onclick="navigateToLanguageSelection('İtaliyaya səyahət')">İtaliyaya səyahət</button>
         </div>
     </div>
 
     <!-- Language Selection Page -->
     <div id="language-selection-page" class="page hidden">
-        <h2>Dili seçin</h2>
+        <h2>Seçim Dili</h2>
         <button onclick="selectLanguage('Azərbaycan dili')">Azərbaycan dili</button>
         <button onclick="selectLanguage('Русский')">Русский</button>
         <button onclick="selectLanguage('English')">English</button>
-        <button onclick="goToMainPage()">Ana səhifəyə qayıt</button>
+        <button onclick="navigateToIntroductionPage()" id="back-button">Əsas səhifəyə qayıt</button>
     </div>
 
     <!-- Thematic Options Page -->
     <div id="thematic-options-page" class="page hidden">
         <h2 id="thematic-title">Mövzular</h2>
-        <button id="btn-cultural" onclick="navigateToContent('Mədəni irs və səyahət')"></button>
-        <button id="btn-art" onclick="navigateToContent('İncəsənət və yaradıcılıq')"></button>
-        <button id="btn-steam" onclick="navigateToContent('STEAM və innovasiya')"></button>
-        <button id="btn-experiments" onclick="navigateToContent('Eksperiment və tədqiqat')"></button>
-        <button onclick="goToMainPage()">Ana səhifəyə qayıt</button>
+        <button id="btn-cultural" onclick="navigateToContent('Cultural Heritage and Travel')"></button>
+        <button id="btn-art" onclick="navigateToContent('Art and Creativity')"></button>
+        <button id="btn-steam" onclick="navigateToContent('STEAM and Innovation')"></button>
+        <button id="btn-experiments" onclick="navigateToContent('Experiments and Research')"></button>
+        <button onclick="navigateToIntroductionPage()" id="back-button">Əsas səhifəyə qayıt</button>
     </div>
 
     <!-- Content Page -->
     <div id="content-page" class="page hidden">
         <h2 id="content-title">Məzmun</h2>
         <div id="audio-playlist">
-            <h3>Audio Siyahısı</h3>
+            <h3>Audio Playlist</h3>
+            <audio controls>
+                <source id="audio1" type="audio/mpeg">
+                Brauzeriniz bu elementi dəstəkləmir.
+            </audio>
+            <audio controls>
+                <source id="audio2" type="audio/mpeg">
+                Brauzeriniz bu elementi dəstəkləmir.
+            </audio>
         </div>
         <div id="upload-section">
             <h3>Yükləmə Bölməsi</h3>
@@ -70,7 +80,7 @@
                 <button type="submit">Yüklə</button>
             </form>
         </div>
-        <button onclick="goToMainPage()">Ana səhifəyə qayıt</button>
+        <button onclick="navigateToIntroductionPage()" id="back-button">Əsas səhifəyə qayıt</button>
     </div>
 </body>
 </html>
