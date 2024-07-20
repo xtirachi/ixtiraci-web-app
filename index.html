@@ -1,129 +1,84 @@
 <!DOCTYPE html>
-<html lang="az">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>İxtiraçı Paneli</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://apis.google.com/js/api.js"></script>
-    <script src="script.js" defer></script>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <nav>
-            <ul>
-                <li><a href="#" id="login-btn">Giriş</a></li>
-                <li><a href="#" id="profile-btn" style="display:none;">Profilim</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <!-- Introduction Page -->
-    <section id="intro-page">
-        <h1>İxtiraçı Panelinə xoş gəlmisiniz!</h1>
-        <p>Zəhmət olmasa səyahət etdiyiniz ölkəni seçin.</p>
-        <div class="options">
-            <div class="option" data-destination="england">
-                <img src="https://source.unsplash.com/random/300x200?england" alt="England">
-                <p>İngiltərəyə səyahət</p>
-            </div>
-            <div class="option" data-destination="japan">
-                <img src="https://source.unsplash.com/random/300x200?japan" alt="Japan">
-                <p>Yaponiyaya səyahət</p>
-            </div>
-            <div class="option" data-destination="egypt">
-                <img src="https://source.unsplash.com/random/300x200?egypt" alt="Egypt">
-                <p>Misirə səyahət</p>
-            </div>
-            <div class="option" data-destination="italy">
-                <img src="https://source.unsplash.com/random/300x200?italy" alt="Italy">
-                <p>İtaliyaya səyahət</p>
-            </div>
-        </div>
-        <button id="ixtiracilar-btn">İxtiraçılar</button>
-    </section>
-
-    <!-- Admin Page -->
-    <section id="admin-page" style="display:none;">
-        <h1>Admin Paneli</h1>
-        <div id="uploads">
-            <!-- Placeholder for uploads management -->
-        </div>
-    </section>
-
-    <!-- Language Selection Page -->
-    <section id="language-page" style="display:none;">
-        <h1>Dil Seçimi</h1>
-        <div class="languages">
-            <div class="language" data-language="az">
-                <img src="https://source.unsplash.com/random/100x100?azerbaijan" alt="Azerbaijani Flag">
-                <p>Azərbaycan dili</p>
-            </div>
-            <div class="language" data-language="ru">
-                <img src="https://source.unsplash.com/random/100x100?russia" alt="Russian Flag">
-                <p>Rus dili</p>
-            </div>
-            <div class="language" data-language="en">
-                <img src="https://source.unsplash.com/random/100x100?england" alt="English Flag">
-                <p>İngilis dili</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Category Selection Page -->
-    <section id="category-page" style="display:none;">
-        <h1>Kateqoriya Seçimi</h1>
-        <div class="categories">
-            <div class="category" data-category="heritage">
-                <p>Mədəni irs və səyahət</p>
-            </div>
-            <div class="category" data-category="art">
-                <p>İncəsənət və yaradıcılıq</p>
-            </div>
-            <div class="category" data-category="steam">
-                <p>STEAM və innovasiya</p>
-            </div>
-            <div class="category" data-category="experiment">
-                <p>Eksperiment və tədqiqat</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Upload and Registration Page -->
-    <section id="upload-page" style="display:none;">
-        <h1>Yükləmə və Qeydiyyat</h1>
-        <form id="upload-form">
-            <label for="file-upload">Faylı yüklə:</label>
-            <input type="file" id="file-upload" name="file-upload">
-            <label for="name">Ad:</label>
-            <input type="text" id="name" name="name">
-            <label for="user-id">İstifadəçi ID:</label>
-            <input type="text" id="user-id" name="user-id">
-            <label for="visibility">Faylı görünür et:</label>
-            <input type="checkbox" id="visibility" name="visibility">
-            <button type="submit">Yüklə</button>
-        </form>
-    </section>
-
-    <!-- Profile Page -->
-    <section id="profile-page" style="display:none;">
-        <h1>Profilim</h1>
-        <div id="user-uploads">
-            <!-- Placeholder for user uploads -->
-        </div>
-    </section>
-
-    <!-- Ixtiraçılar Page -->
-    <section id="ixtiracilar-page" style="display:none;">
-        <h1>İxtiraçılar</h1>
-        <div id="public-uploads">
-            <!-- Placeholder for public uploads -->
-        </div>
-        <div id="ranking">
-            <!-- Placeholder for ranking -->
-        </div>
-    </section>
+    <div class="container">
+        <h1>İxtiraçı Paneli</h1>
+        <div class="option" onclick="navigateTo('england')">İngiltərəyə səyahət</div>
+        <div class="option" onclick="navigateTo('japan')">Yaponiyaya səyahət</div>
+        <div class="option" onclick="navigateTo('egypt')">Misirə səyahət</div>
+        <div class="option" onclick="navigateTo('italy')">İtaliyaya səyahət</div>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Selection</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Select Language</h1>
+        <div class="option" onclick="selectLanguage('az')">Azərbaycan dili</div>
+        <div class="option" onclick="selectLanguage('ru')">Rus dili</div>
+        <div class="option" onclick="selectLanguage('en')">İngilis dili</div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thematic Options</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Select Thematic Option</h1>
+        <div class="option" onclick="selectTheme('heritage')">Mədəni irs və səyahət</div>
+        <div class="option" onclick="selectTheme('art')">İncəsənət və yaradıcılıq</div>
+        <div class="option" onclick="selectTheme('steam')">STEAM və innovasiya</div>
+        <div class="option" onclick="selectTheme('experiment')">Eksperiment və tədqiqat</div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Content Page</h1>
+        <div id="audioPlaylist">
+            <!-- Audio files will be dynamically loaded here -->
+        </div>
+        <div id="uploadSection">
+            <h2>Upload Your Work</h2>
+            <form id="uploadForm">
+                <input type="text" id="fullName" placeholder="Full Name" required>
+                <input type="tel" id="phoneNumber" placeholder="Phone Number" required>
+                <input type="file" id="uploadFile" required>
+                <button type="submit">Upload</button>
+            </form>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+
