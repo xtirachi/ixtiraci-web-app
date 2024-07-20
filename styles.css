@@ -88,3 +88,15 @@ form label, form input {
     width: 100%;
     margin-top: 10px;
 }
+
+#video-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.video {
+    width: 80%;
+    max-width: 500px;
+    margin: 10px 0;
+}
