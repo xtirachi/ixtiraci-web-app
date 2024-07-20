@@ -8,15 +8,6 @@ function navigateToLanguageSelection(country) {
     document.getElementById('language-selection-page').classList.remove('hidden');
 }
 
-function promptPassword(country, correctPassword) {
-    const password = prompt("Zəhmət olmasa " + country + " üçün gizli kodu qeyd edin:");
-    if (password === correctPassword) {
-        navigateToLanguageSelection(country);
-    } else {
-        alert("Gizli kodu yanlış qeyd etdiniz. Votsap vasitəsilə bizimlə əlaqə saxlayın!");
-    }
-}
-
 function selectLanguage(language) {
     selectedLanguage = language;
     document.getElementById('language-selection-page').classList.add('hidden');
@@ -91,6 +82,7 @@ function navigateToIntroductionPage() {
     document.getElementById('language-selection-page').classList.add('hidden');
     document.getElementById('thematic-options-page').classList.add('hidden');
     document.getElementById('content-page').classList.add('hidden');
+    document.getElementById('video-page').classList.add('hidden');
     document.getElementById('introduction-page').classList.remove('hidden');
 }
 
@@ -106,20 +98,17 @@ function uploadFile(event) {
         const formData = new FormData();
         formData.append('full-name', fullName);
         formData.append('phone-number', phoneNumber);
-        formData.append('file-upload', e.target.result.split(',')[1]); // base64 encoded content
-        formData.append('country', selectedCountry);
-        formData.append('language', selectedLanguage);
-        formData.append('part', selectedPart);
+        formData.append('file', e.target.result.split(',')[1]); // base64 encoded content
         formData.append('mimeType', fileUpload.type);
         formData.append('fileName', fileUpload.name);
 
-        fetch('https://script.google.com/macros/s/AKfycbzVLxxDa5kfl0RigPY9rGIF96ixXS9qvV1XIzNraOVtq6QxDqVUKRsibQUmiTBziE-pJQ/exec', {
+        fetch('YOUR_GOOGLE_APPS_SCRIPT_DEPLOYMENT_URL', {
             method: 'POST',
             body: formData
         }).then(response => response.json())
           .then(data => {
-              if (data.result === 'success') {
-                  alert('File uploaded successfully!');
+              if (data.url) {
+                  alert('File uploaded successfully! URL: ' + data.url);
               } else {
                   alert('Error uploading file: ' + data.error);
               }
@@ -131,35 +120,19 @@ function uploadFile(event) {
 }
 
 function loadVideos() {
-    const videoContainer = document.getElementById('video-container');
-    const videos = [
-        'video/video1.mp4',
-        'video/video2.mp4',
-        'video/video3.mp4',
-        // Add more video paths as needed
-    ];
-
-    videos.forEach(videoSrc => {
-        const videoElement = document.createElement('video');
-        videoElement.src = videoSrc;
-        videoElement.controls = true;
-        videoElement.classList.add('video');
-        videoContainer.appendChild(videoElement);
-    });
-
-    // Implement infinite scrolling
-    window.addEventListener('scroll', () => {
-        if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-            // Load more videos (this is just an example, you need to implement actual logic to load more videos)
-            videos.forEach(videoSrc => {
+    fetch('https://script.google.com/macros/s/AKfycbxKvrKePj-ZlHxpIS3b8irL2YS_4szF9I-8t0LoaAa2gM71DZdhPNr0rN6kGUqs5DIv0g/exec?listFiles=true')
+        .then(response => response.json())
+        .then(videos => {
+            const videoContainer = document.getElementById('video-container');
+            videoContainer.innerHTML = ''; // Clear existing videos
+            videos.forEach(video => {
                 const videoElement = document.createElement('video');
-                videoElement.src = videoSrc;
+                videoElement.src = video.url;
                 videoElement.controls = true;
                 videoElement.classList.add('video');
                 videoContainer.appendChild(videoElement);
             });
-        }
-    });
+        });
 }
 
 function navigateToVideoPage() {
