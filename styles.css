@@ -1,54 +1,45 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
     background-color: #f0f8ff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
+    text-align: center;
+    padding: 20px;
 }
 
-.page {
-    text-align: center;
+.hidden {
     display: none;
 }
 
-.page.active {
-    display: block;
+.page {
+    margin: 20px auto;
 }
 
-.option {
-    background-color: #4CAF50;
+h1 {
+    color: #ff4500;
+}
+
+button {
+    background-color: #008cba;
     color: white;
-    padding: 15px 20px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 12px;
+}
+
+button:hover {
+    background-color: #005f5f;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form label, form input {
     margin: 10px;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-}
-
-.option:hover {
-    background-color: #45a049;
-}
-
-#uploadSection {
-    margin-top: 20px;
-}
-
-#uploadForm input {
-    display: block;
-    margin: 10px auto;
-}
-
-#uploadForm button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-#uploadForm button:hover {
-    background-color: #45a049;
 }
