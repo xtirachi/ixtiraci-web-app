@@ -9,11 +9,11 @@ function navigateToLanguageSelection(country) {
 }
 
 function promptPassword(country, correctPassword) {
-    const password = prompt("Please enter the password for " + country + ":");
+    const password = prompt("Zəhmət olmasa " + country + "üçün gizli kodu qeyd edin " + ":");
     if (password === correctPassword) {
         navigateToLanguageSelection(country);
     } else {
-        alert("Incorrect password!");
+        alert("Gizli kodu yanlış qeyd etdiniz. Votsap vasitəsilə bizimlə əlaqə saxlayın!");
     }
 }
 
