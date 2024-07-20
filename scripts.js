@@ -51,6 +51,7 @@ function navigateToContent(part) {
     document.getElementById('content-page').classList.remove('hidden');
     document.getElementById('content-title').textContent = part;
 }
+
 function uploadFile(event) {
     event.preventDefault();
 
