@@ -67,6 +67,11 @@ form label, form input {
     margin-top: 20px;
 }
 
+#video-button {
+    background-color: #32cd32;
+    margin-top: 20px;
+}
+
 .country-row {
     display: flex;
     justify-content: space-around;
