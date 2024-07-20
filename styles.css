@@ -5,25 +5,25 @@ body {
     padding: 20px;
 }
 
+.logo {
+    width: 100px;
+    margin: 0 auto;
+    display: block;
+}
+
 header {
-    display: flex;
-    justify-content: center;
     margin-bottom: 20px;
-}
-
-#logo {
-    width: 150px;
-}
-
-.hidden {
-    display: none;
 }
 
 .page {
     margin: 20px auto;
 }
 
-h1 {
+.hidden {
+    display: none;
+}
+
+h1, h2 {
     color: #ff4500;
 }
 
@@ -44,11 +44,8 @@ button:hover {
     background-color: #005f5f;
 }
 
-button img {
-    display: block;
-    margin: 0 auto 10px;
-    width: 50px;
-    height: 50px;
+.country-option {
+    margin: 20px 0;
 }
 
 form {
