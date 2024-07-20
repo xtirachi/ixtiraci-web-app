@@ -71,7 +71,7 @@ function uploadFile(event) {
         formData.append('mimeType', fileUpload.type);
         formData.append('fileName', fileUpload.name);
 
-        fetch('https://script.google.com/macros/s/AKfycbyBNLAd2UG7ek5Wpsh3SWEwIhbPx3s71gnPFfnwQBu0qOqOFYlPR6774iNPJtpABHgLdQ/exec', {
+        fetch('https://script.google.com/macros/s/AKfycbzg_CmTmEEpHM_VH8qA5VDXkqlx2TI6UJhenKCMXql7Otnpfehr78sFEHjcvKc3E-OS5Q/exec', {
             method: 'POST',
             body: formData
         }).then(response => response.json())
