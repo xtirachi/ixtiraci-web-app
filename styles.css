@@ -67,7 +67,7 @@ form label, form input {
     margin-top: 20px;
 }
 
-#video-button {
+#video-button, #videos-button {
     background-color: #32cd32;
     margin-top: 20px;
 }
@@ -85,7 +85,7 @@ form label, form input {
 }
 
 .country-option img {
-    width: 100%;
+    width: 70%;
     height: auto;
 }
 
