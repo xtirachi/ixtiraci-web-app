@@ -102,7 +102,7 @@ function uploadFile(event) {
         formData.append('mimeType', fileUpload.type);
         formData.append('fileName', fileUpload.name);
 
-        fetch('https://script.google.com/macros/s/AKfycbzm2Ykdt2eZPntdQG35yIhslw8Rdgd32-2z87XEJ_8y93Zrb2LEllsVW9KOBM2LxMNPsA/exec', {
+        fetch('https://script.google.com/macros/s/AKfycbwlvEjoyJd7C1oWmaKQPns2NP7oejgXKLbDQHLwRM7IcdcMdhz--QtnkskCptCJ_JHc5w/exec', {
             method: 'POST',
             body: formData
         }).then(response => response.json())
@@ -120,7 +120,7 @@ function uploadFile(event) {
 }
 
 function loadVideos() {
-    fetch('https://script.google.com/macros/s/AKfycbzm2Ykdt2eZPntdQG35yIhslw8Rdgd32-2z87XEJ_8y93Zrb2LEllsVW9KOBM2LxMNPsA/exec?listFiles=true')
+    fetch('https://script.google.com/macros/s/AKfycbwlvEjoyJd7C1oWmaKQPns2NP7oejgXKLbDQHLwRM7IcdcMdhz--QtnkskCptCJ_JHc5w/exec?listFiles=true')
         .then(response => response.json())
         .then(videos => {
             const videoContainer = document.getElementById('video-container');
