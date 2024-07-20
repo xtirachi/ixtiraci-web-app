@@ -1,75 +1,122 @@
-// script.js
-
-// Store selected adventure, language, and part
-let selectedAdventure = '';
+let selectedCountry = '';
 let selectedLanguage = '';
 let selectedPart = '';
 
-// Function to set selected adventure and show sub-options
-function selectAdventure(adventure) {
-  selectedAdventure = adventure;
-  document.getElementById('intro').style.display = 'none';
-  document.getElementById('sub-options').style.display = 'block';
+function navigateToLanguageSelection(country) {
+    selectedCountry = country;
+    document.getElementById('introduction-page').classList.add('hidden');
+    document.getElementById('language-selection-page').classList.remove('hidden');
 }
 
-// Function to set selected language and show category options
 function selectLanguage(language) {
-  selectedLanguage = language;
-  document.getElementById('sub-options').style.display = 'none';
-  document.getElementById('categories').style.display = 'block';
+    selectedLanguage = language;
+    document.getElementById('language-selection-page').classList.add('hidden');
+    document.getElementById('thematic-options-page').classList.remove('hidden');
+    setThematicOptions();
 }
 
-// Function to set selected part and show the upload form
-function selectPart(part) {
-  selectedPart = part;
-  document.getElementById('categories').style.display = 'none';
-  document.getElementById('upload-form').style.display = 'block';
-  document.getElementById('adventure').value = selectedAdventure;
-  document.getElementById('language').value = selectedLanguage;
-  document.getElementById('part').value = selectedPart;
+function setThematicOptions() {
+    const translations = {
+        'Azərbaycan dili': {
+            'Cultural Heritage and Travel': 'Mədəni irs və səyahət',
+            'Art and Creativity': 'İncəsənət və yaradıcılıq',
+            'STEAM and Innovation': 'STEAM və innovasiya',
+            'Experiments and Research': 'Eksperiment və tədqiqat'
+        },
+        'Русский': {
+            'Cultural Heritage and Travel': 'Культурное наследие и путешествия',
+            'Art and Creativity': 'Искусство и творчество',
+            'STEAM and Innovation': 'STEAM и инновации',
+            'Experiments and Research': 'Эксперименты и исследования'
+        },
+        'English': {
+            'Cultural Heritage and Travel': 'Cultural Heritage and Travel',
+            'Art and Creativity': 'Art and Creativity',
+            'STEAM and Innovation': 'STEAM and Innovation',
+            'Experiments and Research': 'Experiments and Research'
+        }
+    };
+
+    const options = translations[selectedLanguage];
+
+    document.getElementById('btn-cultural').textContent = options['Cultural Heritage and Travel'];
+    document.getElementById('btn-art').textContent = options['Art and Creativity'];
+    document.getElementById('btn-steam').textContent = options['STEAM and Innovation'];
+    document.getElementById('btn-experiments').textContent = options['Experiments and Research'];
 }
 
-// Function to show the popup
-function showPopup(message) {
-  document.getElementById('popup-message').innerText = message;
-  document.getElementById('popup').style.display = 'flex';
+function navigateToContent(part) {
+    selectedPart = part;
+    document.getElementById('thematic-options-page').classList.add('hidden');
+    document.getElementById('content-page').classList.remove('hidden');
+    document.getElementById('content-title').textContent = part;
+
+    // Update audio files based on the selected language and part
+    const audioFiles = {
+        'Azərbaycan dili': {
+            'Mədəni irs və səyahət': ['audio/az_cultural1.mp3', 'audio/az_cultural2.mp3'],
+            'İncəsənət və yaradıcılıq': ['audio/az_art1.mp3', 'audio/az_art2.mp3'],
+            'STEAM və innovasiya': ['audio/az_steam1.mp3', 'audio/az_steam2.mp3'],
+            'Eksperiment və tədqiqat': ['audio/az_experiment1.mp3', 'audio/az_experiment2.mp3']
+        },
+        'Русский': {
+            'Культурное наследие и путешествия': ['audio/ru_cultural1.mp3', 'audio/ru_cultural2.mp3'],
+            'Искусство и творчество': ['audio/ru_art1.mp3', 'audio/ru_art2.mp3'],
+            'STEAM и инновации': ['audio/ru_steam1.mp3', 'audio/ru_steam2.mp3'],
+            'Эксперименты и исследования': ['audio/ru_experiment1.mp3', 'audio/ru_experiment2.mp3']
+        },
+        'English': {
+            'Cultural Heritage and Travel': ['audio/en_cultural1.mp3', 'audio/en_cultural2.mp3'],
+            'Art and Creativity': ['audio/en_art1.mp3', 'audio/en_art2.mp3'],
+            'STEAM and Innovation': ['audio/en_steam1.mp3', 'audio/en_steam2.mp3'],
+            'Experiments and Research': ['audio/en_experiment1.mp3', 'audio/en_experiment2.mp3']
+        }
+    };
+
+    const selectedAudioFiles = audioFiles[selectedLanguage][part];
+    document.getElementById('audio1').src = selectedAudioFiles[0];
+    document.getElementById('audio2').src = selectedAudioFiles[1];
 }
 
-// Function to close the popup
-function closePopup() {
-  document.getElementById('popup').style.display = 'none';
+function navigateToIntroductionPage() {
+    document.getElementById('language-selection-page').classList.add('hidden');
+    document.getElementById('thematic-options-page').classList.add('hidden');
+    document.getElementById('content-page').classList.add('hidden');
+    document.getElementById('introduction-page').classList.remove('hidden');
 }
 
-// Add event listener to the file upload form to handle form submission
-document.addEventListener('DOMContentLoaded', function() {
-  document.getElementById('file-upload-form').addEventListener('submit', function(event) {
+function uploadFile(event) {
     event.preventDefault();
 
-    showPopup('Yüklənir...');
+    const fullName = document.getElementById('full-name').value;
+    const phoneNumber = document.getElementById('phone-number').value;
+    const fileUpload = document.getElementById('file-upload').files[0];
 
-    // Get the form element and create FormData object
-    var form = document.getElementById('file-upload-form');
-    var formData = new FormData(form);
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        const formData = new FormData();
+        formData.append('full-name', fullName);
+        formData.append('phone-number', phoneNumber);
+        formData.append('file-upload', e.target.result.split(',')[1]); // base64 encoded content
+        formData.append('country', selectedCountry);
+        formData.append('language', selectedLanguage);
+        formData.append('part', selectedPart);
+        formData.append('mimeType', fileUpload.type);
+        formData.append('fileName', fileUpload.name);
 
-    // Add the adventure, language, and part to the FormData object
-    formData.append('adventure', selectedAdventure);
-    formData.append('language', selectedLanguage);
-    formData.append('part', selectedPart);
-
-    // Perform the AJAX request to submit the form data
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'https://script.google.com/macros/s/AKfycbzVLxxDa5kfl0RigPY9rGIF96ixXS9qvV1XIzNraOVtq6QxDqVUKRsibQUmiTBziE-pJQ/exec', true);
-    
-    // Handle the response from the server
-    xhr.onload = function() {
-      if (xhr.status === 200) {
-        showPopup('Fayl uğurla yükləndi');
-      } else {
-        showPopup('Fayl yüklənmədi: ' + xhr.statusText);
-      }
+        fetch('YOUR_GOOGLE_APPS_SCRIPT_URL', {
+            method: 'POST',
+            body: formData
+        }).then(response => response.json())
+          .then(data => {
+              if (data.result === 'success') {
+                  alert('File uploaded successfully!');
+              } else {
+                  alert('Error uploading file: ' + data.error);
+              }
+          }).catch(error => {
+              alert('Error uploading file: ' + error);
+          });
     };
-    
-    // Send the form data
-    xhr.send(formData);
-  });
-});
+    reader.readAsDataURL(fileUpload);
+}
