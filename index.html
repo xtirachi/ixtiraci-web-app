@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="az">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,12 +8,25 @@
     <script src="scripts.js" defer></script>
 </head>
 <body>
+    <header>
+        <img src="https://i.ibb.co/J7nn71g/logo.png" alt="Logo" id="logo">
+    </header>
+    
     <!-- Introduction Page -->
     <div id="introduction-page" class="page">
         <h1>İxtiraçı paneli</h1>
-        <button onclick="navigateToLanguageSelection('İngiltərəyə səyahət')">İngiltərəyə səyahət</button>
-        <button onclick="navigateToLanguageSelection('Yaponiyaya səyahət')">Yaponiyaya səyahət</button>
-        <button onclick="navigateToLanguageSelection('Misirə səyahət')">Misirə səyahət</button>
+        <button onclick="navigateToLanguageSelection('İngiltərəyə səyahət')">
+            <img src="https://i.ibb.co/zxW931b/england.png" alt="England">
+            İngiltərəyə səyahət
+        </button>
+        <button onclick="navigateToLanguageSelection('Yaponiyaya səyahət')">
+            <img src="https://i.ibb.co/h1BFQHz/japan.png" alt="Japan">
+            Yaponiyaya səyahət
+        </button>
+        <button onclick="navigateToLanguageSelection('Misirə səyahət')">
+            <img src="https://i.ibb.co/7R52j35/egypt.png" alt="Egypt">
+            Misirə səyahət
+        </button>
         <button onclick="navigateToLanguageSelection('İtaliyaya səyahət')">İtaliyaya səyahət</button>
     </div>
 
@@ -23,6 +36,7 @@
         <button onclick="selectLanguage('Azərbaycan dili')">Azərbaycan dili</button>
         <button onclick="selectLanguage('Русский')">Русский</button>
         <button onclick="selectLanguage('English')">English</button>
+        <button onclick="backToMainPage()">Ana Səhifəyə Qayıt</button>
     </div>
 
     <!-- Thematic Options Page -->
@@ -32,6 +46,7 @@
         <button id="btn-art" onclick="navigateToContent('Art and Creativity')"></button>
         <button id="btn-steam" onclick="navigateToContent('STEAM and Innovation')"></button>
         <button id="btn-experiments" onclick="navigateToContent('Experiments and Research')"></button>
+        <button onclick="backToMainPage()">Ana Səhifəyə Qayıt</button>
     </div>
 
     <!-- Content Page -->
@@ -39,12 +54,12 @@
         <h1 id="content-title">Məzmun</h1>
         <div id="audio-playlist">
             <h2>Audio Playlist</h2>
-            <audio controls>
-                <source src="https://example.com/sample1.mp3" type="audio/mpeg">
+            <audio controls id="audio1">
+                <source id="audio1-src" src="" type="audio/mpeg">
                 Your browser does not support the audio element.
             </audio>
-            <audio controls>
-                <source src="https://example.com/sample2.mp3" type="audio/mpeg">
+            <audio controls id="audio2">
+                <source id="audio2-src" src="" type="audio/mpeg">
                 Your browser does not support the audio element.
             </audio>
         </div>
@@ -60,6 +75,7 @@
                 <button type="submit">Yüklə</button>
             </form>
         </div>
+        <button onclick="backToMainPage()">Ana Səhifəyə Qayıt</button>
     </div>
 </body>
 </html>
