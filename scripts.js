@@ -113,7 +113,7 @@ function uploadFile(event) {
         formData.append('mimeType', fileUpload.type);
         formData.append('fileName', fileUpload.name);
 
-        fetch('YOUR_GOOGLE_APPS_SCRIPT_URL', {
+        fetch('https://script.google.com/macros/s/AKfycbzVLxxDa5kfl0RigPY9rGIF96ixXS9qvV1XIzNraOVtq6QxDqVUKRsibQUmiTBziE-pJQ/exec', {
             method: 'POST',
             body: formData
         }).then(response => response.json())
@@ -128,4 +128,42 @@ function uploadFile(event) {
           });
     };
     reader.readAsDataURL(fileUpload);
+}
+
+function loadVideos() {
+    const videoContainer = document.getElementById('video-container');
+    const videos = [
+        'video/video1.mp4',
+        'video/video2.mp4',
+        'video/video3.mp4',
+        // Add more video paths as needed
+    ];
+
+    videos.forEach(videoSrc => {
+        const videoElement = document.createElement('video');
+        videoElement.src = videoSrc;
+        videoElement.controls = true;
+        videoElement.classList.add('video');
+        videoContainer.appendChild(videoElement);
+    });
+
+    // Implement infinite scrolling
+    window.addEventListener('scroll', () => {
+        if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+            // Load more videos (this is just an example, you need to implement actual logic to load more videos)
+            videos.forEach(videoSrc => {
+                const videoElement = document.createElement('video');
+                videoElement.src = videoSrc;
+                videoElement.controls = true;
+                videoElement.classList.add('video');
+                videoContainer.appendChild(videoElement);
+            });
+        }
+    });
+}
+
+function navigateToVideoPage() {
+    document.getElementById('content-page').classList.add('hidden');
+    document.getElementById('video-page').classList.remove('hidden');
+    loadVideos();
 }
