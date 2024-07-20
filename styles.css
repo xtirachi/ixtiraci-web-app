@@ -5,6 +5,16 @@ body {
     padding: 20px;
 }
 
+header {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+#logo {
+    width: 150px;
+}
+
 .hidden {
     display: none;
 }
@@ -32,6 +42,13 @@ button {
 
 button:hover {
     background-color: #005f5f;
+}
+
+button img {
+    display: block;
+    margin: 0 auto 10px;
+    width: 50px;
+    height: 50px;
 }
 
 form {
