@@ -2,6 +2,27 @@ let selectedCountry = '';
 let selectedLanguage = '';
 let selectedPart = '';
 
+const audioFiles = {
+    'Azərbaycan dili': {
+        'Cultural Heritage and Travel': ['audio_az_cultural1.mp3', 'audio_az_cultural2.mp3'],
+        'Art and Creativity': ['audio_az_art1.mp3', 'audio_az_art2.mp3'],
+        'STEAM and Innovation': ['audio_az_steam1.mp3', 'audio_az_steam2.mp3'],
+        'Experiments and Research': ['audio_az_experiments1.mp3', 'audio_az_experiments2.mp3']
+    },
+    'Русский': {
+        'Cultural Heritage and Travel': ['audio_ru_cultural1.mp3', 'audio_ru_cultural2.mp3'],
+        'Art and Creativity': ['audio_ru_art1.mp3', 'audio_ru_art2.mp3'],
+        'STEAM and Innovation': ['audio_ru_steam1.mp3', 'audio_ru_steam2.mp3'],
+        'Experiments and Research': ['audio_ru_experiments1.mp3', 'audio_ru_experiments2.mp3']
+    },
+    'English': {
+        'Cultural Heritage and Travel': ['audio_en_cultural1.mp3', 'audio_en_cultural2.mp3'],
+        'Art and Creativity': ['audio_en_art1.mp3', 'audio_en_art2.mp3'],
+        'STEAM and Innovation': ['audio_en_steam1.mp3', 'audio_en_steam2.mp3'],
+        'Experiments and Research': ['audio_en_experiments1.mp3', 'audio_en_experiments2.mp3']
+    }
+};
+
 function navigateToLanguageSelection(country) {
     selectedCountry = country;
     document.getElementById('introduction-page').classList.add('hidden');
@@ -50,6 +71,28 @@ function navigateToContent(part) {
     document.getElementById('thematic-options-page').classList.add('hidden');
     document.getElementById('content-page').classList.remove('hidden');
     document.getElementById('content-title').textContent = part;
+    setAudioFiles();
+}
+
+function setAudioFiles() {
+    const audioSrc1 = document.getElementById('audio1-src');
+    const audioSrc2 = document.getElementById('audio2-src');
+    const audio1 = document.getElementById('audio1');
+    const audio2 = document.getElementById('audio2');
+
+    const selectedAudioFiles = audioFiles[selectedLanguage][selectedPart];
+    audioSrc1.src = `https://example.com/${selectedAudioFiles[0]}`;
+    audioSrc2.src = `https://example.com/${selectedAudioFiles[1]}`;
+
+    audio1.load();
+    audio2.load();
+}
+
+function backToMainPage() {
+    document.getElementById('language-selection-page').classList.add('hidden');
+    document.getElementById('thematic-options-page').classList.add('hidden');
+    document.getElementById('content-page').classList.add('hidden');
+    document.getElementById('introduction-page').classList.remove('hidden');
 }
 
 function uploadFile(event) {
