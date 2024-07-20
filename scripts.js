@@ -8,6 +8,15 @@ function navigateToLanguageSelection(country) {
     document.getElementById('language-selection-page').classList.remove('hidden');
 }
 
+function promptPassword(country, correctPassword) {
+    const password = prompt("Please enter the password for " + country + ":");
+    if (password === correctPassword) {
+        navigateToLanguageSelection(country);
+    } else {
+        alert("Incorrect password!");
+    }
+}
+
 function selectLanguage(language) {
     selectedLanguage = language;
     document.getElementById('language-selection-page').classList.add('hidden');
