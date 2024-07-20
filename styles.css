@@ -3,8 +3,6 @@ body {
     background-color: #f0f8ff;
     text-align: center;
     padding: 20px;
-    margin: 0;
-    overflow-x: hidden;
 }
 
 .hidden {
@@ -69,11 +67,6 @@ form label, form input {
     margin-top: 20px;
 }
 
-#videos-button {
-    background-color: #32cd32;
-    margin-top: 20px;
-}
-
 .country-row {
     display: flex;
     justify-content: space-around;
@@ -87,7 +80,7 @@ form label, form input {
 }
 
 .country-option img {
-    width: 70%;
+    width: 100%;
     height: auto;
 }
 
