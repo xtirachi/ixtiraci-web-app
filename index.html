@@ -7,63 +7,34 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
+    <!-- Introduction Page -->
+    <div id="introduction-page" class="page">
         <h1>İxtiraçı Paneli</h1>
-        <div class="option" onclick="navigateTo('england')">İngiltərəyə səyahət</div>
-        <div class="option" onclick="navigateTo('japan')">Yaponiyaya səyahət</div>
-        <div class="option" onclick="navigateTo('egypt')">Misirə səyahət</div>
-        <div class="option" onclick="navigateTo('italy')">İtaliyaya səyahət</div>
+        <div class="option" onclick="navigateToLanguage('england')">İngiltərəyə səyahət</div>
+        <div class="option" onclick="navigateToLanguage('japan')">Yaponiyaya səyahət</div>
+        <div class="option" onclick="navigateToLanguage('egypt')">Misirə səyahət</div>
+        <div class="option" onclick="navigateToLanguage('italy')">İtaliyaya səyahət</div>
     </div>
-    <script src="script.js"></script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Language Selection</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div class="container">
+
+    <!-- Language Selection Page -->
+    <div id="language-page" class="page" style="display:none;">
         <h1>Select Language</h1>
         <div class="option" onclick="selectLanguage('az')">Azərbaycan dili</div>
         <div class="option" onclick="selectLanguage('ru')">Rus dili</div>
         <div class="option" onclick="selectLanguage('en')">İngilis dili</div>
     </div>
-    <script src="script.js"></script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thematic Options</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div class="container">
+
+    <!-- Thematic Options Page -->
+    <div id="thematic-page" class="page" style="display:none;">
         <h1>Select Thematic Option</h1>
         <div class="option" onclick="selectTheme('heritage')">Mədəni irs və səyahət</div>
         <div class="option" onclick="selectTheme('art')">İncəsənət və yaradıcılıq</div>
         <div class="option" onclick="selectTheme('steam')">STEAM və innovasiya</div>
         <div class="option" onclick="selectTheme('experiment')">Eksperiment və tədqiqat</div>
     </div>
-    <script src="script.js"></script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Content</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div class="container">
+
+    <!-- Content Page -->
+    <div id="content-page" class="page" style="display:none;">
         <h1>Content Page</h1>
         <div id="audioPlaylist">
             <!-- Audio files will be dynamically loaded here -->
@@ -81,4 +52,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-
