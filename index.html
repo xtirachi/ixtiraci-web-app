@@ -3,52 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>İxtiraçı Paneli</title>
+    <title>İxtiraçı paneli</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="scripts.js" defer></script>
 </head>
 <body>
     <!-- Introduction Page -->
     <div id="introduction-page" class="page">
-        <h1>İxtiraçı Paneli</h1>
-        <div class="option" onclick="navigateToLanguage('england')">İngiltərəyə səyahət</div>
-        <div class="option" onclick="navigateToLanguage('japan')">Yaponiyaya səyahət</div>
-        <div class="option" onclick="navigateToLanguage('egypt')">Misirə səyahət</div>
-        <div class="option" onclick="navigateToLanguage('italy')">İtaliyaya səyahət</div>
+        <h1>İxtiraçı paneli</h1>
+        <button onclick="navigateToLanguageSelection('İngiltərəyə səyahət')">İngiltərəyə səyahət</button>
+        <button onclick="navigateToLanguageSelection('Yaponiyaya səyahət')">Yaponiyaya səyahət</button>
+        <button onclick="navigateToLanguageSelection('Misirə səyahət')">Misirə səyahət</button>
+        <button onclick="navigateToLanguageSelection('İtaliyaya səyahət')">İtaliyaya səyahət</button>
     </div>
 
     <!-- Language Selection Page -->
-    <div id="language-page" class="page" style="display:none;">
-        <h1>Select Language</h1>
-        <div class="option" onclick="selectLanguage('az')">Azərbaycan dili</div>
-        <div class="option" onclick="selectLanguage('ru')">Rus dili</div>
-        <div class="option" onclick="selectLanguage('en')">İngilis dili</div>
+    <div id="language-selection-page" class="page hidden">
+        <h1>Seçim Dili</h1>
+        <button onclick="selectLanguage('Azərbaycan dili')">Azərbaycan dili</button>
+        <button onclick="selectLanguage('Русский')">Русский</button>
+        <button onclick="selectLanguage('English')">English</button>
     </div>
 
     <!-- Thematic Options Page -->
-    <div id="thematic-page" class="page" style="display:none;">
-        <h1>Select Thematic Option</h1>
-        <div class="option" onclick="selectTheme('heritage')">Mədəni irs və səyahət</div>
-        <div class="option" onclick="selectTheme('art')">İncəsənət və yaradıcılıq</div>
-        <div class="option" onclick="selectTheme('steam')">STEAM və innovasiya</div>
-        <div class="option" onclick="selectTheme('experiment')">Eksperiment və tədqiqat</div>
+    <div id="thematic-options-page" class="page hidden">
+        <h1 id="thematic-title">Mövzular</h1>
+        <button id="btn-cultural" onclick="navigateToContent('Cultural Heritage and Travel')"></button>
+        <button id="btn-art" onclick="navigateToContent('Art and Creativity')"></button>
+        <button id="btn-steam" onclick="navigateToContent('STEAM and Innovation')"></button>
+        <button id="btn-experiments" onclick="navigateToContent('Experiments and Research')"></button>
     </div>
 
     <!-- Content Page -->
-    <div id="content-page" class="page" style="display:none;">
-        <h1>Content Page</h1>
-        <div id="audioPlaylist">
-            <!-- Audio files will be dynamically loaded here -->
+    <div id="content-page" class="page hidden">
+        <h1 id="content-title">Məzmun</h1>
+        <div id="audio-playlist">
+            <h2>Audio Playlist</h2>
+            <audio controls>
+                <source src="https://example.com/sample1.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+            <audio controls>
+                <source src="https://example.com/sample2.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
         </div>
-        <div id="uploadSection">
-            <h2>Upload Your Work</h2>
-            <form id="uploadForm">
-                <input type="text" id="fullName" placeholder="Full Name" required>
-                <input type="tel" id="phoneNumber" placeholder="Phone Number" required>
-                <input type="file" id="uploadFile" required>
-                <button type="submit">Upload</button>
+        <div id="upload-section">
+            <h2>Yükləmə Bölməsi</h2>
+            <form id="upload-form" onsubmit="uploadFile(event)">
+                <label for="full-name">Tam Ad:</label>
+                <input type="text" id="full-name" name="full-name" required>
+                <label for="phone-number">Telefon Nömrəsi:</label>
+                <input type="text" id="phone-number" name="phone-number" required>
+                <label for="file-upload">Fayl Yüklə:</label>
+                <input type="file" id="file-upload" name="file-upload" required>
+                <button type="submit">Yüklə</button>
             </form>
         </div>
     </div>
-    <script src="script.js"></script>
 </body>
 </html>
