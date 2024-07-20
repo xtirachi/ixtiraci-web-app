@@ -68,7 +68,7 @@ function uploadFile(event) {
     formData.append('part', selectedPart);
 
     // Example endpoint for handling file upload
-    fetch('https://script.google.com/macros/s/AKfycbzRXEEukOZ8nt_8SlYpxgWu1CX__WxZHhwbk5uYGmZvy-GV8sTBUIS_f1Z-YNe7RnrXEg/exec', {
+    fetch('https://script.google.com/macros/s/AKfycbzsESAEUQXLiSCod7lMikf5T0257tHV4EupzspsQBzVF-1_2NRvTNSwZDnIbmq6pQ68pg/exec', {
         method: 'POST',
         body: formData
     }).then(response => response.json())
