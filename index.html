@@ -20,21 +20,21 @@
         <div class="country-row">
             <div class="country-option">
                 <img src="https://i.ibb.co/bJ2XSb2/england.png" alt="İngiltərəyə səyahət">
-                <button onclick="promptPassword('İngiltərəyə səyahət', 'xtirachieng')">İngiltərəyə səyahət</button>
+                <button onclick="navigateToLanguageSelection('İngiltərəyə səyahət')">İngiltərəyə səyahət</button>
             </div>
             <div class="country-option">
                 <img src="https://i.ibb.co/zZq2Nsy/japan.png" alt="Yaponiyaya səyahət">
-                <button onclick="promptPassword('Yaponiyaya səyahət', 'xtirachijap')">Yaponiyaya səyahət</button>
+                <button onclick="navigateToLanguageSelection('Yaponiyaya səyahət')">Yaponiyaya səyahət</button>
             </div>
         </div>
         <div class="country-row">
             <div class="country-option">
                 <img src="https://i.ibb.co/t4LnNRF/egypt.png" alt="Misirə səyahət">
-                <button onclick="promptPassword('Misirə səyahət', 'xtirachiegy')">Misirə səyahət</button>
+                <button onclick="navigateToLanguageSelection('Misirə səyahət')">Misirə səyahət</button>
             </div>
             <div class="country-option">
                 <img src="https://i.ibb.co/H2bN039/italy.png" alt="İtaliyaya səyahət">
-                <button onclick="promptPassword('İtaliyaya səyahət', 'xtirachiita')">İtaliyaya səyahət</button>
+                <button onclick="navigateToLanguageSelection('İtaliyaya səyahət')">İtaliyaya səyahət</button>
             </div>
         </div>
     </div>
@@ -75,8 +75,6 @@
         <div id="upload-section">
             <h3>Yükləmə Bölməsi</h3>
             <form id="upload-form" onsubmit="uploadFile(event)">
-                  <button onclick="navigateToVideopage()" id="back-button">Video</button>
-    </div>
                 <label for="full-name">Tam Ad:</label>
                 <input type="text" id="full-name" name="full-name" required>
                 <label for="phone-number">Telefon Nömrəsi:</label>
@@ -86,6 +84,7 @@
                 <button type="submit">Yüklə</button>
             </form>
         </div>
+        <button onclick="navigateToVideoPage()" id="video-button">Videolara Bax</button>
         <button onclick="navigateToIntroductionPage()" id="back-button">Əsas səhifəyə qayıt</button>
     </div>
 
