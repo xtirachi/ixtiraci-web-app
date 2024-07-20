@@ -1,135 +1,27 @@
-/* General styles */
 body {
-    font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+    font-family: Arial, sans-serif;
     background-color: #f0f8ff;
-    color: #333;
-    margin: 0;
-    padding: 0;
-}
-
-header {
-    background-color: #ffa07a;
-    padding: 10px;
-}
-
-nav ul {
-    list-style: none;
-    padding: 0;
-}
-
-nav ul li {
-    display: inline;
-    margin-right: 10px;
-}
-
-nav ul li a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-h1 {
-    text-align: center;
-    color: #ff4500;
-    margin-top: 20px;
-}
-
-p {
-    text-align: center;
-    font-size: 1.2em;
-}
-
-.options, .languages, .categories {
     display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    margin: 20px;
-}
-
-.option, .language, .category {
-    flex: 1 1 200px;
-    margin: 10px;
-    padding: 10px;
-    border: 2px solid #ff4500;
-    border-radius: 10px;
-    text-align: center;
-    cursor: pointer;
-    background-color: #ffe4b5;
-}
-
-.option img, .language img {
-    max-width: 100%;
-    border-radius: 10px;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    margin: 20px;
+    height: 100vh;
+    margin: 0;
 }
 
-form label, form input, form button {
+.container {
+    text-align: center;
+}
+
+.option {
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px 20px;
     margin: 10px;
-    font-size: 1em;
-}
-
-form input[type="text"], form input[type="file"] {
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-form button {
-    background-color: #ffa07a;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
     cursor: pointer;
-    font-size: 1em;
-}
-
-form button:hover {
-    background-color: #ff4500;
-}
-
-#ixtiracilar-btn {
-    display: block;
-    margin: 20px auto;
-    padding: 10px 20px;
-    background-color: #ffa07a;
-    color: #fff;
-    border: none;
     border-radius: 5px;
-    cursor: pointer;
-    font-size: 1.2em;
+    transition: background-color 0.3s;
 }
 
-#ixtiracilar-btn:hover {
-    background-color: #ff4500;
-}
-
-#uploads, #user-uploads, #public-uploads, #ranking {
-    margin: 20px;
-}
-
-#uploads div, #user-uploads div, #public-uploads div, #ranking div {
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin: 10px 0;
-    background-color: #fff;
-    border-radius: 5px;
-}
-
-/* Responsive styles */
-@media (max-width: 768px) {
-    .options, .languages, .categories {
-        flex-direction: column;
-    }
-
-    .option, .language, .category {
-        flex: 1 1 auto;
-        margin: 10px 0;
-    }
+.option:hover {
+    background-color: #45a049;
 }
