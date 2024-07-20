@@ -9,7 +9,7 @@ function navigateToLanguageSelection(country) {
 }
 
 function promptPassword(country, correctPassword) {
-    const password = prompt("Zəhmət olmasa " + country + "üçün gizli kodu qeyd edin " + ":");
+    const password = prompt("Zəhmət olmasa " + country + " üçün gizli kodu qeyd edin:");
     if (password === correctPassword) {
         navigateToLanguageSelection(country);
     } else {
@@ -113,7 +113,7 @@ function uploadFile(event) {
         formData.append('mimeType', fileUpload.type);
         formData.append('fileName', fileUpload.name);
 
-        fetch('https://script.google.com/macros/s/AKfycbzVLxxDa5kfl0RigPY9rGIF96ixXS9qvV1XIzNraOVtq6QxDqVUKRsibQUmiTBziE-pJQ/exec', {
+        fetch('YOUR_GOOGLE_APPS_SCRIPT_URL', {
             method: 'POST',
             body: formData
         }).then(response => response.json())
