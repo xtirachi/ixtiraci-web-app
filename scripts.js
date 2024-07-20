@@ -102,7 +102,7 @@ function uploadFile(event) {
         formData.append('mimeType', fileUpload.type);
         formData.append('fileName', fileUpload.name);
 
-        fetch('YOUR_GOOGLE_APPS_SCRIPT_DEPLOYMENT_URL', {
+        fetch('https://script.google.com/macros/s/AKfycbxKvrKePj-ZlHxpIS3b8irL2YS_4szF9I-8t0LoaAa2gM71DZdhPNr0rN6kGUqs5DIv0g/exec', {
             method: 'POST',
             body: formData
         }).then(response => response.json())
