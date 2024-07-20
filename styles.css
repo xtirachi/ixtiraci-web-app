@@ -5,26 +5,33 @@ body {
     padding: 20px;
 }
 
-.logo {
-    width: 100px;
-    margin: 0 auto;
-    display: block;
-}
-
-header {
-    margin-bottom: 20px;
+.hidden {
+    display: none;
 }
 
 .page {
     margin: 20px auto;
 }
 
-.hidden {
-    display: none;
+#header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
 }
 
-h1, h2 {
+#logo {
+    width: 100px;
+    height: 100px;
+    margin-right: 20px;
+}
+
+h1 {
     color: #ff4500;
+}
+
+h2 {
+    color: #008cba;
 }
 
 button {
@@ -44,10 +51,6 @@ button:hover {
     background-color: #005f5f;
 }
 
-.country-option {
-    margin: 20px 0;
-}
-
 form {
     display: flex;
     flex-direction: column;
@@ -56,4 +59,24 @@ form {
 
 form label, form input {
     margin: 10px;
+}
+
+#back-button {
+    background-color: #ff4500;
+    margin-top: 20px;
+}
+
+.country-option {
+    display: inline-block;
+    width: 45%;
+    margin: 2.5%;
+}
+
+.country-option img {
+    width: 100%;
+    height: auto;
+}
+
+.country-option button {
+    width: 100%;
 }
