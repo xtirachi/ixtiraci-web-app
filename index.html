@@ -62,17 +62,6 @@
     <!-- Content Page -->
     <div id="content-page" class="page hidden">
         <h2 id="content-title">Məzmun</h2>
-        <div id="audio-playlist">
-            <h3>Audio Playlist</h3>
-            <audio controls>
-                <source id="audio1" type="audio/mpeg">
-                Brauzeriniz bu elementi dəstəkləmir.
-            </audio>
-            <audio controls>
-                <source id="audio2" type="audio/mpeg">
-                Brauzeriniz bu elementi dəstəkləmir.
-            </audio>
-        </div>
         <div id="upload-section">
             <h3>Yükləmə Bölməsi</h3>
             <form id="upload-form" onsubmit="uploadFile(event)">
@@ -85,13 +74,6 @@
                 <button type="submit">Yüklə</button>
             </form>
         </div>
-        <button onclick="navigateToVideoPage()" id="video-button">Videolara Bax</button>
-        <button onclick="navigateToIntroductionPage()" id="back-button">Əsas səhifəyə qayıt</button>
-    </div>
-
-    <!-- Video Page -->
-    <div id="video-page" class="page hidden">
-        <div id="video-container"></div>
         <button onclick="navigateToIntroductionPage()" id="back-button">Əsas səhifəyə qayıt</button>
     </div>
 </body>
