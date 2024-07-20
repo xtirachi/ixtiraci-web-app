@@ -8,6 +8,15 @@ function navigateToLanguageSelection(country) {
     document.getElementById('language-selection-page').classList.remove('hidden');
 }
 
+function promptPassword(country, correctPassword) {
+    const password = prompt("Zəhmət olmasa " + country + " üçün gizli kodu qeyd edin:");
+    if (password === correctPassword) {
+        navigateToLanguageSelection(country);
+    } else {
+        alert("Gizli kodu yanlış qeyd etdiniz. Votsap vasitəsilə bizimlə əlaqə saxlayın!");
+    }
+}
+
 function selectLanguage(language) {
     selectedLanguage = language;
     document.getElementById('language-selection-page').classList.add('hidden');
@@ -50,6 +59,32 @@ function navigateToContent(part) {
     document.getElementById('thematic-options-page').classList.add('hidden');
     document.getElementById('content-page').classList.remove('hidden');
     document.getElementById('content-title').textContent = part;
+
+    // Update audio files based on the selected language and part
+    const audioFiles = {
+        'Azərbaycan dili': {
+            'Mədəni irs və səyahət': ['audio/az_cultural1.mp3', 'audio/az_cultural2.mp3'],
+            'İncəsənət və yaradıcılıq': ['audio/az_art1.mp3', 'audio/az_art2.mp3'],
+            'STEAM və innovasiya': ['audio/az_steam1.mp3', 'audio/az_steam2.mp3'],
+            'Eksperiment və tədqiqat': ['audio/az_experiment1.mp3', 'audio/az_experiment2.mp3']
+        },
+        'Русский': {
+            'Культурное наследие и путешествия': ['audio/ru_cultural1.mp3', 'audio/ru_cultural2.mp3'],
+            'Искусство и творчество': ['audio/ru_art1.mp3', 'audio/ru_art2.mp3'],
+            'STEAM и инновации': ['audio/ru_steam1.mp3', 'audio/ru_steam2.mp3'],
+            'Эксперименты и исследования': ['audio/ru_experiment1.mp3', 'audio/ru_experiment2.mp3']
+        },
+        'English': {
+            'Cultural Heritage and Travel': ['audio/en_cultural1.mp3', 'audio/en_cultural2.mp3'],
+            'Art and Creativity': ['audio/en_art1.mp3', 'audio/en_art2.mp3'],
+            'STEAM and Innovation': ['audio/en_steam1.mp3', 'audio/en_steam2.mp3'],
+            'Experiments and Research': ['audio/en_experiment1.mp3', 'audio/en_experiment2.mp3']
+        }
+    };
+
+    const selectedAudioFiles = audioFiles[selectedLanguage][part];
+    document.getElementById('audio1').src = selectedAudioFiles[0];
+    document.getElementById('audio2').src = selectedAudioFiles[1];
 }
 
 function navigateToIntroductionPage() {
@@ -71,7 +106,10 @@ function uploadFile(event) {
         const formData = new FormData();
         formData.append('full-name', fullName);
         formData.append('phone-number', phoneNumber);
-        formData.append('file', e.target.result.split(',')[1]); // base64 encoded content
+        formData.append('file-upload', e.target.result.split(',')[1]); // base64 encoded content
+        formData.append('country', selectedCountry);
+        formData.append('language', selectedLanguage);
+        formData.append('part', selectedPart);
         formData.append('mimeType', fileUpload.type);
         formData.append('fileName', fileUpload.name);
 
@@ -80,8 +118,8 @@ function uploadFile(event) {
             body: formData
         }).then(response => response.json())
           .then(data => {
-              if (data.url) {
-                  alert('File uploaded successfully! URL: ' + data.url);
+              if (data.result === 'success') {
+                  alert('File uploaded successfully!');
               } else {
                   alert('Error uploading file: ' + data.error);
               }
