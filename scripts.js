@@ -50,39 +50,12 @@ function navigateToContent(part) {
     document.getElementById('thematic-options-page').classList.add('hidden');
     document.getElementById('content-page').classList.remove('hidden');
     document.getElementById('content-title').textContent = part;
-
-    // Update audio files based on the selected language and part
-    const audioFiles = {
-        'Azərbaycan dili': {
-            'Mədəni irs və səyahət': ['audio/az_cultural1.mp3', 'audio/az_cultural2.mp3'],
-            'İncəsənət və yaradıcılıq': ['audio/az_art1.mp3', 'audio/az_art2.mp3'],
-            'STEAM və innovasiya': ['audio/az_steam1.mp3', 'audio/az_steam2.mp3'],
-            'Eksperiment və tədqiqat': ['audio/az_experiment1.mp3', 'audio/az_experiment2.mp3']
-        },
-        'Русский': {
-            'Культурное наследие и путешествия': ['audio/ru_cultural1.mp3', 'audio/ru_cultural2.mp3'],
-            'Искусство и творчество': ['audio/ru_art1.mp3', 'audio/ru_art2.mp3'],
-            'STEAM и инновации': ['audio/ru_steam1.mp3', 'audio/ru_steam2.mp3'],
-            'Эксперименты и исследования': ['audio/ru_experiment1.mp3', 'audio/ru_experiment2.mp3']
-        },
-        'English': {
-            'Cultural Heritage and Travel': ['audio/en_cultural1.mp3', 'audio/en_cultural2.mp3'],
-            'Art and Creativity': ['audio/en_art1.mp3', 'audio/en_art2.mp3'],
-            'STEAM and Innovation': ['audio/en_steam1.mp3', 'audio/en_steam2.mp3'],
-            'Experiments and Research': ['audio/en_experiment1.mp3', 'audio/en_experiment2.mp3']
-        }
-    };
-
-    const selectedAudioFiles = audioFiles[selectedLanguage][part];
-    document.getElementById('audio1').src = selectedAudioFiles[0];
-    document.getElementById('audio2').src = selectedAudioFiles[1];
 }
 
 function navigateToIntroductionPage() {
     document.getElementById('language-selection-page').classList.add('hidden');
     document.getElementById('thematic-options-page').classList.add('hidden');
     document.getElementById('content-page').classList.add('hidden');
-    document.getElementById('video-page').classList.add('hidden');
     document.getElementById('introduction-page').classList.remove('hidden');
 }
 
@@ -102,7 +75,7 @@ function uploadFile(event) {
         formData.append('mimeType', fileUpload.type);
         formData.append('fileName', fileUpload.name);
 
-        fetch('https://script.google.com/macros/s/AKfycbwlvEjoyJd7C1oWmaKQPns2NP7oejgXKLbDQHLwRM7IcdcMdhz--QtnkskCptCJ_JHc5w/exec', {
+        fetch('https://script.google.com/macros/s/AKfycbwoU7UkyRuspN5VOpgqC_iVdxPUsJURVnDzsCwzlTOcvgqVuriibxKPfkvo0thfj9Ph_g/exec', {
             method: 'POST',
             body: formData
         }).then(response => response.json())
@@ -117,26 +90,4 @@ function uploadFile(event) {
           });
     };
     reader.readAsDataURL(fileUpload);
-}
-
-function loadVideos() {
-    fetch('https://script.google.com/macros/s/AKfycbwlvEjoyJd7C1oWmaKQPns2NP7oejgXKLbDQHLwRM7IcdcMdhz--QtnkskCptCJ_JHc5w/exec?listFiles=true')
-        .then(response => response.json())
-        .then(videos => {
-            const videoContainer = document.getElementById('video-container');
-            videoContainer.innerHTML = ''; // Clear existing videos
-            videos.forEach(video => {
-                const videoElement = document.createElement('video');
-                videoElement.src = video.url;
-                videoElement.controls = true;
-                videoElement.classList.add('video');
-                videoContainer.appendChild(videoElement);
-            });
-        });
-}
-
-function navigateToVideoPage() {
-    document.getElementById('content-page').classList.add('hidden');
-    document.getElementById('video-page').classList.remove('hidden');
-    loadVideos();
 }
