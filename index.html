@@ -20,56 +20,60 @@
         <div class="country-row">
             <div class="country-option">
                 <img src="https://i.ibb.co/bJ2XSb2/england.png" alt="İngiltərəyə səyahət">
-                <button onclick="promptPassword('england', 'xtirachieng')">İngiltərəyə səyahət</button>
+                <button onclick="promptPassword('İngiltərəyə səyahət', 'xtirachieng')">İngiltərəyə səyahət</button>
             </div>
             <div class="country-option">
                 <img src="https://i.ibb.co/zZq2Nsy/japan.png" alt="Yaponiyaya səyahət">
-                <button onclick="promptPassword('japan', 'xtirachijap')">Yaponiyaya səyahət</button>
+                <button onclick="promptPassword('Yaponiyaya səyahət', 'xtirachijap')">Yaponiyaya səyahət</button>
             </div>
         </div>
         <div class="country-row">
             <div class="country-option">
                 <img src="https://i.ibb.co/t4LnNRF/egypt.png" alt="Misirə səyahət">
-                <button onclick="promptPassword('egypt', 'xtirachiegy')">Misirə səyahət</button>
+                <button onclick="promptPassword('Misirə səyahət', 'xtirachiegy')">Misirə səyahət</button>
             </div>
             <div class="country-option">
                 <img src="https://i.ibb.co/H2bN039/italy.png" alt="İtaliyaya səyahət">
-                <button onclick="promptPassword('italy', 'xtirachiita')">İtaliyaya səyahət</button>
+                <button onclick="promptPassword('İtaliyaya səyahət', 'xtirachiita')">İtaliyaya səyahət</button>
             </div>
         </div>
     </div>
 
     <!-- Options Selection Pages -->
-    <div id="options-england-page" class="page hidden">
-        <h2>İxtiraçı panelinə xoş gəldiniz</h2>
-        <button onclick="navigateToLink('https://xtirachi.github.io/e-info')">Elektron Məlumatlar</button>
-        <button onclick="navigateToLink('https://xtirachi.github.io/psychological-map')">Psixoloji Xəritə</button>
-        <button onclick="navigateToLink('https://xtirachi.github.io/videos')">Video məşğələlər</button>
+    <div id="england-options" class="page hidden">
+        <h2>İngiltərəyə səyahət</h2>
+        <button onclick="navigateTo('https://xtirachi.github.io/e-info')">Elektron Məlumatlar</button>
+        <button onclick="navigateTo('https://xtirachi.github.io/psychological-map')">Psixoloji Xəritə</button>
+        <button onclick="navigateTo('https://xtirachi.github.io/videos')">Video məşğələlər</button>
         <button onclick="navigateToLanguageSelection()">Tapşırıqları yüklə</button>
+        <button onclick="navigateToIntroductionPage()" id="back-button">Əsas səhifəyə qayıt</button>
     </div>
 
-    <div id="options-japan-page" class="page hidden">
-        <h2>İxtiraçı panelinə xoş gəldiniz</h2>
-        <button onclick="navigateToLink('https://xtirachi.github.io/e-info-jap')">Elektron Məlumatlar</button>
-        <button onclick="navigateToLink('https://xtirachi.github.io/psychological-map-jap')">Psixoloji Xəritə</button>
-        <button onclick="navigateToLink('https://xtirachi.github.io/videos-jap')">Video məşğələlər</button>
+    <div id="japan-options" class="page hidden">
+        <h2>Yaponiyaya səyahət</h2>
+        <button onclick="navigateTo('https://xtirachi.github.io/e-info-jap/')">Elektron Məlumatlar</button>
+        <button onclick="navigateTo('https://xtirachi.github.io/psychological-map-jap/')">Psixoloji Xəritə</button>
+        <button onclick="navigateTo('https://xtirachi.github.io/videos-jap/')">Video məşğələlər</button>
         <button onclick="navigateToLanguageSelection()">Tapşırıqları yüklə</button>
+        <button onclick="navigateToIntroductionPage()" id="back-button">Əsas səhifəyə qayıt</button>
     </div>
 
-    <div id="options-egypt-page" class="page hidden">
-        <h2>İxtiraçı panelinə xoş gəldiniz</h2>
-        <button onclick="navigateToLink('https://xtirachi.github.io/e-info-egp')">Elektron Məlumatlar</button>
-        <button onclick="navigateToLink('https://xtirachi.github.io/psychological-map-egp')">Psixoloji Xəritə</button>
-        <button onclick="navigateToLink('https://xtirachi.github.io/videos-egp')">Video məşğələlər</button>
+    <div id="egypt-options" class="page hidden">
+        <h2>Misirə səyahət</h2>
+        <button onclick="navigateTo('https://xtirachi.github.io/e-info-egp/')">Elektron Məlumatlar</button>
+        <button onclick="navigateTo('https://xtirachi.github.io/psychological-map-egp/')">Psixoloji Xəritə</button>
+        <button onclick="navigateTo('https://xtirachi.github.io/videos-egp/')">Video məşğələlər</button>
         <button onclick="navigateToLanguageSelection()">Tapşırıqları yüklə</button>
+        <button onclick="navigateToIntroductionPage()" id="back-button">Əsas səhifəyə qayıt</button>
     </div>
 
-    <div id="options-italy-page" class="page hidden">
-        <h2>İxtiraçı panelinə xoş gəldiniz</h2>
-        <button onclick="navigateToLink('https://xtirachi.github.io/e-info-ita')">Elektron Məlumatlar</button>
-        <button onclick="navigateToLink('https://xtirachi.github.io/psychological-map-ita')">Psixoloji Xəritə</button>
-        <button onclick="navigateToLink('https://xtirachi.github.io/videos-ita')">Video məşğələlər</button>
+    <div id="italy-options" class="page hidden">
+        <h2>İtaliyaya səyahət</h2>
+        <button onclick="navigateTo('https://xtirachi.github.io/e-info-ita/')">Elektron Məlumatlar</button>
+        <button onclick="navigateTo('https://xtirachi.github.io/psychological-map-ita/')">Psixoloji Xəritə</button>
+        <button onclick="navigateTo('https://xtirachi.github.io/videos-ita/')">Video məşğələlər</button>
         <button onclick="navigateToLanguageSelection()">Tapşırıqları yüklə</button>
+        <button onclick="navigateToIntroductionPage()" id="back-button">Əsas səhifəyə qayıt</button>
     </div>
 
     <!-- Language Selection Page -->
@@ -78,7 +82,7 @@
         <button onclick="selectLanguage('Azərbaycan dili')">Azərbaycan dili</button>
         <button onclick="selectLanguage('Русский')">Русский</button>
         <button onclick="selectLanguage('English')">English</button>
-        <button onclick="navigateToCountryOptions()" id="back-button">Əsas səhifəyə qayıt</button>
+        <button onclick="navigateToIntroductionPage()" id="back-button">Əsas səhifəyə qayıt</button>
     </div>
 
     <!-- Thematic Options Page -->
@@ -88,7 +92,7 @@
         <button id="btn-art" onclick="navigateToContent('Art and Creativity')"></button>
         <button id="btn-steam" onclick="navigateToContent('STEAM and Innovation')"></button>
         <button id="btn-experiments" onclick="navigateToContent('Experiments and Research')"></button>
-        <button onclick="navigateToCountryOptions()" id="back-button">Əsas səhifəyə qayıt</button>
+        <button onclick="navigateToIntroductionPage()" id="back-button">Əsas səhifəyə qayıt</button>
     </div>
 
     <!-- Content Page -->
@@ -106,7 +110,7 @@
                 <button type="submit">Yüklə</button>
             </form>
         </div>
-        <button onclick="navigateToCountryOptions()" id="back-button">Əsas səhifəyə qayıt</button>
+        <button onclick="navigateToIntroductionPage()" id="back-button">Əsas səhifəyə qayıt</button>
     </div>
 </body>
 </html>
