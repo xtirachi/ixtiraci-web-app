@@ -52,18 +52,6 @@ button:hover {
     background-color: #005f5f;
 }
 
-a {
-    display: block;
-    margin-top: 10px;
-    color: #005f5f;
-    text-decoration: none;
-    font-size: 14px;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
 form {
     display: flex;
     flex-direction: column;
