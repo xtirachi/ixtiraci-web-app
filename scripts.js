@@ -2,44 +2,57 @@ let selectedCountry = '';
 let selectedLanguage = '';
 let selectedPart = '';
 
-function navigateToIntroductionPage() {
-    document.getElementById('main-page').classList.add('hidden');
-    document.getElementById('introduction-page').classList.remove('hidden');
-}
-
-function navigateToPsychologicalPage() {
-    document.getElementById('main-page').classList.add('hidden');
-    document.getElementById('psychological-page').classList.remove('hidden');
-}
-
-function navigateToMainPage() {
-    document.getElementById('introduction-page').classList.add('hidden');
-    document.getElementById('psychological-page').classList.add('hidden');
-    document.getElementById('main-page').classList.remove('hidden');
-}
-
 function promptPassword(country, correctPassword) {
     const password = prompt("Zəhmət olmasa " + country + " üçün gizli kodu qeyd edin:");
     if (password === correctPassword) {
-        navigateToLanguageSelection(country);
+        document.getElementById('introduction-page').classList.add('hidden');
+        document.getElementById('options-selection-page').classList.remove('hidden');
     } else {
         alert("Gizli kodu yanlış qeyd etdiniz. Votsap vasitəsilə bizimlə əlaqə saxlayın!");
     }
 }
 
-function promptPsychologicalPassword(country, correctPassword, link) {
-    const password = prompt("Zəhmət olmasa " + country + " üçün gizli kodu qeyd edin:");
-    if (password === correctPassword) {
-        window.location.href = link;
-    } else {
-        alert("Gizli kodu yanlış qeyd etdiniz. Votsap vasitəsilə bizimlə əlaqə saxlayın!");
-    }
-}
-
-function navigateToLanguageSelection(country) {
-    selectedCountry = country;
-    document.getElementById('introduction-page').classList.add('hidden');
+function navigateToLanguageSelection() {
+    document.getElementById('options-selection-page').classList.add('hidden');
     document.getElementById('language-selection-page').classList.remove('hidden');
+}
+
+function navigateToPsychologicalTestCountrySelection() {
+    document.getElementById('options-selection-page').classList.add('hidden');
+    document.getElementById('psychological-test-country-selection-page').classList.remove('hidden');
+}
+
+function navigateToPsychologicalMap(correctPassword) {
+    const password = prompt("Zəhmət olmasa gizli kodu qeyd edin:");
+    if (password === correctPassword) {
+        switch (correctPassword) {
+            case 'xtirachieng':
+                window.location.href = 'https://xtirachi.github.io/psychological-map';
+                break;
+            case 'xtirachijap':
+                window.location.href = 'https://xtirachi.github.io/psychological-map-jap/';
+                break;
+            case 'xtirachiegy':
+                window.location.href = 'https://xtirachi.github.io/psychological-map-egp/';
+                break;
+            case 'xtirachiita':
+                window.location.href = 'https://xtirachi.github.io/psychological-map-ita/';
+                break;
+            default:
+                alert("Gizli kodu yanlış qeyd etdiniz.");
+        }
+    } else {
+        alert("Gizli kodu yanlış qeyd etdiniz.");
+    }
+}
+
+function navigateToIntroductionPage() {
+    document.getElementById('language-selection-page').classList.add('hidden');
+    document.getElementById('psychological-test-country-selection-page').classList.add('hidden');
+    document.getElementById('options-selection-page').classList.add('hidden');
+    document.getElementById('thematic-options-page').classList.add('hidden');
+    document.getElementById('content-page').classList.add('hidden');
+    document.getElementById('introduction-page').classList.remove('hidden');
 }
 
 function selectLanguage(language) {
