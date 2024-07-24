@@ -2,10 +2,20 @@ let selectedCountry = '';
 let selectedLanguage = '';
 let selectedPart = '';
 
-function navigateToLanguageSelection(country) {
-    selectedCountry = country;
+function navigateToIntroductionPage() {
+    document.getElementById('main-page').classList.add('hidden');
+    document.getElementById('introduction-page').classList.remove('hidden');
+}
+
+function navigateToPsychologicalPage() {
+    document.getElementById('main-page').classList.add('hidden');
+    document.getElementById('psychological-page').classList.remove('hidden');
+}
+
+function navigateToMainPage() {
     document.getElementById('introduction-page').classList.add('hidden');
-    document.getElementById('language-selection-page').classList.remove('hidden');
+    document.getElementById('psychological-page').classList.add('hidden');
+    document.getElementById('main-page').classList.remove('hidden');
 }
 
 function promptPassword(country, correctPassword) {
@@ -15,6 +25,21 @@ function promptPassword(country, correctPassword) {
     } else {
         alert("Gizli kodu yanlış qeyd etdiniz. Votsap vasitəsilə bizimlə əlaqə saxlayın!");
     }
+}
+
+function promptPsychologicalPassword(country, correctPassword, link) {
+    const password = prompt("Zəhmət olmasa " + country + " üçün gizli kodu qeyd edin:");
+    if (password === correctPassword) {
+        window.location.href = link;
+    } else {
+        alert("Gizli kodu yanlış qeyd etdiniz. Votsap vasitəsilə bizimlə əlaqə saxlayın!");
+    }
+}
+
+function navigateToLanguageSelection(country) {
+    selectedCountry = country;
+    document.getElementById('introduction-page').classList.add('hidden');
+    document.getElementById('language-selection-page').classList.remove('hidden');
 }
 
 function selectLanguage(language) {
@@ -59,13 +84,6 @@ function navigateToContent(part) {
     document.getElementById('thematic-options-page').classList.add('hidden');
     document.getElementById('content-page').classList.remove('hidden');
     document.getElementById('content-title').textContent = part;
-}
-
-function navigateToIntroductionPage() {
-    document.getElementById('language-selection-page').classList.add('hidden');
-    document.getElementById('thematic-options-page').classList.add('hidden');
-    document.getElementById('content-page').classList.add('hidden');
-    document.getElementById('introduction-page').classList.remove('hidden');
 }
 
 function uploadFile(event) {
