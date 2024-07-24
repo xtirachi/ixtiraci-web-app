@@ -14,33 +14,37 @@
         <h1>İxtiraçı paneli</h1>
     </div>
 
+    <!-- Main Page -->
+    <div id="main-page" class="page">
+        <h2>İxtiraçı panelinə xoş gəldiniz</h2>
+        <button onclick="navigateToIntroductionPage()">Tapşırıqları yüklə</button>
+        <button onclick="navigateToPsychologicalPage()">Psixoloji Xəritə</button>
+    </div>
+
     <!-- Introduction Page -->
-    <div id="introduction-page" class="page">
+    <div id="introduction-page" class="page hidden">
         <h2>Səyahət Seçin</h2>
         <div class="country-row">
             <div class="country-option">
                 <img src="https://i.ibb.co/bJ2XSb2/england.png" alt="İngiltərəyə səyahət">
                 <button onclick="promptPassword('İngiltərəyə səyahət', 'xtirachieng')">İngiltərəyə səyahət</button>
-                <a href="https://example.com/england_video" target="_blank">İngiltərəyə səyahət Video</a>
             </div>
             <div class="country-option">
                 <img src="https://i.ibb.co/zZq2Nsy/japan.png" alt="Yaponiyaya səyahət">
                 <button onclick="promptPassword('Yaponiyaya səyahət', 'xtirachijap')">Yaponiyaya səyahət</button>
-                <a href="https://example.com/japan_video" target="_blank">Yaponiyaya səyahət Video</a>
             </div>
         </div>
         <div class="country-row">
             <div class="country-option">
                 <img src="https://i.ibb.co/t4LnNRF/egypt.png" alt="Misirə səyahət">
                 <button onclick="promptPassword('Misirə səyahət', 'xtirachiegy')">Misirə səyahət</button>
-                <a href="https://example.com/egypt_video" target="_blank">Misirə səyahət Video</a>
             </div>
             <div class="country-option">
                 <img src="https://i.ibb.co/H2bN039/italy.png" alt="İtaliyaya səyahət">
                 <button onclick="promptPassword('İtaliyaya səyahət', 'xtirachiita')">İtaliyaya səyahət</button>
-                <a href="https://example.com/italy_video" target="_blank">İtaliyaya səyahət Video</a>
             </div>
         </div>
+        <button onclick="navigateToMainPage()" id="back-button">Əsas səhifəyə qayıt</button>
     </div>
 
     <!-- Language Selection Page -->
@@ -78,6 +82,32 @@
             </form>
         </div>
         <button onclick="navigateToIntroductionPage()" id="back-button">Əsas səhifəyə qayıt</button>
+    </div>
+
+    <!-- Psychological Test Country Selection Page -->
+    <div id="psychological-page" class="page hidden">
+        <h2>Psixoloji Xəritə üçün Səyahət Seçin</h2>
+        <div class="country-row">
+            <div class="country-option">
+                <img src="https://i.ibb.co/bJ2XSb2/england.png" alt="İngiltərəyə səyahət">
+                <button onclick="promptPsychologicalPassword('İngiltərəyə səyahət', 'xtirachieng', 'https://xtirachi.github.io/psychological-map')">İngiltərəyə səyahət</button>
+            </div>
+            <div class="country-option">
+                <img src="https://i.ibb.co/zZq2Nsy/japan.png" alt="Yaponiyaya səyahət">
+                <button onclick="promptPsychologicalPassword('Yaponiyaya səyahət', 'xtirachijap', 'https://xtirachi.github.io/psychological-map-jap/')">Yaponiyaya səyahət</button>
+            </div>
+        </div>
+        <div class="country-row">
+            <div class="country-option">
+                <img src="https://i.ibb.co/t4LnNRF/egypt.png" alt="Misirə səyahət">
+                <button onclick="promptPsychologicalPassword('Misirə səyahət', 'xtirachiegy', 'https://xtirachi.github.io/psychological-map-egp/')">Misirə səyahət</button>
+            </div>
+            <div class="country-option">
+                <img src="https://i.ibb.co/H2bN039/italy.png" alt="İtaliyaya səyahət">
+                <button onclick="promptPsychologicalPassword('İtaliyaya səyahət', 'xtirachiita', 'https://xtirachi.github.io/psychological-map-ita/')">İtaliyaya səyahət</button>
+            </div>
+        </div>
+        <button onclick="navigateToMainPage()" id="back-button">Əsas səhifəyə qayıt</button>
     </div>
 </body>
 </html>
