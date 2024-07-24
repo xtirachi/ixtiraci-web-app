@@ -5,27 +5,43 @@ let selectedPart = '';
 function promptPassword(country, correctPassword) {
     const password = prompt("Zəhmət olmasa " + country + " üçün gizli kodu qeyd edin:");
     if (password === correctPassword) {
-        selectedCountry = country;
         document.getElementById('introduction-page').classList.add('hidden');
-        document.getElementById('options-' + country + '-page').classList.remove('hidden');
+        navigateToCountryOptionsPage(country);
     } else {
         alert("Gizli kodu yanlış qeyd etdiniz. Votsap vasitəsilə bizimlə əlaqə saxlayın!");
     }
 }
 
-function navigateToLanguageSelection() {
-    document.getElementById('options-' + selectedCountry + '-page').classList.add('hidden');
-    document.getElementById('language-selection-page').classList.remove('hidden');
+function navigateToCountryOptionsPage(country) {
+    switch (country) {
+        case 'İngiltərəyə səyahət':
+            document.getElementById('england-options').classList.remove('hidden');
+            break;
+        case 'Yaponiyaya səyahət':
+            document.getElementById('japan-options').classList.remove('hidden');
+            break;
+        case 'Misirə səyahət':
+            document.getElementById('egypt-options').classList.remove('hidden');
+            break;
+        case 'İtaliyaya səyahət':
+            document.getElementById('italy-options').classList.remove('hidden');
+            break;
+        default:
+            alert('Yanlış seçim');
+            navigateToIntroductionPage();
+    }
 }
 
-function navigateToLink(url) {
+function navigateTo(url) {
     window.location.href = url;
 }
 
+function navigateToLanguageSelection() {
+    document.querySelectorAll('.page').forEach(page => page.classList.add('hidden'));
+    document.getElementById('language-selection-page').classList.remove('hidden');
+}
+
 function navigateToIntroductionPage() {
-    document.getElementById('language-selection-page').classList.add('hidden');
-    document.getElementById('thematic-options-page').classList.add('hidden');
-    document.getElementById('content-page').classList.add('hidden');
     document.querySelectorAll('.page').forEach(page => page.classList.add('hidden'));
     document.getElementById('introduction-page').classList.remove('hidden');
 }
