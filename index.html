@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>İxtiraçı paneli</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="scripts.js" defer></script>
+    <script src="script.js" defer></script>
 </head>
 <body>
     <!-- Logo and Page Title -->
@@ -14,9 +14,8 @@
         <h1>İxtiraçı paneli</h1>
     </div>
 
-
     <!-- Introduction Page -->
-    <div id="introduction-page" class="page hidden">
+    <div id="introduction-page" class="page">
         <h2>Səyahət Seçin</h2>
         <div class="country-row">
             <div class="country-option">
@@ -38,16 +37,15 @@
                 <button onclick="promptPassword('İtaliyaya səyahət', 'xtirachiita')">İtaliyaya səyahət</button>
             </div>
         </div>
-        <button onclick="navigateToMainPage()" id="back-button">Əsas səhifəyə qayıt</button>
     </div>
 
-   <!-- Main Page -->
-    <div id="main-page" class="page">
+    <!-- Options Selection Page -->
+    <div id="options-selection-page" class="page hidden">
         <h2>İxtiraçı panelinə xoş gəldiniz</h2>
-        <button onclick="navigateToLanguageSelectionPage()">Tapşırıqları yüklə</button>
-        <button onclick="navigateToPsychologicalPage()">Psixoloji Xəritə</button>
+        <button onclick="navigateToLanguageSelection()">Tapşırıqları yüklə</button>
+        <button onclick="navigateToPsychologicalTestCountrySelection()">Psixoloji Xəritə</button>
     </div>
-    
+
     <!-- Language Selection Page -->
     <div id="language-selection-page" class="page hidden">
         <h2>Dil seçimi</h2>
@@ -57,9 +55,34 @@
         <button onclick="navigateToIntroductionPage()" id="back-button">Əsas səhifəyə qayıt</button>
     </div>
 
+    <!-- Psychological Test Country Selection Page -->
+    <div id="psychological-test-country-selection-page" class="page hidden">
+        <h2>Psixoloji Test Üçün Ölkə Seçin</h2>
+        <div class="country-row">
+            <div class="country-option">
+                <img src="https://i.ibb.co/bJ2XSb2/england.png" alt="İngiltərəyə səyahət">
+                <button onclick="navigateToPsychologicalMap('xtirachieng')">İngiltərəyə səyahət</button>
+            </div>
+            <div class="country-option">
+                <img src="https://i.ibb.co/zZq2Nsy/japan.png" alt="Yaponiyaya səyahət">
+                <button onclick="navigateToPsychologicalMap('xtirachijap')">Yaponiyaya səyahət</button>
+            </div>
+        </div>
+        <div class="country-row">
+            <div class="country-option">
+                <img src="https://i.ibb.co/t4LnNRF/egypt.png" alt="Misirə səyahət">
+                <button onclick="navigateToPsychologicalMap('xtirachiegy')">Misirə səyahət</button>
+            </div>
+            <div class="country-option">
+                <img src="https://i.ibb.co/H2bN039/italy.png" alt="İtaliyaya səyahət">
+                <button onclick="navigateToPsychologicalMap('xtirachiita')">İtaliyaya səyahət</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Thematic Options Page -->
     <div id="thematic-options-page" class="page hidden">
-        <h2 id="thematic-title">Mövzular</h2>
+        <h2>Mövzular</h2>
         <button id="btn-cultural" onclick="navigateToContent('Cultural Heritage and Travel')"></button>
         <button id="btn-art" onclick="navigateToContent('Art and Creativity')"></button>
         <button id="btn-steam" onclick="navigateToContent('STEAM and Innovation')"></button>
@@ -83,32 +106,6 @@
             </form>
         </div>
         <button onclick="navigateToIntroductionPage()" id="back-button">Əsas səhifəyə qayıt</button>
-    </div>
-
-    <!-- Psychological Test Country Selection Page -->
-    <div id="psychological-page" class="page hidden">
-        <h2>Psixoloji Xəritə üçün Səyahət Seçin</h2>
-        <div class="country-row">
-            <div class="country-option">
-                <img src="https://i.ibb.co/bJ2XSb2/england.png" alt="İngiltərəyə səyahət">
-                <button onclick="promptPsychologicalPassword('İngiltərəyə səyahət', 'xtirachieng', 'https://xtirachi.github.io/psychological-map')">İngiltərəyə səyahət</button>
-            </div>
-            <div class="country-option">
-                <img src="https://i.ibb.co/zZq2Nsy/japan.png" alt="Yaponiyaya səyahət">
-                <button onclick="promptPsychologicalPassword('Yaponiyaya səyahət', 'xtirachijap', 'https://xtirachi.github.io/psychological-map-jap/')">Yaponiyaya səyahət</button>
-            </div>
-        </div>
-        <div class="country-row">
-            <div class="country-option">
-                <img src="https://i.ibb.co/t4LnNRF/egypt.png" alt="Misirə səyahət">
-                <button onclick="promptPsychologicalPassword('Misirə səyahət', 'xtirachiegy', 'https://xtirachi.github.io/psychological-map-egp/')">Misirə səyahət</button>
-            </div>
-            <div class="country-option">
-                <img src="https://i.ibb.co/H2bN039/italy.png" alt="İtaliyaya səyahət">
-                <button onclick="promptPsychologicalPassword('İtaliyaya səyahət', 'xtirachiita', 'https://xtirachi.github.io/psychological-map-ita/')">İtaliyaya səyahət</button>
-            </div>
-        </div>
-        <button onclick="navigateToMainPage()" id="back-button">Əsas səhifəyə qayıt</button>
     </div>
 </body>
 </html>
