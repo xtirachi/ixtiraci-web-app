@@ -5,30 +5,28 @@ let selectedPart = '';
 function promptPassword(country, correctPassword) {
     const password = prompt("Zəhmət olmasa " + country + " üçün gizli kodu qeyd edin:");
     if (password === correctPassword) {
-        navigateToCountryOptions(country);
+        selectedCountry = country;
+        document.getElementById('introduction-page').classList.add('hidden');
+        document.getElementById('options-' + country + '-page').classList.remove('hidden');
     } else {
         alert("Gizli kodu yanlış qeyd etdiniz. Votsap vasitəsilə bizimlə əlaqə saxlayın!");
     }
 }
 
-function navigateToCountryOptions(country) {
-    selectedCountry = country;
-    document.getElementById('introduction-page').classList.add('hidden');
-    document.getElementById(`${country}-options-page`).classList.remove('hidden');
+function navigateToLanguageSelection() {
+    document.getElementById('options-' + selectedCountry + '-page').classList.add('hidden');
+    document.getElementById('language-selection-page').classList.remove('hidden');
 }
 
 function navigateToLink(url) {
     window.location.href = url;
 }
 
-function navigateToLanguageSelection() {
-    document.getElementById(`${selectedCountry}-options-page`).classList.add('hidden');
-    document.getElementById('language-selection-page').classList.remove('hidden');
-}
-
 function navigateToIntroductionPage() {
-    const pages = document.querySelectorAll('.page');
-    pages.forEach(page => page.classList.add('hidden'));
+    document.getElementById('language-selection-page').classList.add('hidden');
+    document.getElementById('thematic-options-page').classList.add('hidden');
+    document.getElementById('content-page').classList.add('hidden');
+    document.querySelectorAll('.page').forEach(page => page.classList.add('hidden'));
     document.getElementById('introduction-page').classList.remove('hidden');
 }
 
