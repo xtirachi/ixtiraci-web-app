@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>İxtiraçı paneli</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
     <script src="script.js" defer></script>
 </head>
 <body>
@@ -42,7 +43,7 @@
     <!-- England Options Selection Page -->
     <div id="england-options-page" class="page hidden">
         <h2>İngiltərəyə səyahət seçimləri</h2>
-        <button onclick="navigateToLearnCodePage()">İxtiraçı kodunu öyrən</button>
+        <button onclick="showLearnCodePage()">İxtiraçı kodunu öyrən</button>
         <button onclick="navigateToLink('https://xtirachi.github.io/e-info')">Elektron Məlumatlar</button>
         <button onclick="navigateToLink('https://xtirachi.github.io/psychological-map')">Psixoloji Xəritə</button>
         <button onclick="navigateToLink('https://xtirachi.github.io/basla')">Səyahətə başla</button>
@@ -52,7 +53,7 @@
     <!-- Japan Options Selection Page -->
     <div id="japan-options-page" class="page hidden">
         <h2>Yaponiyaya səyahət seçimləri</h2>
-        <button onclick="navigateToLearnCodePage()">İxtiraçı kodunu öyrən</button>
+        <button onclick="showLearnCodePage()">İxtiraçı kodunu öyrən</button>
         <button onclick="navigateToLink('https://xtirachi.github.io/e-info-jap/')">Elektron Məlumatlar</button>
         <button onclick="navigateToLink('https://xtirachi.github.io/psychological-map-jap/')">Psixoloji Xəritə</button>
         <button onclick="navigateToLink('https://xtirachi.github.io/basla-jap/')">Səyahətə başla</button>
@@ -62,7 +63,7 @@
     <!-- Egypt Options Selection Page -->
     <div id="egypt-options-page" class="page hidden">
         <h2>Misirə səyahət seçimləri</h2>
-        <button onclick="navigateToLearnCodePage()">İxtiraçı kodunu öyrən</button>
+        <button onclick="showLearnCodePage()">İxtiraçı kodunu öyrən</button>
         <button onclick="navigateToLink('https://xtirachi.github.io/e-info-egp/')">Elektron Məlumatlar</button>
         <button onclick="navigateToLink('https://xtirachi.github.io/psychological-map-egp/')">Psixoloji Xəritə</button>
         <button onclick="navigateToLink('https://xtirachi.github.io/basla-egp/')">Səyahətə başla</button>
@@ -72,7 +73,7 @@
     <!-- Italy Options Selection Page -->
     <div id="italy-options-page" class="page hidden">
         <h2>İtaliyaya səyahət seçimləri</h2>
-        <button onclick="navigateToLearnCodePage()">İxtiraçı kodunu öyrən</button>
+        <button onclick="showLearnCodePage()">İxtiraçı kodunu öyrən</button>
         <button onclick="navigateToLink('https://xtirachi.github.io/e-info-ita/')">Elektron Məlumatlar</button>
         <button onclick="navigateToLink('https://xtirachi.github.io/psychological-map-ita/')">Psixoloji Xəritə</button>
         <button onclick="navigateToLink('https://xtirachi.github.io/basla-ita/')">Səyahətə başla</button>
@@ -83,9 +84,9 @@
     <div id="learn-code-page" class="page hidden">
         <h2>İxtiraçı kodunu öyrən</h2>
         <form id="learn-code-form" onsubmit="generateInventorCode(event)">
-            <label for="full-name">Tam Ad:</label>
+            <label for="full-name">Ad Soyad Ata adı:</label>
             <input type="text" id="full-name" name="full-name" required>
-            <label for="phone-number">Telefon Nömrəsi:</label>
+            <label for="phone-number">Telefon Nömrəsi (Votsap ilə əlaqə üçün) - 0702342342:</label>
             <input type="text" id="phone-number" name="phone-number" required>
             <button type="submit">Göndər</button>
         </form>
