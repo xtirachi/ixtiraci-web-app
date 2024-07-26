@@ -56,7 +56,7 @@ function generateInventorCode(event) {
             formData.append('phone-number', phoneNumber);
             formData.append('code', code);
 
-            fetch('https://script.google.com/macros/s/AKfycbxas0tBoiOliiqqoCQOUlG3aRcHZ1bMA2Vor_zMvSnJmnhfUc0KKgw2UGRPGcsqkT234w/exec', {
+            fetch('https://script.google.com/macros/s/AKfycby1krMc6flS5at_5Lj6Q38DC9aOuLnLVUnbHsidvY4SdDWr02fFgCaq1Yrmx9mh3Sh3eQ/exec', {
                 method: 'POST',
                 body: formData
             }).then(response => response.json())
@@ -76,7 +76,7 @@ function generateInventorCode(event) {
 }
 
 function checkPhoneNumber(phoneNumber) {
-    return fetch(`https://script.google.com/macros/s/AKfycbxas0tBoiOliiqqoCQOUlG3aRcHZ1bMA2Vor_zMvSnJmnhfUc0KKgw2UGRPGcsqkT234w/exec?phone=${phoneNumber}`)
+    return fetch(`https://script.google.com/macros/s/AKfycby1krMc6flS5at_5Lj6Q38DC9aOuLnLVUnbHsidvY4SdDWr02fFgCaq1Yrmx9mh3Sh3eQ/exec?phone=${phoneNumber}`)
         .then(response => response.json())
         .then(data => data.code || null);
 }
