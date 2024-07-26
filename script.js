@@ -82,27 +82,56 @@ function checkPhoneNumber(phoneNumber) {
 }
 
 function createPDF(fullName, phoneNumber, code, existing) {
-    const { jsPDF } = window.jspdf;
-    const doc = new jsPDF();
-
     const logoUrl = 'https://i.ibb.co/7XNQPGC/logo.png';
-    const pageWidth = doc.internal.pageSize.getWidth();
-    const margin = 10;
 
-    doc.addImage(logoUrl, 'PNG', margin, margin, 30, 30);
-    doc.setFontSize(16);
-    doc.text('İxtiraçı Paneli', pageWidth / 2, margin + 40, { align: 'center' });
+    const docDefinition = {
+        content: [
+            {
+                image: logoUrl,
+                width: 100,
+                alignment: 'center'
+            },
+            {
+                text: 'İxtiraçı Paneli',
+                style: 'header',
+                alignment: 'center',
+                margin: [0, 10, 0, 20]
+            },
+            {
+                text: `Ad Soyad Ata adı: ${fullName}`,
+                style: 'subheader'
+            },
+            {
+                text: `Telefon Nömrəsi: ${phoneNumber}`,
+                style: 'subheader'
+            },
+            {
+                text: `İxtiraçı Kod: ${code}`,
+                style: 'subheader'
+            },
+            {
+                text: existing ? 
+                    'Bu kodu artıq istəmisiniz. Bu sizin kodunuzdur, fəaliyyətlərdə istifadə edəcəyinizdən əmin olun.' :
+                    'Bu kodu fəaliyyətlərdə istifadə edəcəyinizdən əmin olun.',
+                style: 'paragraph',
+                margin: [0, 10, 0, 0]
+            }
+        ],
+        styles: {
+            header: {
+                fontSize: 18,
+                bold: true
+            },
+            subheader: {
+                fontSize: 14,
+                margin: [0, 5, 0, 5]
+            },
+            paragraph: {
+                fontSize: 12,
+                margin: [0, 5, 0, 5]
+            }
+        }
+    };
 
-    doc.setFontSize(12);
-    doc.text(`Ad Soyad Ata adı: ${fullName}`, margin, margin + 60);
-    doc.text(`Telefon Nömrəsi: ${phoneNumber}`, margin, margin + 70);
-    doc.text(`İxtiraçı Kod: ${code}`, margin, margin + 80);
-
-    if (existing) {
-        doc.text(`Bu kodu artıq istəmisiniz. Bu sizin kodunuzdur, fəaliyyətlərdə istifadə edəcəyinizdən əmin olun.`, margin, margin + 100);
-    } else {
-        doc.text(`Bu kodu fəaliyyətlərdə istifadə edəcəyinizdən əmin olun.`, margin, margin + 100);
-    }
-
-    doc.save(`Ixtiraci-Kod-${code}.pdf`);
+    pdfMake.createPdf(docDefinition).download(`Ixtiraci-Kod-${code}.pdf`);
 }
