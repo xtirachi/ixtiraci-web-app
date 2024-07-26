@@ -85,41 +85,25 @@ function createPDF(fullName, phoneNumber, code, existing) {
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
 
-    const imgData = 'https://i.ibb.co/7XNQPGC/logo.png'; // Logo image URL
+    const logoUrl = 'https://i.ibb.co/7XNQPGC/logo.png';
+    const pageWidth = doc.internal.pageSize.getWidth();
+    const margin = 10;
 
-    // Adding the logo
-    doc.addImage(imgData, 'PNG', 10, 10, 50, 50);
+    doc.addImage(logoUrl, 'PNG', margin, margin, 30, 30);
+    doc.setFontSize(16);
+    doc.text('İxtiraçı Paneli', pageWidth / 2, margin + 40, { align: 'center' });
 
-    // Adding text
-    doc.setFontSize(20);
-    doc.text('İxtiraçı Kod Məlumatı', 70, 30);
-
-    doc.setFontSize(14);
-    doc.setFont('Helvetica', 'bold');
-    doc.text(`Ad Soyad Ata adı:`, 10, 70);
-    doc.setFont('Helvetica', 'normal');
-    doc.text(fullName, 60, 70);
-
-    doc.setFont('Helvetica', 'bold');
-    doc.text(`Telefon Nömrəsi:`, 10, 80);
-    doc.setFont('Helvetica', 'normal');
-    doc.text(phoneNumber, 60, 80);
-
-    doc.setFont('Helvetica', 'bold');
-    doc.text(`İxtiraçı Kod:`, 10, 90);
-    doc.setFont('Helvetica', 'normal');
-    doc.text(code, 60, 90);
+    doc.setFontSize(12);
+    doc.text(`Ad Soyad Ata adı: ${fullName}`, margin, margin + 60);
+    doc.text(`Telefon Nömrəsi: ${phoneNumber}`, margin, margin + 70);
+    doc.text(`İxtiraçı Kod: ${code}`, margin, margin + 80);
 
     if (existing) {
-        doc.setFont('Helvetica', 'bold');
-        doc.text(`Qeyd:`, 10, 100);
-        doc.setFont('Helvetica', 'normal');
-        doc.text(`Bu kodu artıq istəmisiniz. Bu sizin kodunuzdur, fəaliyyətlərdə istifadə edəcəyinizdən əmin olun.`, 10, 110, { maxWidth: 180 });
+        doc.setFontSize(12);
+        doc.text(`Bu kodu artıq istəmisiniz. Bu sizin kodunuzdur, fəaliyyətlərdə istifadə edəcəyinizdən əmin olun.`, margin, margin + 100);
     } else {
-        doc.setFont('Helvetica', 'bold');
-        doc.text(`Qeyd:`, 10, 100);
-        doc.setFont('Helvetica', 'normal');
-        doc.text(`Bu kodu fəaliyyətlərdə istifadə edəcəyinizdən əmin olun.`, 10, 110, { maxWidth: 180 });
+        doc.setFontSize(12);
+        doc.text(`Bu kodu fəaliyyətlərdə istifadə edəcəyinizdən əmin olun.`, margin, margin + 100);
     }
 
     doc.save(`Ixtiraci-Kod-${code}.pdf`);
