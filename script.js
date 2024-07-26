@@ -75,7 +75,7 @@ function generatePDF(fullName, phoneNumber, code) {
     doc.text(20, 20, `Tam Ad: ${fullName}`);
     doc.text(20, 30, `Telefon Nömrəsi: ${phoneNumber}`);
     doc.text(20, 40, `İxtiraçı Kodu: ${code}`);
-    doc.text(20, 50, 'Bu kodu fəaliyyətlər zamanı istifadə edə bilərsiniz.');
+    doc.text(20, 50, 'Bu kodu fəaliyyətlər zamanı istifadə edəcəksiniz.');
 
     doc.save(`ixtiraci_kodu_${code}.pdf`);
 }
