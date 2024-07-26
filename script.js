@@ -82,6 +82,7 @@ function checkPhoneNumber(phoneNumber) {
 }
 
 function createPDF(fullName, phoneNumber, code, existing) {
+    const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
 
     doc.text(`Ad Soyad Ata adı: ${fullName}`, 10, 10);
