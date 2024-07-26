@@ -85,14 +85,41 @@ function createPDF(fullName, phoneNumber, code, existing) {
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
 
-    doc.text(`Ad Soyad Ata adı: ${fullName}`, 10, 10);
-    doc.text(`Telefon Nömrəsi: ${phoneNumber}`, 10, 20);
-    doc.text(`İxtiraçı Kod: ${code}`, 10, 30);
+    const imgData = 'https://i.ibb.co/7XNQPGC/logo.png'; // Logo image URL
+
+    // Adding the logo
+    doc.addImage(imgData, 'PNG', 10, 10, 50, 50);
+
+    // Adding text
+    doc.setFontSize(20);
+    doc.text('İxtiraçı Kod Məlumatı', 70, 30);
+
+    doc.setFontSize(14);
+    doc.setFont('Helvetica', 'bold');
+    doc.text(`Ad Soyad Ata adı:`, 10, 70);
+    doc.setFont('Helvetica', 'normal');
+    doc.text(fullName, 60, 70);
+
+    doc.setFont('Helvetica', 'bold');
+    doc.text(`Telefon Nömrəsi:`, 10, 80);
+    doc.setFont('Helvetica', 'normal');
+    doc.text(phoneNumber, 60, 80);
+
+    doc.setFont('Helvetica', 'bold');
+    doc.text(`İxtiraçı Kod:`, 10, 90);
+    doc.setFont('Helvetica', 'normal');
+    doc.text(code, 60, 90);
 
     if (existing) {
-        doc.text(`Bu kodu artıq istəmisiniz. Bu sizin kodunuzdur, fəaliyyətlərdə istifadə edəcəyinizdən əmin olun.`, 10, 40);
+        doc.setFont('Helvetica', 'bold');
+        doc.text(`Qeyd:`, 10, 100);
+        doc.setFont('Helvetica', 'normal');
+        doc.text(`Bu kodu artıq istəmisiniz. Bu sizin kodunuzdur, fəaliyyətlərdə istifadə edəcəyinizdən əmin olun.`, 10, 110, { maxWidth: 180 });
     } else {
-        doc.text(`Bu kodu fəaliyyətlərdə istifadə edəcəyinizdən əmin olun.`, 10, 40);
+        doc.setFont('Helvetica', 'bold');
+        doc.text(`Qeyd:`, 10, 100);
+        doc.setFont('Helvetica', 'normal');
+        doc.text(`Bu kodu fəaliyyətlərdə istifadə edəcəyinizdən əmin olun.`, 10, 110, { maxWidth: 180 });
     }
 
     doc.save(`Ixtiraci-Kod-${code}.pdf`);
