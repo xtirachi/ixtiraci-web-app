@@ -37,7 +37,6 @@ function navigateToLearnCodePage() {
     document.getElementById('learn-code-page').classList.remove('hidden');
 }
 
-
 function generateInventorCode(event) {
     event.preventDefault();
 
@@ -53,7 +52,7 @@ function generateInventorCode(event) {
     formData.append('phone-number', phoneNumber);
     formData.append('code', code);
 
-    fetch('https://script.google.com/macros/s/AKfycbw-heNN1_DtrwZsCTDfLq1nmLGX9rXeBWLgNTNApYAc-_mjr54j6q0Ycv-HwsIcRzVxLw/exec', {
+    fetch('https://script.google.com/macros/s/AKfycbwoU7UkyRuspN5VOpgqC_iVdxPUsJURVnDzsCwzlTOcvgqVuriibxKPfkvo0thfj9Ph_g/exec', {
         method: 'POST',
         body: formData
     }).then(response => response.json())
