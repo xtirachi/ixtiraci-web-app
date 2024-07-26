@@ -99,10 +99,8 @@ function createPDF(fullName, phoneNumber, code, existing) {
     doc.text(`İxtiraçı Kod: ${code}`, margin, margin + 80);
 
     if (existing) {
-        doc.setFontSize(12);
         doc.text(`Bu kodu artıq istəmisiniz. Bu sizin kodunuzdur, fəaliyyətlərdə istifadə edəcəyinizdən əmin olun.`, margin, margin + 100);
     } else {
-        doc.setFontSize(12);
         doc.text(`Bu kodu fəaliyyətlərdə istifadə edəcəyinizdən əmin olun.`, margin, margin + 100);
     }
 
