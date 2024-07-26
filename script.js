@@ -27,14 +27,14 @@ function navigateToLink(url) {
     window.location.href = url;
 }
 
-function navigateToLearnCodePage() {
-    document.querySelectorAll('.page').forEach(page => page.classList.add('hidden'));
-    document.getElementById('learn-code-page').classList.remove('hidden');
-}
-
 function navigateToIntroductionPage() {
     document.querySelectorAll('.page').forEach(page => page.classList.add('hidden'));
     document.getElementById('introduction-page').classList.remove('hidden');
+}
+
+function showLearnCodePage() {
+    document.querySelectorAll('.page').forEach(page => page.classList.add('hidden'));
+    document.getElementById('learn-code-page').classList.remove('hidden');
 }
 
 function generateInventorCode(event) {
@@ -43,39 +43,56 @@ function generateInventorCode(event) {
     const fullName = document.getElementById('full-name').value;
     const phoneNumber = document.getElementById('phone-number').value;
 
-    codeCounter++;
-    const code = codeCounter.toString().padStart(4, '0');
+    checkPhoneNumber(phoneNumber).then(existingCode => {
+        if (existingCode) {
+            createPDF(fullName, phoneNumber, existingCode, true);
+        } else {
+            codeCounter++;
+            const code = codeCounter.toString().padStart(4, '0');
 
-    // Log to Google Sheet
-    const formData = new FormData();
-    formData.append('full-name', fullName);
-    formData.append('phone-number', phoneNumber);
-    formData.append('code', code);
+            // Log to Google Sheet
+            const formData = new FormData();
+            formData.append('full-name', fullName);
+            formData.append('phone-number', phoneNumber);
+            formData.append('code', code);
 
-    fetch('https://script.google.com/macros/s/AKfycbw-heNN1_DtrwZsCTDfLq1nmLGX9rXeBWLgNTNApYAc-_mjr54j6q0Ycv-HwsIcRzVxLw/exec', {
-        method: 'POST',
-        body: formData
-    }).then(response => response.json())
-      .then(data => {
-          if (data.result === 'success') {
-              alert(`İxtiraçı kodunuz: ${code}`);
-              generatePDF(fullName, phoneNumber, code);
-          } else {
-              alert('Kod yaratmaqda xəta baş verdi: ' + data.error);
-          }
-      }).catch(error => {
-          alert('Kod yaratmaqda xəta baş verdi: ' + error);
-      });
+            fetch('https://script.google.com/macros/s/AKfycbxas0tBoiOliiqqoCQOUlG3aRcHZ1bMA2Vor_zMvSnJmnhfUc0KKgw2UGRPGcsqkT234w/exec', {
+                method: 'POST',
+                body: formData
+            }).then(response => response.json())
+              .then(data => {
+                  if (data.result === 'success') {
+                      createPDF(fullName, phoneNumber, code, false);
+                  } else {
+                      alert('Kod yaratmaqda xəta baş verdi: ' + data.error);
+                  }
+              }).catch(error => {
+                  alert('Kod yaratmaqda xəta baş verdi: ' + error);
+              });
 
-    navigateToIntroductionPage();
+            navigateToIntroductionPage();
+        }
+    });
 }
 
-function generatePDF(fullName, phoneNumber, code) {
-    const doc = new jsPDF();
-    doc.text(20, 20, `Tam Ad: ${fullName}`);
-    doc.text(20, 30, `Telefon Nömrəsi: ${phoneNumber}`);
-    doc.text(20, 40, `İxtiraçı Kodu: ${code}`);
-    doc.text(20, 50, 'Bu kodu fəaliyyətlər zamanı istifadə edəcəksiniz.');
+function checkPhoneNumber(phoneNumber) {
+    return fetch(`https://script.google.com/macros/s/AKfycbxas0tBoiOliiqqoCQOUlG3aRcHZ1bMA2Vor_zMvSnJmnhfUc0KKgw2UGRPGcsqkT234w/exec?phone=${phoneNumber}`)
+        .then(response => response.json())
+        .then(data => data.code || null);
+}
 
-    doc.save(`ixtiraci_kodu_${code}.pdf`);
+function createPDF(fullName, phoneNumber, code, existing) {
+    const doc = new jsPDF();
+
+    doc.text(`Ad Soyad Ata adı: ${fullName}`, 10, 10);
+    doc.text(`Telefon Nömrəsi: ${phoneNumber}`, 10, 20);
+    doc.text(`İxtiraçı Kod: ${code}`, 10, 30);
+
+    if (existing) {
+        doc.text(`Bu kodu artıq istəmisiniz. Bu sizin kodunuzdur, fəaliyyətlərdə istifadə edəcəyinizdən əmin olun.`, 10, 40);
+    } else {
+        doc.text(`Bu kodu fəaliyyətlərdə istifadə edəcəyinizdən əmin olun.`, 10, 40);
+    }
+
+    doc.save(`Ixtiraci-Kod-${code}.pdf`);
 }
