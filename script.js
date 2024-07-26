@@ -32,6 +32,12 @@ function navigateToIntroductionPage() {
     document.getElementById('introduction-page').classList.remove('hidden');
 }
 
+function navigateToLearnCodePage() {
+    document.querySelectorAll('.page').forEach(page => page.classList.add('hidden'));
+    document.getElementById('learn-code-page').classList.remove('hidden');
+}
+
+
 function generateInventorCode(event) {
     event.preventDefault();
 
