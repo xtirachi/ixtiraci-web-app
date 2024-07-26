@@ -1,5 +1,21 @@
 let selectedCountry = '';
 let codeCounter = 1000;
+const passwordLog = {};
+
+function promptPassword(country, correctPassword) {
+    const today = new Date().toLocaleDateString();
+    if (passwordLog[country] && passwordLog[country].date === today) {
+        navigateToCountryOptions(country);
+    } else {
+        const password = prompt("Zəhmət olmasa " + country + " üçün gizli kodu qeyd edin:");
+        if (password === correctPassword) {
+            passwordLog[country] = { date: today };
+            navigateToCountryOptions(country);
+        } else {
+            alert("Gizli kodu yanlış qeyd etdiniz. Votsap vasitəsilə bizimlə əlaqə saxlayın!");
+        }
+    }
+}
 
 function navigateToCountryOptions(country) {
     selectedCountry = country;
@@ -16,17 +32,34 @@ function navigateToIntroductionPage() {
     document.getElementById('introduction-page').classList.remove('hidden');
 }
 
-function navigateToCodePage() {
-    document.querySelectorAll('.page').forEach(page => page.classList.add('hidden'));
-    document.getElementById('code-generation-page').classList.remove('hidden');
-}
-
-function generateCode(event) {
+function generateInventorCode(event) {
     event.preventDefault();
+
     const fullName = document.getElementById('full-name').value;
     const phoneNumber = document.getElementById('phone-number').value;
 
-    codeCounter += 1;
-    const code = codeCounter;
-    alert(`Kodunuz: ${code}`);
+    codeCounter++;
+    const code = codeCounter.toString().padStart(4, '0');
+
+    // Log to Google Sheet
+    const formData = new FormData();
+    formData.append('full-name', fullName);
+    formData.append('phone-number', phoneNumber);
+    formData.append('code', code);
+
+    fetch('https://script.google.com/macros/s/AKfycbw-heNN1_DtrwZsCTDfLq1nmLGX9rXeBWLgNTNApYAc-_mjr54j6q0Ycv-HwsIcRzVxLw/exec', {
+        method: 'POST',
+        body: formData
+    }).then(response => response.json())
+      .then(data => {
+          if (data.result === 'success') {
+              alert(`İxtiraçı kodunuz: ${code}`);
+          } else {
+              alert('Kod yaratmaqda xəta baş verdi: ' + data.error);
+          }
+      }).catch(error => {
+          alert('Kod yaratmaqda xəta baş verdi: ' + error);
+      });
+
+    navigateToIntroductionPage();
 }
