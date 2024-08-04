@@ -52,18 +52,6 @@ button:hover {
     background-color: #005f5f;
 }
 
-a {
-    display: block;
-    margin-top: 10px;
-    color: #005f5f;
-    text-decoration: none;
-    font-size: 14px;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
 form {
     display: flex;
     flex-direction: column;
@@ -85,18 +73,38 @@ form label, form input {
     margin-bottom: 20px;
 }
 
-.country-option {
+.country-card {
     flex: 1;
     margin: 10px;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.country-option img {
+.country-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.country-card img {
     width: 70%;
     height: auto;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
 }
 
-.country-option button {
-    width: 100%;
-    margin-top: 10px;
+.country-info {
+    padding: 20px;
+}
+
+.country-info h3 {
+    color: #ff4500;
+    margin: 10px 0;
+}
+
+.country-info p {
+    color: #005f5f;
 }
