@@ -13,17 +13,18 @@ body {
     text-align: center;
     padding: 20px;
     background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
     width: 90%;
     max-width: 600px;
     margin: 20px auto;
-    transition: transform 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .page.active {
     display: block;
     transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
 }
 
 /* Header styles */
@@ -32,7 +33,8 @@ body {
     margin-bottom: 20px;
     background-color: #007BFF;
     padding: 20px;
-    border-radius: 10px 10px 0 0;
+    border-radius: 15px 15px 0 0;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 #header img {
@@ -41,9 +43,10 @@ body {
 }
 
 h2 {
-    font-size: 24px;
+    font-size: 28px;
     color: #fff;
     margin: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 /* Container for the country rows */
@@ -59,23 +62,22 @@ h2 {
     width: 200px;
     background-color: #fff;
     border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     overflow: hidden;
     cursor: pointer;
-    transition: transform 0.2s;
+    transition: transform 0.3s, box-shadow 0.3s;
     text-align: center;
     padding: 20px;
     margin: 10px;
-    border: 2px solid #007BFF;
+    border: 2px solid transparent;
 }
 
-/* Add slight zoom on hover */
 .country-card:hover {
     transform: scale(1.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     border-color: #FF6347;
 }
 
-/* Image inside the country card */
 .country-card img {
     width: 100%;
     height: auto;
@@ -83,51 +85,56 @@ h2 {
     margin-bottom: 15px;
 }
 
-/* Country information text */
 .country-info h3 {
-    font-size: 1.2em;
+    font-size: 1.4em;
     margin: 10px 0;
     color: #007BFF;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .country-info p {
     color: #777;
+    font-size: 1em;
 }
 
 /* Back button */
 #back-button {
     display: block;
     margin: 20px auto;
-    padding: 10px 20px;
+    padding: 12px 25px;
     background-color: #FF6347;
     color: #fff;
     border: none;
     border-radius: 25px;
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: background-color 0.3s, transform 0.3s;
+    font-size: 1.1em;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Change background color on hover */
 #back-button:hover {
     background-color: #FF4500;
+    transform: scale(1.05);
 }
 
 /* Language selection buttons */
 #language-selection-page button {
     display: block;
-    margin: 10px auto;
-    padding: 10px 20px;
+    margin: 15px auto;
+    padding: 12px 25px;
     background-color: #32CD32;
     color: #fff;
     border: none;
     border-radius: 25px;
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: background-color 0.3s, transform 0.3s;
+    font-size: 1.1em;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Change background color on hover */
 #language-selection-page button:hover {
     background-color: #228B22;
+    transform: scale(1.05);
 }
 
 /* Hidden class */
@@ -190,6 +197,7 @@ h2 {
 #italy-options-page-ru h2,
 #italy-options-page-en h2 {
     color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 /* Engaging buttons */
@@ -201,8 +209,9 @@ button {
     font-size: 16px;
     cursor: pointer;
     border-radius: 25px;
-    transition: background-color 0.2s, transform 0.2s;
+    transition: background-color 0.3s, transform 0.3s;
     margin-top: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 button:hover {
