@@ -27,9 +27,7 @@ function selectLanguage(language) {
 }
 
 function navigateToCountryOptions(country, language) {
-    let pageId = country + '-options-page-' + language;
-    document.getElementById('language-selection-page').classList.add('hidden');
-    document.getElementById(pageId).classList.remove('hidden');
+    window.location.href = `${country}-options-page-${language}.html`;
 }
 
 function navigateToMainPage() {
