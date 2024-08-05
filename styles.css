@@ -1,13 +1,15 @@
+/* General styles */
 body {
-    font-family: Poppins, poppins;
+    font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f2f2f2;
     text-align: center;
+    color: #333;
 }
 
+/* Page styles */
 .page {
-    display: none;
     text-align: center;
     padding: 20px;
     background-color: #fff;
@@ -15,16 +17,22 @@ body {
     border-radius: 10px;
     width: 90%;
     max-width: 600px;
+    margin: 20px auto;
+    transition: transform 0.3s;
 }
 
 .page.active {
     display: block;
+    transform: scale(1.05);
 }
 
 /* Header styles */
 #header {
     text-align: center;
     margin-bottom: 20px;
+    background-color: #007BFF;
+    padding: 20px;
+    border-radius: 10px 10px 0 0;
 }
 
 #header img {
@@ -34,14 +42,15 @@ body {
 
 h2 {
     font-size: 24px;
-    color: #333;
-    margin-bottom: 20px;
+    color: #fff;
+    margin: 0;
 }
 
 /* Container for the country rows */
 .country-row {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     margin-bottom: 20px;
 }
 
@@ -56,19 +65,21 @@ h2 {
     transition: transform 0.2s;
     text-align: center;
     padding: 20px;
-    margin: 10px 10px;
+    margin: 10px;
+    border: 2px solid #007BFF;
 }
 
 /* Add slight zoom on hover */
 .country-card:hover {
-    transform: scale(1.05);
+    transform: scale(1.1);
+    border-color: #FF6347;
 }
 
 /* Image inside the country card */
 .country-card img {
     width: 100%;
     height: auto;
-    border-bottom: 1px solid #eee;
+    border-bottom: 2px solid #eee;
     margin-bottom: 15px;
 }
 
@@ -76,7 +87,7 @@ h2 {
 .country-info h3 {
     font-size: 1.2em;
     margin: 10px 0;
-    color: #333;
+    color: #007BFF;
 }
 
 .country-info p {
@@ -88,7 +99,7 @@ h2 {
     display: block;
     margin: 20px auto;
     padding: 10px 20px;
-    background-color: #f76c6c;
+    background-color: #FF6347;
     color: #fff;
     border: none;
     border-radius: 25px;
@@ -98,6 +109,103 @@ h2 {
 
 /* Change background color on hover */
 #back-button:hover {
-    background-color: #ff4c4c;
+    background-color: #FF4500;
 }
 
+/* Language selection buttons */
+#language-selection-page button {
+    display: block;
+    margin: 10px auto;
+    padding: 10px 20px;
+    background-color: #32CD32;
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+/* Change background color on hover */
+#language-selection-page button:hover {
+    background-color: #228B22;
+}
+
+/* Hidden class */
+.hidden {
+    display: none;
+}
+
+/* Specific page styles */
+#introduction-page {
+    background-color: #FFEB3B;
+}
+
+#language-selection-page {
+    background-color: #4CAF50;
+}
+
+#england-options-page-az,
+#england-options-page-ru,
+#england-options-page-en,
+#japan-options-page-az,
+#japan-options-page-ru,
+#japan-options-page-en,
+#egypt-options-page-az,
+#egypt-options-page-ru,
+#egypt-options-page-en,
+#italy-options-page-az,
+#italy-options-page-ru,
+#italy-options-page-en {
+    background-color: #FFCDD2;
+}
+
+/* Header for specific pages */
+#language-selection-page #header,
+#england-options-page-az #header,
+#england-options-page-ru #header,
+#england-options-page-en #header,
+#japan-options-page-az #header,
+#japan-options-page-ru #header,
+#japan-options-page-en #header,
+#egypt-options-page-az #header,
+#egypt-options-page-ru #header,
+#egypt-options-page-en #header,
+#italy-options-page-az #header,
+#italy-options-page-ru #header,
+#italy-options-page-en #header {
+    background-color: #333;
+}
+
+#language-selection-page h2,
+#england-options-page-az h2,
+#england-options-page-ru h2,
+#england-options-page-en h2,
+#japan-options-page-az h2,
+#japan-options-page-ru h2,
+#japan-options-page-en h2,
+#egypt-options-page-az h2,
+#egypt-options-page-ru h2,
+#egypt-options-page-en h2,
+#italy-options-page-az h2,
+#italy-options-page-ru h2,
+#italy-options-page-en h2 {
+    color: #fff;
+}
+
+/* Engaging buttons */
+button {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 15px 30px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 25px;
+    transition: background-color 0.2s, transform 0.2s;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
