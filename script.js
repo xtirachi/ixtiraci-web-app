@@ -1,14 +1,3 @@
-// Function to prompt for a password
-function promptPassword(travelDestination, password) {
-    const userInput = prompt(`Please enter the password to access ${travelDestination}:`);
-    if (userInput === password) {
-        alert(`Welcome to ${travelDestination}!`);
-        // Here you can add logic to navigate to the specific page or perform any action
-    } else {
-        alert('Incorrect password. Please try again.');
-    }
-}
-
 
 function promptPassword(country, correctPassword) {
     const password = prompt("Zəhmət olmasa " + country + " üçün gizli kodu qeyd edin:");
