@@ -15,16 +15,17 @@ function promptPassword(country, correctPassword) {
     }
 }
 
-function selectLanguage(language) {
-    const urlParams = new URLSearchParams(window.location.search);
-    const country = urlParams.get('country');
-    navigateToCountryOptions(country, language);
+
 
 function navigateToLanguageSelection(country) {
     selectedCountry = country;
     window.location.href = `language-selection.html?country=${country}`;
 }
 
+function selectLanguage(language) {
+    const urlParams = new URLSearchParams(window.location.search);
+    const country = urlParams.get('country');
+    navigateToCountryOptions(country, language);
 
 }
 
