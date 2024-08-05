@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Selection</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <!-- Language Selection Page -->
+    <div id="language-selection-page" class="page hidden">
+        <div id="header">
+            <img src="https://raw.githubusercontent.com/xtirachi/ixtiraci-web-app/b209af74d38f1337e748197898caa3fd1eb5c2d8/Xtirachi%20-%20Vector.svg" alt="logo" class="mx-auto mb-4" style="width: 200px; padding: 20px;">
+            <h2>Dil seçimi</h2>
+        </div>
+        <button onclick="selectLanguage('az')">Azərbaycan dili</button>
+        <button onclick="selectLanguage('ru')">Русский</button>
+        <button onclick="selectLanguage('en')">English</button>
+        <button onclick="navigateToMainPage()" id="back-button">Əsas səhifəyə qayıt</button>
+    </div>
+
+    <!-- England Options Pages -->
+    <div id="england-options-page-az" class="page hidden">
+        <div id="header">
+            <img src="https://raw.githubusercontent.com/xtirachi/ixtiraci-web-app/b209af74d38f1337e748197898caa3fd1eb5c2d8/Xtirachi%20-%20Vector.svg" alt="logo" class="mx-auto mb-4" style="width: 200px; padding: 20px;">
+            <h2>İngiltərəyə səyahət seçimləri - Azərbaycan dili</h2>
+        </div>
+        <button onclick="navigateToLearnCodePage()">İxtiraçı kodunu öyrən</button>
+        <button onclick="navigateToLink('https://xtirachi.github.io/e-info')">Elektron Məlumatlar</button>
+        <button onclick="navigateToLink('https://xtirachi.github.io/psychological-map')">Psixoloji Xəritə</button>
+        <button onclick="navigateToLink('https://xtirachi.github.io/basla')">Səyahətə başla</button>
+        <button onclick="navigateToMainPage()" id="back-button">Əsas səhifəyə qayıt</button>
+    </div>
+
+    <div id="england-options-page-ru" class="page hidden">
+        <div id="header">
+            <img src="https://raw.githubusercontent.com/xtirachi/ixtiraci-web-app/b209af74d38f1337e748197898caa3fd1eb5c2d8/Xtirachi%20-%20Vector.svg" alt="logo" class="mx-auto mb-4" style="width: 200px; padding: 20px;">
+            <h2>Инглиюрию выборы - Русский</h2>
+        </div>
+        <button onclick="navigateToLearnCodePage()">Учите код Иктир</button>
+        <button onclick="navigateToLink('https://xtirachi.github.io/e-info')">Электронная информация</button>
+        <button onclick="navigateToLink('https://xtirachi.github.io/psychological-map')">Психологическая карта</button>
+        <button onclick="navigateToLink('https://xtirachi.github.io/basla')">Начать путешествие</button>
+        <button onclick="navigateToMainPage()" id="back-button">Вернуться на главную</button>
+    </div>
+
+    <div id="england-options-page-en" class="page hidden">
+        <div id="header">
+            <img src="https://raw.githubusercontent.com/xtirachi/ixtiraci-web-app/b209af74d38f1337e748197898caa3fd1eb5c2d8/Xtirachi%20-%20Vector.svg" alt="logo" class="mx-auto mb-4" style="width: 200px; padding: 20px;">
+            <h2>England Travel Options - English</h2>
+        </div>
+        <button onclick="navigateToLearnCodePage()">Learn Inventor Code</button>
+        <button onclick="navigateToLink('https://xtirachi.github.io/e-info')">Electronic Information</button>
+        <button onclick="navigateToLink('https://xtirachi.github.io/psychological-map')">Psychological Map</button>
+        <button onclick="navigateToLink('https://xtirachi.github.io/basla')">Start Journey</button>
+        <button onclick="navigateToMainPage()" id="back-button">Back to Main Page</button>
+    </div>
+
+    <!-- Japan Options Pages -->
+    <div id="japan-options-page-az" class="page hidden">
+        <div id="header">
+            <img src="https://raw.githubusercontent.com/xtirachi/ixtiraci-web-app/b209af74d38f1337e748197898caa3fd1eb5c2d8/Xtirachi%20-%20Vector.svg" alt="logo" class="mx-auto mb-4" style="width: 200px; padding: 20px;">
+            <h2>Yaponiyaya səyahət seçimləri - Azərbaycan dili</h2>
+        </div>
+        <button onclick="navigateToLearnCodePage()">İxtiraçı kodunu öyrən</button>
+        <button onclick="navigateToLink('https://xtirachi.github.io/e-info-jap')">Elektron Məlumatlar</button>
+        <button onclick="navigateToLink('https://xtirachi.github.io/psychological-map-jap')">Psixoloji Xəritə</button>
+        <button onclick="navigateToLink('https://xtirachi.github.io/basla-jap')">Səyahətə başla</button>
+        <button onclick="navigateToMainPage()" id="back-button">Əsas səhifəyə qayıt</button>
+    </div>
+
+    <div id="japan-options-page-ru" class="page hidden">
+        <div id="header">
+            <img src="https://raw.githubusercontent.com/xtirachi/ixtiraci-web-app/b209af74d38f1337e748197898caa3fd1eb5c2d8/Xtirachi%20-%20Vector.svg" alt="logo" class="mx-auto mb-4" style="width: 200px; padding: 20px;">
+            <h2>Японию выборы - Русский</h2>
+        </div>
+        <button onclick="navigateToLearnCodePage()">Учите код Иктир</button>
+        <button onclick="navigateToLink('https://xtirachi.github.io/e-info-jap')">Электронная информация</button>
+        <button onclick="navigateToLink('https://xtirachi.github.io/psychological-map-jap')">Психологическая карта</button>
+        <button onclick="navigateToLink('https://xtirachi.github.io/basla-jap')">Начать путешествие</button>
+        <button onclick="navigateToMainPage()" id="back-button">Вернуться на главную</button>
+    </div>
+
+    <div id="japan-options-page-en" class="page hidden">
+        <div id="header">
+            <img src="https://raw.githubusercontent.com/xtirachi/ixtiraci-web-app/b209af74d38f1337e748197898caa3fd1eb5c2d8/Xtirachi%20-%20Vector.svg" alt="logo" class="mx-auto mb-4" style="width: 200px; padding: 20px;">
+            <h2>Japan Travel Options - English</h2>
+        </div>
+        <button onclick="navigateToLearnCodePage()">Learn Inventor Code</button>
+        <button onclick="navigateToLink('https://xtirachi.github.io/e-info-jap')">Electronic Information</button>
+        <button onclick="navigateToLink('https://xtirachi.github.io/psychological-map-jap')">Psychological Map</button>
+        <button onclick="navigateToLink('https://xtirachi.github.io/basla-jap')">Start Journey</button>
+        <button onclick="navigateToMainPage()" id="back-button">Back to Main Page</button>
+    </div>
+
+    <!-- Egypt Options Pages -->
+    <div id="egypt-options-page-az" class="page hidden">
+        <div id="header">
+            <img src="https://raw.githubusercontent.com/xtirachi/ixtiraci-web-app/b209af74d38f1337e748197898caa3fd1eb5c2d8/Xtirachi%20-%20Vector.svg" alt="logo" class="mx-auto mb-4" style="width: 200px; padding: 20px;">
+            <h2>Misirə səyahət seçimləri - Azərbaycan dili</h2>
+        </div>
+        <button onclick="navigateToLearnCodePage()">İxtiraçı kodunu öyrən</button>
+        <button onclick="navigateToLink('https://xtirachi.github.io/e-info-egp')">Elektron Məlumatlar</button>
+        <button onclick="navigateToLink('https://xtirachi.github.io/psychological-map-egp')">Psixoloji Xəritə</button>
+        <button onclick="navigateToLink('https://xtirachi.github.io/basla-egp')">Səyahətə başla</button>
+        <button onclick="navigateToMainPage()" id="back-button">Əsas səhifəyə qayıt</button>
+    </div>
+
+    <div id="egypt-options-page-ru" class="page hidden">
+        <div id="header">
+            <img src="https://raw.githubusercontent.com/xtirachi/ixtiraci-web-app/b209af74d38f1337e748197898caa3fd1eb5c2d8/Xtirachi%20-%20Vector.svg" alt="logo" class="mx-auto mb-4" style="width: 200px; padding: 20px;">
+            <h2>Египет опции путешествий - Русский</h2>
+        </div>
+        <button onclick="navigateToLearnCodePage()">Учите код Иктир</button>
+        <button onclick="navigateToLink('https://xtirachi.github.io/e-info-egp')">Электронная информация</button>
+        <button onclick="navigateToLink('https://xtirachi.github.io/psychological-map-egp')">Психологическая карта</button>
+        <button onclick="navigateToLink('https://xtirachi.github.io/basla-egp')">Начать путешествие</button>
+        <button onclick="navigateToMainPage()" id="back-button">Вернуться на главную</button>
+    </div>
+
+    <div id="egypt-options-page-en" class="page hidden">
+        <div id="header">
+            <img src="https://raw.githubusercontent.com/xtirachi/ixtiraci-web-app/b209af74d38f1337e748197898caa3fd1eb5c2d8/Xtirachi%20-%20Vector.svg" alt="logo" class="mx-auto mb-4" style="width: 200px; padding: 20px;">
+            <h2>Egypt Travel Options - English</h2>
+        </div>
+        <button onclick="navigateToLearnCodePage()">Learn Inventor Code</button>
+        <button onclick="navigateToLink('https://xtirachi.github.io/e-info-egp')">Electronic Information</button>
+        <button onclick="navigateToLink('https://xtirachi.github.io/psychological-map-egp')">Psychological Map</button>
+        <button onclick="navigateToLink('https://xtirachi.github.io/basla-egp')">Start Journey</button>
+        <button onclick="navigateToMainPage()" id="back-button">Back to Main Page</button>
+    </div>
+
+    <!-- Italy Options Pages -->
+    <div id="italy-options-page-az" class="page hidden">
+        <div id="header">
+            <img src="https://raw.githubusercontent.com/xtirachi/ixtiraci-web-app/b209af74d38f1337e748197898caa3fd1eb5c2d8/Xtirachi%20-%20Vector.svg" alt="logo" class="mx-auto mb-4" style="width: 200px; padding: 20px;">
+            <h2>İtaliyaya səyahət seçimləri - Azərbaycan dili</h2>
+        </div>
+        <button onclick="navigateToLearnCodePage()">İxtiraçı kodunu öyrən</button>
+        <button onclick="navigateToLink('https://xtirachi.github.io/e-info-ita')">Elektron Məlumatlar</button>
+        <button onclick="navigateToLink('https://xtirachi.github.io/psychological-map-ita')">Psixoloji Xəritə</button>
+        <button onclick="navigateToLink('https://xtirachi.github.io/basla-ita')">Səyahətə başla</button>
+        <button onclick="navigateToMainPage()" id="back-button">Əsas səhifəyə qayıt</button>
+    </div>
+
+    <div id="italy-options-page-ru" class="page hidden">
+        <div id="header">
+            <img src="https://raw.githubusercontent.com/xtirachi/ixtiraci-web-app/b209af74d38f1337e748197898caa3fd1eb5c2d8/Xtirachi%20-%20Vector.svg" alt="logo" class="mx-auto mb-4" style="width: 200px; padding: 20px;">
+            <h2>Италия опции путешествий - Русский</h2>
+        </div>
+        <button onclick="navigateToLearnCodePage()">Учите код Иктир</button>
+        <button onclick="navigateToLink('https://xtirachi.github.io/e-info-ita')">Электронная информация</button>
+        <button onclick="navigateToLink('https://xtirachi.github.io/psychological-map-ita')">Психологическая карта</button>
+        <button onclick="navigateToLink('https://xtirachi.github.io/basla-ita')">Начать путешествие</button>
+        <button onclick="navigateToMainPage()" id="back-button">Вернуться на главную</button>
+    </div>
+
+    <div id="italy-options-page-en" class="page hidden">
+        <div id="header">
+            <img src="https://raw.githubusercontent.com/xtirachi/ixtiraci-web-app/b209af74d38f1337e748197898caa3fd1eb5c2d8/Xtirachi%20-%20Vector.svg" alt="logo" class="mx-auto mb-4" style="width: 200px; padding: 20px;">
+            <h2>Italy Travel Options - English</h2>
+        </div>
+        <button onclick="navigateToLearnCodePage()">Learn Inventor Code</button>
+        <button onclick="navigateToLink('https://xtirachi.github.io/e-info-ita')">Electronic Information</button>
+        <button onclick="navigateToLink('https://xtirachi.github.io/psychological-map-ita')">Psychological Map</button>
+        <button onclick="navigateToLink('https://xtirachi.github.io/basla-ita')">Start Journey</button>
+        <button onclick="navigateToMainPage()" id="back-button">Back to Main Page</button>
+    </div>
+</body>
+</html>
