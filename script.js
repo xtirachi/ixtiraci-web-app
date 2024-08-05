@@ -1,3 +1,5 @@
+let selectedCountry = '';
+
 
 function promptPassword(country, correctPassword) {
     const password = prompt("Zəhmət olmasa " + country + " üçün gizli kodu qeyd edin:");
