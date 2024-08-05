@@ -5,9 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>İxtiraçı paneli</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.68/pdfmake.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.68/vfs_fonts.js"></script>
-    <script src="script.js" defer></script>
+    <script src="scripts.js" defer></script>
 </head>
 <body>
     <!-- Logo and Page Title -->
@@ -16,82 +14,76 @@
         <h1>İxtiraçı paneli</h1>
     </div>
 
+    <!-- Main Page -->
+    <div id="main-page" class="page">
+        <h2>İxtiraçı panelinə xoş gəldiniz</h2>
+        <button onclick="navigateToIntroductionPage()">Tapşırıqları yüklə</button>
+        <button onclick="navigateToPsychologicalPage()">Psixoloji Xəritə</button>
+    </div>
+
     <!-- Introduction Page -->
-    <div id="introduction-page" class="page">
+    <div id="introduction-page" class="page hidden">
         <h2>Səyahət Seçin</h2>
         <div class="country-row">
-            <div class="country-option">
+            <div class="country-card" onclick="promptPassword('İngiltərəyə səyahət', 'xtirachieng')">
                 <img src="https://i.ibb.co/bJ2XSb2/england.png" alt="İngiltərəyə səyahət">
-                <button onclick="promptPassword('england', 'xtirachieng')">İngiltərəyə səyahət</button>
+                <div class="country-info">
+                    <h3>İngiltərəyə səyahət</h3>
+                    <p>Exploring England</p>
+                </div>
             </div>
-            <div class="country-option">
+            <div class="country-card" onclick="promptPassword('Yaponiyaya səyahət', 'xtirachijap')">
                 <img src="https://i.ibb.co/zZq2Nsy/japan.png" alt="Yaponiyaya səyahət">
-                <button onclick="promptPassword('japan', 'xtirachijap')">Yaponiyaya səyahət</button>
+                <div class="country-info">
+                    <h3>Yaponiyaya səyahət</h3>
+                    <p>Exploring Japan</p>
+                </div>
             </div>
         </div>
         <div class="country-row">
-            <div class="country-option">
+            <div class="country-card" onclick="promptPassword('Misirə səyahət', 'xtirachiegy')">
                 <img src="https://i.ibb.co/t4LnNRF/egypt.png" alt="Misirə səyahət">
-                <button onclick="promptPassword('egypt', 'xtirachiegy')">Misirə səyahət</button>
+                <div class="country-info">
+                    <h3>Misirə səyahət</h3>
+                    <p>Exploring Egypt</p>
+                </div>
             </div>
-            <div class="country-option">
+            <div class="country-card" onclick="promptPassword('İtaliyaya səyahət', 'xtirachiita')">
                 <img src="https://i.ibb.co/H2bN039/italy.png" alt="İtaliyaya səyahət">
-                <button onclick="promptPassword('italy', 'xtirachiita')">İtaliyaya səyahət</button>
+                <div class="country-info">
+                    <h3>İtaliyaya səyahət</h3>
+                    <p>Exploring Italy</p>
+                </div>
             </div>
         </div>
+        <button onclick="navigateToMainPage()" id="back-button">Əsas səhifəyə qayıt</button>
     </div>
 
-    <!-- England Options Selection Page -->
-    <div id="england-options-page" class="page hidden">
-        <h2>İngiltərəyə səyahət seçimləri</h2>
-        <button onclick="showLearnCodePage()">İxtiraçı kodunu öyrən</button>
-        <button onclick="navigateToLink('https://xtirachi.github.io/e-info')">Elektron Məlumatlar</button>
-        <button onclick="navigateToLink('https://xtirachi.github.io/psychological-map')">Psixoloji Xəritə</button>
-        <button onclick="navigateToLink('https://xtirachi.github.io/basla')">Səyahətə başla</button>
+    <!-- Language Selection Page -->
+    <div id="language-selection-page" class="page hidden">
+        <h2>Dil seçimi</h2>
+        <button onclick="selectLanguage('Azərbaycan dili')">Azərbaycan dili</button>
+        <button onclick="selectLanguage('Русский')">Русский</button>
+        <button onclick="selectLanguage('English')">English</button>
         <button onclick="navigateToIntroductionPage()" id="back-button">Əsas səhifəyə qayıt</button>
     </div>
 
-    <!-- Japan Options Selection Page -->
-    <div id="japan-options-page" class="page hidden">
-        <h2>Yaponiyaya səyahət seçimləri</h2>
-        <button onclick="showLearnCodePage()">İxtiraçı kodunu öyrən</button>
-        <button onclick="navigateToLink('https://xtirachi.github.io/e-info-jap/')">Elektron Məlumatlar</button>
-        <button onclick="navigateToLink('https://xtirachi.github.io/psychological-map-jap/')">Psixoloji Xəritə</button>
-        <button onclick="navigateToLink('https://xtirachi.github.io/basla-jap/')">Səyahətə başla</button>
+    <!-- Thematic Options Page -->
+    <div id="thematic-options-page" class="page hidden">
+        <h2 id="thematic-title">Mövzular</h2>
+        <button id="btn-cultural" onclick="navigateToContent('Cultural Heritage and Travel')"></button>
+        <button id="btn-art" onclick="navigateToContent('Art and Creativity')"></button>
+        <button id="btn-steam" onclick="navigateToContent('STEAM and Innovation')"></button>
+        <button id="btn-experiments" onclick="navigateToContent('Experiments and Research')"></button>
         <button onclick="navigateToIntroductionPage()" id="back-button">Əsas səhifəyə qayıt</button>
     </div>
 
-    <!-- Egypt Options Selection Page -->
-    <div id="egypt-options-page" class="page hidden">
-        <h2>Misirə səyahət seçimləri</h2>
-        <button onclick="showLearnCodePage()">İxtiraçı kodunu öyrən</button>
-        <button onclick="navigateToLink('https://xtirachi.github.io/e-info-egp/')">Elektron Məlumatlar</button>
-        <button onclick="navigateToLink('https://xtirachi.github.io/psychological-map-egp/')">Psixoloji Xəritə</button>
-        <button onclick="navigateToLink('https://xtirachi.github.io/basla-egp/')">Səyahətə başla</button>
+    
         <button onclick="navigateToIntroductionPage()" id="back-button">Əsas səhifəyə qayıt</button>
     </div>
-
-    <!-- Italy Options Selection Page -->
-    <div id="italy-options-page" class="page hidden">
-        <h2>İtaliyaya səyahət seçimləri</h2>
-        <button onclick="showLearnCodePage()">İxtiraçı kodunu öyrən</button>
-        <button onclick="navigateToLink('https://xtirachi.github.io/e-info-ita/')">Elektron Məlumatlar</button>
-        <button onclick="navigateToLink('https://xtirachi.github.io/psychological-map-ita/')">Psixoloji Xəritə</button>
-        <button onclick="navigateToLink('https://xtirachi.github.io/basla-ita/')">Səyahətə başla</button>
-        <button onclick="navigateToIntroductionPage()" id="back-button">Əsas səhifəyə qayıt</button>
-    </div>
-
-    <!-- Learn Inventor Code Page -->
-    <div id="learn-code-page" class="page hidden">
-        <h2>İxtiraçı kodunu öyrən</h2>
-        <form id="learn-code-form" onsubmit="generateInventorCode(event)">
-            <label for="full-name">Ad Soyad Ata adı:</label>
-            <input type="text" id="full-name" name="full-name" required>
-            <label for="phone-number">Telefon Nömrəsi (Votsap ilə əlaqə üçün) - 0702342342:</label>
-            <input type="text" id="phone-number" name="phone-number" required>
-            <button type="submit">Göndər</button>
-        </form>
-        <button onclick="navigateToIntroductionPage()" id="back-button">Əsas səhifəyə qayıt</button>
+            </div>
+        </div>
+        <button onclick="navigateToMainPage()" id="back-button">Əsas səhifəyə qayıt</button>
     </div>
 </body>
 </html>
