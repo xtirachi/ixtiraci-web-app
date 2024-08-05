@@ -1,28 +1,14 @@
 <!DOCTYPE html>
-<html lang="az">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>İxtiraçı paneli</title>
+    <title>Country Selector</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="scripts.js" defer></script>
 </head>
 <body>
-    <!-- Logo and Page Title -->
-    <div id="header">
-        <img src="https://i.ibb.co/7XNQPGC/logo.png" alt="Logo" id="logo">
-        <h1>İxtiraçı paneli</h1>
-    </div>
-
-    <!-- Main Page -->
-    <div id="main-page" class="page">
-        <h2>İxtiraçı panelinə xoş gəldiniz</h2>
-        <button onclick="navigateToIntroductionPage()">Tapşırıqları yüklə</button>
-        <button onclick="navigateToPsychologicalPage()">Psixoloji Xəritə</button>
-    </div>
-
     <!-- Introduction Page -->
-    <div id="introduction-page" class="page hidden">
+    <div id="introduction-page" class="page">
         <h2>Səyahət Seçin</h2>
         <div class="country-row">
             <div class="country-card" onclick="promptPassword('İngiltərəyə səyahət', 'xtirachieng')">
@@ -54,33 +40,6 @@
                     <h3>İtaliyaya səyahət</h3>
                     <p>Exploring Italy</p>
                 </div>
-            </div>
-        </div>
-        <button onclick="navigateToMainPage()" id="back-button">Əsas səhifəyə qayıt</button>
-    </div>
-
-    <!-- Language Selection Page -->
-    <div id="language-selection-page" class="page hidden">
-        <h2>Dil seçimi</h2>
-        <button onclick="selectLanguage('Azərbaycan dili')">Azərbaycan dili</button>
-        <button onclick="selectLanguage('Русский')">Русский</button>
-        <button onclick="selectLanguage('English')">English</button>
-        <button onclick="navigateToIntroductionPage()" id="back-button">Əsas səhifəyə qayıt</button>
-    </div>
-
-    <!-- Thematic Options Page -->
-    <div id="thematic-options-page" class="page hidden">
-        <h2 id="thematic-title">Mövzular</h2>
-        <button id="btn-cultural" onclick="navigateToContent('Cultural Heritage and Travel')"></button>
-        <button id="btn-art" onclick="navigateToContent('Art and Creativity')"></button>
-        <button id="btn-steam" onclick="navigateToContent('STEAM and Innovation')"></button>
-        <button id="btn-experiments" onclick="navigateToContent('Experiments and Research')"></button>
-        <button onclick="navigateToIntroductionPage()" id="back-button">Əsas səhifəyə qayıt</button>
-    </div>
-
-    
-        <button onclick="navigateToIntroductionPage()" id="back-button">Əsas səhifəyə qayıt</button>
-    </div>
             </div>
         </div>
         <button onclick="navigateToMainPage()" id="back-button">Əsas səhifəyə qayıt</button>
