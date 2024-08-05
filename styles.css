@@ -24,6 +24,7 @@ body {
     transition: transform 0.2s;
     text-align: center;
     padding: 20px;
+    margin: 10px 10px;
 }
 
 /* Add slight zoom on hover */
