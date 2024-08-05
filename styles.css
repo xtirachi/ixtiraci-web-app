@@ -6,6 +6,38 @@ body {
     text-align: center;
 }
 
+.page {
+    display: none;
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    width: 90%;
+    max-width: 600px;
+}
+
+.page.active {
+    display: block;
+}
+
+/* Header styles */
+#header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#header img {
+    max-width: 100%;
+    height: auto;
+}
+
+h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
 /* Container for the country rows */
 .country-row {
     display: flex;
