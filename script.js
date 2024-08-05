@@ -1,137 +1,17 @@
-let selectedCountry = '';
-let codeCounter = 1000;
-const passwordLog = {};
-
-function promptPassword(country, correctPassword) {
-    const today = new Date().toLocaleDateString();
-    if (passwordLog[country] && passwordLog[country].date === today) {
-        navigateToCountryOptions(country);
+// Function to prompt for a password
+function promptPassword(travelDestination, password) {
+    const userInput = prompt(`Please enter the password to access ${travelDestination}:`);
+    if (userInput === password) {
+        alert(`Welcome to ${travelDestination}!`);
+        // Here you can add logic to navigate to the specific page or perform any action
     } else {
-        const password = prompt("Zəhmət olmasa " + country + " üçün gizli kodu qeyd edin:");
-        if (password === correctPassword) {
-            passwordLog[country] = { date: today };
-            navigateToCountryOptions(country);
-        } else {
-            alert("Gizli kodu yanlış qeyd etdiniz. Votsap vasitəsilə bizimlə əlaqə saxlayın!");
-        }
+        alert('Incorrect password. Please try again.');
     }
 }
 
-function navigateToCountryOptions(country) {
-    selectedCountry = country;
-    document.getElementById('introduction-page').classList.add('hidden');
-    document.getElementById(`${country}-options-page`).classList.remove('hidden');
-}
-
-function navigateToLink(url) {
-    window.location.href = url;
-}
-
-function navigateToIntroductionPage() {
-    document.querySelectorAll('.page').forEach(page => page.classList.add('hidden'));
-    document.getElementById('introduction-page').classList.remove('hidden');
-}
-
-function showLearnCodePage() {
-    document.querySelectorAll('.page').forEach(page => page.classList.add('hidden'));
-    document.getElementById('learn-code-page').classList.remove('hidden');
-}
-
-function generateInventorCode(event) {
-    event.preventDefault();
-
-    const fullName = document.getElementById('full-name').value;
-    const phoneNumber = document.getElementById('phone-number').value;
-
-    checkPhoneNumber(phoneNumber).then(existingCode => {
-        if (existingCode) {
-            createPDF(fullName, phoneNumber, existingCode, true);
-        } else {
-            codeCounter++;
-            const code = codeCounter.toString().padStart(4, '0');
-
-            // Log to Google Sheet
-            const formData = new FormData();
-            formData.append('full-name', fullName);
-            formData.append('phone-number', phoneNumber);
-            formData.append('code', code);
-
-            fetch('https://script.google.com/macros/s/AKfycby1krMc6flS5at_5Lj6Q38DC9aOuLnLVUnbHsidvY4SdDWr02fFgCaq1Yrmx9mh3Sh3eQ/exec', {
-                method: 'POST',
-                body: formData
-            }).then(response => response.json())
-              .then(data => {
-                  if (data.result === 'success') {
-                      createPDF(fullName, phoneNumber, code, false);
-                  } else {
-                      alert('Kod yaratmaqda xəta baş verdi: ' + data.error);
-                  }
-              }).catch(error => {
-                  alert('Kod yaratmaqda xəta baş verdi: ' + error);
-              });
-
-            navigateToIntroductionPage();
-        }
-    });
-}
-
-function checkPhoneNumber(phoneNumber) {
-    return fetch(`https://script.google.com/macros/s/AKfycby1krMc6flS5at_5Lj6Q38DC9aOuLnLVUnbHsidvY4SdDWr02fFgCaq1Yrmx9mh3Sh3eQ/exec?phone=${phoneNumber}`)
-        .then(response => response.json())
-        .then(data => data.code || null);
-}
-
-function createPDF(fullName, phoneNumber, code, existing) {
-    const logoUrl = 'https://i.ibb.co/7XNQPGC/logo.png';
-
-    const docDefinition = {
-        content: [
-            {
-                image: logoUrl,
-                width: 100,
-                alignment: 'center'
-            },
-            {
-                text: 'İxtiraçı Paneli',
-                style: 'header',
-                alignment: 'center',
-                margin: [0, 10, 0, 20]
-            },
-            {
-                text: `Ad Soyad Ata adı: ${fullName}`,
-                style: 'subheader'
-            },
-            {
-                text: `Telefon Nömrəsi: ${phoneNumber}`,
-                style: 'subheader'
-            },
-            {
-                text: `İxtiraçı Kod: ${code}`,
-                style: 'subheader'
-            },
-            {
-                text: existing ? 
-                    'Bu kodu artıq istəmisiniz. Bu sizin kodunuzdur, fəaliyyətlərdə istifadə edəcəyinizdən əmin olun.' :
-                    'Bu kodu fəaliyyətlərdə istifadə edəcəyinizdən əmin olun.',
-                style: 'paragraph',
-                margin: [0, 10, 0, 0]
-            }
-        ],
-        styles: {
-            header: {
-                fontSize: 18,
-                bold: true
-            },
-            subheader: {
-                fontSize: 14,
-                margin: [0, 5, 0, 5]
-            },
-            paragraph: {
-                fontSize: 12,
-                margin: [0, 5, 0, 5]
-            }
-        }
-    };
-
-    pdfMake.createPdf(docDefinition).download(`Ixtiraci-Kod-${code}.pdf`);
+// Function to navigate back to the main page
+function navigateToMainPage() {
+    // Logic to navigate back to the main page
+    alert('Navigating to the main page...');
+    // You can replace the alert with actual navigation code
 }
