@@ -1,7 +1,15 @@
+body {
+    font-family: Poppins, poppins;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2;
+    text-align: center;
+}
+
 /* Container for the country rows */
 .country-row {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     margin-bottom: 20px;
 }
 
