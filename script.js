@@ -17,23 +17,24 @@ function promptPassword(country, correctPassword) {
 
 function navigateToLanguageSelection(country) {
     selectedCountry = country;
-    document.getElementById('country-selection').classList.add('hidden');
-    document.getElementById('language-selection-page').classList.remove('hidden');
+    window.location.href = `language-selection.html?country=${country}`;
 }
 
 function selectLanguage(language) {
-    navigateToCountryOptions(language);
+    const urlParams = new URLSearchParams(window.location.search);
+    const country = urlParams.get('country');
+    navigateToCountryOptions(country, language);
 }
 
-function navigateToCountryOptions(language) {
-    let pageId = selectedCountry + '-options-page-' + language;
+function navigateToCountryOptions(country, language) {
+    let pageId = country + '-options-page-' + language;
     document.getElementById('language-selection-page').classList.add('hidden');
     document.getElementById(pageId).classList.remove('hidden');
 }
 
 function navigateToMainPage() {
     document.querySelectorAll('.page').forEach(page => page.classList.add('hidden'));
-    document.getElementById('country-selection').classList.remove('hidden');
+    document.getElementById('introduction-page').classList.remove('hidden');
 }
 
 function navigateToLink(url) {
@@ -45,5 +46,9 @@ function navigateToLearnCodePage() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    navigateToMainPage();
+    if (window.location.pathname.includes('language-selection.html')) {
+        // Handle the language selection page logic
+    } else {
+        navigateToMainPage();
+    }
 });
