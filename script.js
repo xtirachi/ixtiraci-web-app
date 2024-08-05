@@ -4,13 +4,13 @@ let selectedCountry = '';
 function promptPassword(country, correctPassword) {
     const password = prompt("Zəhmət olmasa " + country + " üçün gizli kodu qeyd edin:");
     if (password === correctPassword) {
-        navigateToLanguageSelection(country);
+        navigateToLanguageSelection();
     } else {
         alert("Gizli kodu yanlış qeyd etdiniz. Votsap vasitəsilə bizimlə əlaqə saxlayın!");
     }
 }
 
-function navigateToLanguageSelection(country) {
+function navigateToLanguageSelection() {
     selectedCountry = country;
     document.getElementById('introduction-page').classList.add('hidden');
     document.getElementById('language-selection-page').classList.remove('hidden');
