@@ -1,4 +1,3 @@
-
 /* General styles */
 body {
     font-family: 'Poppins', Poppins;
@@ -7,6 +6,7 @@ body {
     background-color: #721c93;
     text-align: center;
     color: #fc8404;
+    /* The body styles set the font, background, and text color for the entire page */
 }
 
 /* Page styles */
@@ -20,12 +20,14 @@ body {
     max-width: 600px;
     margin: 20px auto;
     transition: transform 0.3s, box-shadow 0.3s;
+    /* The .page class styles the main content areas with padding, background, shadow, and rounded corners */
 }
 
 .page.active {
     display: block;
     transform: scale(1.05);
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+    /* The .page.active class is used to emphasize an active page, enlarging it slightly with a stronger shadow */
 }
 
 /* Header styles */
@@ -34,13 +36,15 @@ body {
     margin-bottom: 20px;
     background-color: #ffffff;
     padding: 20px;
-    border-radius: 15px 15px 15px 15px;
+    border-radius: 15px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    /* The #header styles the header section, adding padding, a white background, and a shadow */
 }
 
 #header img {
     max-width: 100%;
     height: auto;
+    /* Ensures images in the header are responsive */
 }
 
 h2 {
@@ -48,6 +52,7 @@ h2 {
     color: #fc8404;
     margin: 0;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    /* The h2 styles define the appearance of headers, including font size, color, and shadow */
 }
 
 /* Container for the country rows */
@@ -56,6 +61,7 @@ h2 {
     justify-content: center;
     flex-wrap: wrap;
     margin-bottom: 20px;
+    /* The .country-row styles create a flex container for country cards, centering them and allowing wrapping */
 }
 
 /* Individual country card */
@@ -71,12 +77,14 @@ h2 {
     padding: 20px;
     margin: 10px;
     border: 2px solid transparent;
+    /* The .country-card styles define the appearance of each card with padding, shadow, and hover effects */
 }
 
 .country-card:hover {
     transform: scale(1.1);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     border-color: #FF6347;
+    /* Adds hover effects to the country cards, enlarging and changing the border color */
 }
 
 .country-card img {
@@ -84,6 +92,7 @@ h2 {
     height: auto;
     border-bottom: 2px solid #eee;
     margin-bottom: 15px;
+    /* Ensures images within cards are responsive and adds a border below the image */
 }
 
 .country-info h3 {
@@ -91,80 +100,79 @@ h2 {
     margin: 10px 0;
     color: #f96b0d;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    /* Styles for the country info headers, setting font size, color, and text shadow */
 }
 
 .country-info p {
     color: #777;
     font-size: 1em;
+    /* Styles for the paragraph text within country info, setting color and font size */
 }
 
 /* Back button */
 #back-button {
     display: block;
-    margin: 10px 10px 60px 160px;
+    margin: 10px auto;
     padding: 12px 25px;
     background-color: #FF6347;
     color: #562193;
     border: none;
-    border-radius: 0px 25px 0px 25px;
+    border-radius: 25px;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s;
     font-size: 1.2em;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    /* Styles for the back button, adding padding, rounded corners, and hover effects */
 }
 
 #back-button:hover {
     background-color: #FF4500;
     transform: scale(1.05);
+    /* Hover effect for the back button */
 }
 
 /* Code button */
 #code-button {
     display: block;
-    margin: 50px 10px 10px 160px;
+    margin: 50px auto;
     padding: 12px 45px;
     background-color: #FF6347;
     color: #fff;
     border: none;
-    border-radius: 25px 0px 25px 0px;
+    border-radius: 25px;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s;
     font-size: 1.3em;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-button:active {
-  scale: 1;
+    /* Styles for the code button, similar to the back button but with a larger margin */
 }
 
 #code-button:hover {
     background-color: #FF4500;
     transform: scale(1.05);
+    /* Hover effect for the code button */
 }
 
-
-/* start button */
+/* Start button */
 #start-button {
     display: block;
-    margin: 20px 20px 20px 160px;
+    margin: 20px auto;
     padding: 40px 25px;
     background-color: #FF6347;
     color: #fff;
     border: none;
-    border-radius: 5px 45px 45px 5px;
+    border-radius: 25px;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s;
     font-size: 1.5em;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    /* Styles for the start button, with larger padding and font size */
 }
 
 #start-button:hover {
     background-color: #FF4500;
     transform: scale(1.05);
-}
-
-button:active {
-  scale: 1;
+    /* Hover effect for the start button */
 }
 
 /* Language selection buttons */
@@ -180,27 +188,24 @@ button:active {
     transition: background-color 0.3s, transform 0.3s;
     font-size: 1.1em;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    /* Styles for language selection buttons, making them centered with padding and hover effects */
 }
 
 #language-selection-page button:hover {
     background-color: #ff7908;
     transform: scale(1.05);
+    /* Hover effect for language selection buttons */
 }
 
 /* Hidden class */
 .hidden {
     display: none;
+    /* Utility class to hide elements */
 }
 
 /* Specific page styles */
-#introduction-page {
-    background-color: #721c93;
-}
-
-#language-selection-page {
-    background-color: #721c93;
-}
-
+#introduction-page,
+#language-selection-page,
 #england-options-page-az,
 #england-options-page-ru,
 #england-options-page-en,
@@ -214,8 +219,7 @@ button:active {
 #italy-options-page-ru,
 #italy-options-page-en {
     background-color: #721c93;
-  
-
+    /* Background color for specific pages */
 }
 
 /* Header for specific pages */
@@ -233,6 +237,7 @@ button:active {
 #italy-options-page-ru #header,
 #italy-options-page-en #header {
     background-color: #ffffff;
+    /* Background color for headers on specific pages */
 }
 
 #language-selection-page h2,
@@ -250,24 +255,56 @@ button:active {
 #italy-options-page-en h2 {
     color: #f96b0d;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    /* Styling for headers on specific pages */
 }
 
 /* Engaging buttons */
 button {
-  margin: 5px 200px 5px 120px;  
-  background-color: #ff5e0f;
+    margin: 5px auto;
+    background-color: #ff5e0f;
     color: #fff;
     border: none;
     padding: 15px 30px;
     font-size: 16px;
     cursor: pointer;
-    border-radius: 5px 25px 25px 5px;
+    border-radius: 25px;
     transition: background-color 0.3s, transform 0.3s;
     margin-top: 20px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    /* General button styling to ensure consistency */
 }
 
 button:hover {
     background-color: #0056b3;
     transform: scale(1.05);
+    /* Hover effect for buttons */
+}
+
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+    .page {
+        width: 95%;
+        padding: 15px;
+        /* On smaller screens, the page width is increased and padding is adjusted */
+    }
+
+    .country-card {
+        width: 45%;
+        margin: 5px;
+        /* Country cards take up more width on smaller screens and have reduced margins */
+    }
+
+    button {
+        margin: 10px auto;
+        padding: 10px 20px;
+        font-size: 14px;
+        /* Buttons have smaller margins and padding on mobile */
+    }
+
+    #back-button, #code-button, #start-button {
+        margin: 20px auto;
+        padding: 10px 20px;
+        font-size: 1em;
+        /* Buttons for navigation and actions are scaled down for mobile */
+    }
 }
