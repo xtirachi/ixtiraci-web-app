@@ -161,7 +161,7 @@ h2 {
 #language-selection-page button {
     display: block;
     margin: 15px auto;
-    padding: 12px 25px;
+    padding: 0px 0px;
     background-color: #ff710a;
     color: #fff;
     border: none;
