@@ -12,7 +12,7 @@ body {
 /* Page styles */
 .page {
     text-align: center;
-    padding: 0px;
+    padding: 10px;
     background-color: #721c93;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
     border-radius: 15px;
@@ -101,15 +101,15 @@ h2 {
 /* Back button */
 #back-button {
     display: block;
-    margin: 20px auto;
+    margin: 10px 10px 60px 160px;
     padding: 12px 25px;
     background-color: #FF6347;
-    color: #fff;
+    color: #562193;
     border: none;
-    border-radius: 25px;
+    border-radius: 0px 25px 0px 25px;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s;
-    font-size: 1.1em;
+    font-size: 1.2em;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -121,16 +121,20 @@ h2 {
 /* Code button */
 #code-button {
     display: block;
-    margin: 20px auto;
-    padding: 12px 25px;
+    margin: 50px 10px 10px 160px;
+    padding: 12px 45px;
     background-color: #FF6347;
     color: #fff;
     border: none;
-    border-radius: 25px;
+    border-radius: 25px 0px 25px 0px;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s;
-    font-size: 1.1em;
+    font-size: 1.3em;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+button:active {
+  scale: 1;
 }
 
 #code-button:hover {
@@ -138,24 +142,29 @@ h2 {
     transform: scale(1.05);
 }
 
-/* Code button */
+
+/* start button */
 #start-button {
     display: block;
-    margin: 20px auto;
-    padding: 12px 25px;
+    margin: 20px 20px 20px 160px;
+    padding: 40px 25px;
     background-color: #FF6347;
     color: #fff;
     border: none;
-    border-radius: 25px;
+    border-radius: 5px 45px 45px 5px;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s;
-    font-size: 1.1em;
+    font-size: 1.5em;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 #start-button:hover {
     background-color: #FF4500;
     transform: scale(1.05);
+}
+
+button:active {
+  scale: 1;
 }
 
 /* Language selection buttons */
@@ -205,6 +214,8 @@ h2 {
 #italy-options-page-ru,
 #italy-options-page-en {
     background-color: #721c93;
+  
+
 }
 
 /* Header for specific pages */
@@ -243,13 +254,14 @@ h2 {
 
 /* Engaging buttons */
 button {
-    background-color: #007BFF;
+  margin: 5px 200px 5px 120px;  
+  background-color: #ff5e0f;
     color: #fff;
     border: none;
     padding: 15px 30px;
     font-size: 16px;
     cursor: pointer;
-    border-radius: 25px;
+    border-radius: 5px 25px 25px 5px;
     transition: background-color 0.3s, transform 0.3s;
     margin-top: 20px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
