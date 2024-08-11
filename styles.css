@@ -1,18 +1,19 @@
+
 /* General styles */
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins', Poppins;
     margin: 0;
     padding: 0;
     background-color: #721c93;
     text-align: center;
-    color: #333;
+    color: #fc8404;
 }
 
 /* Page styles */
 .page {
     text-align: center;
     padding: 0px;
-    background-color: #fff;
+    background-color: #721c93;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
     border-radius: 15px;
     width: 90%;
@@ -31,9 +32,9 @@ body {
 #header {
     text-align: center;
     margin-bottom: 20px;
-    background-color: #f6ecfe;
+    background-color: #ffffff;
     padding: 20px;
-    border-radius: 15px 15px 0 0;
+    border-radius: 15px 15px 15px 15px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
@@ -44,7 +45,7 @@ body {
 
 h2 {
     font-size: 24px;
-    color: #fff;
+    color: #fc8404;
     margin: 0;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
@@ -88,7 +89,7 @@ h2 {
 .country-info h3 {
     font-size: 1.4em;
     margin: 10px 0;
-    color: #007BFF;
+    color: #f96b0d;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
