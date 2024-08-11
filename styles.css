@@ -11,7 +11,7 @@ body {
 /* Page styles */
 .page {
     text-align: center;
-    padding: 20px;
+    padding: 0px;
     background-color: #fff;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
     border-radius: 15px;
@@ -161,7 +161,7 @@ h2 {
 #language-selection-page button {
     display: block;
     margin: 15px auto;
-    padding: 0px 0px;
+    padding: 12px 25px;
     background-color: #ff710a;
     color: #fff;
     border: none;
