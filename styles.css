@@ -220,7 +220,7 @@ h2 {
 #italy-options-page-az #header,
 #italy-options-page-ru #header,
 #italy-options-page-en #header {
-    background-color: #333;
+    background-color: #ffffff;
 }
 
 #language-selection-page h2,
@@ -236,7 +236,7 @@ h2 {
 #italy-options-page-az h2,
 #italy-options-page-ru h2,
 #italy-options-page-en h2 {
-    color: #fff;
+    color: #f96b0d;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
