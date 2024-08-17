@@ -301,10 +301,22 @@ button:hover {
         /* Buttons have smaller margins and padding on mobile */
     }
 
-    #back-button, #code-button, #start-button {
+    #back-button, #code-button {
         margin: 20px auto;
         padding: 10px 20px;
         font-size: 1em;
         /* Buttons for navigation and actions are scaled down for mobile */
     }
+    #start-button {
+         display: block;
+    margin: 20px auto;
+    padding: 40px 25px;
+    background-color: #FF6347;
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    font-size: 1.5em;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);}
 }
