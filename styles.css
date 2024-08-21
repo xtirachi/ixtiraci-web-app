@@ -175,13 +175,16 @@ h2 {
     /* Hover effect for the start button */
 }
 
+/* Language buttons container */
 #language-buttons {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     gap: 15px;
     margin-bottom: 20px;
 }
 
+/* Language button styling */
 .language-button {
     width: 150px;
     height: 150px;
@@ -199,8 +202,51 @@ h2 {
     transition: transform 0.3s ease;
 }
 
+/* Language button hover effect */
 .language-button:hover {
     transform: scale(1.1);
+}
+
+/* Back button styling */
+#back-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Back button hover effect */
+#back-button:hover {
+    background-color: #0056b3;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .language-button {
+        width: 120px;
+        height: 120px;
+        font-size: 14px;
+    }
+
+    #language-buttons {
+        gap: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .language-button {
+        width: 100px;
+        height: 100px;
+        font-size: 12px;
+    }
+
+    #language-buttons {
+        gap: 8px;
+    }
 }
 
 /* Hidden class */
