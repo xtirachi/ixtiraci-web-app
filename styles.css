@@ -175,26 +175,32 @@ h2 {
     /* Hover effect for the start button */
 }
 
-/* Language selection buttons */
-#language-selection-page button {
-    display: block;
-    margin: 15px auto;
-    padding: 12px 25px;
-    background-color: #ff710a;
-    color: #fff;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
-    font-size: 1.1em;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    /* Styles for language selection buttons, making them centered with padding and hover effects */
+#language-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
 }
 
-#language-selection-page button:hover {
-    background-color: #ff7908;
-    transform: scale(1.05);
-    /* Hover effect for language selection buttons */
+.language-button {
+    width: 150px;
+    height: 150px;
+    border: none;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+}
+
+.language-button:hover {
+    transform: scale(1.1);
 }
 
 /* Hidden class */
@@ -312,3 +318,4 @@ button:hover {
     padding: 40px 25px;
     font-size: 1.5em;
 }
+  
