@@ -158,15 +158,25 @@ h2 {
     display: block;
     margin: 20px auto;
     padding: 40px 25px;
-    background-color: #FF6347;
     color: #fff;
     border: none;
     border-radius: 25px;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s;
-    font-size: 1.5em;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    /* Styles for the start button, with larger padding and font size */
+    font-size: 29px;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(200, 200, 300, 0.6);
+    background-image: url('https://github.com/xtirachi/ixtiraci-web-app/blob/main/start.png?raw=true');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+      background-color: rgba(155, 99, 101, 0.8);
+    background-blend-mode: overlay;
+  position: relative;
+    height: 100px; /* Fixed height to ensure space for text positioning */
+    line-height: 55px; /* Helps position text within the height */
+    text-align: center;
+    vertical-align: bottom;
 }
 
 #start-button:hover {
