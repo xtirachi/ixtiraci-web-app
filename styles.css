@@ -134,30 +134,40 @@ h2 {
 /* Code button */
 #code-button {
     display: block;
-    margin: 50px auto;
-    padding: 12px 45px;
-    background-color: #FF6347;
+    margin: 20px auto;
+    padding: 40px 180px;
     color: #fff;
     border: none;
     border-radius: 25px;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s;
-    font-size: 1.3em;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    /* Styles for the code button, similar to the back button but with a larger margin */
+    font-size: 29px;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(200, 200, 300, 0.6);
+    background-image: url('https://github.com/xtirachi/ixtiraci-web-app/blob/main/code.png?raw=true');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+      background-color: rgba(155, 99, 101, 0.8);
+    background-blend-mode: overlay;
+  position: relative;
+    height: 100px; /* Fixed height to ensure space for text positioning */
+  line-height: 55px; /* Helps position text within the height */
+    text-align: center;
+    vertical-align: bottom;
 }
 
 #code-button:hover {
     background-color: #FF4500;
     transform: scale(1.05);
-    /* Hover effect for the code button */
+    /* Hover effect for the start button */
 }
 
 /* Start button */
 #start-button {
     display: block;
     margin: 20px auto;
-    padding: 40px 25px;
+    padding: 40px 180px;
     color: #fff;
     border: none;
     border-radius: 25px;
@@ -180,6 +190,70 @@ h2 {
 }
 
 #start-button:hover {
+    background-color: #FF4500;
+    transform: scale(1.05);
+    /* Hover effect for the start button */
+}
+
+/* Psychological button */
+#psy-button {
+    display: block;
+    margin: 20px auto;
+padding: 40px 180px;
+  color: #fff;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    font-size: 29px;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(200, 200, 300, 0.6);
+    background-image: url('https://github.com/xtirachi/ixtiraci-web-app/blob/main/psy.png?raw=true');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+      background-color: rgba(155, 99, 101, 0.8);
+    background-blend-mode: overlay;
+  position: relative;
+    height: 100px; /* Fixed height to ensure space for text positioning */
+    line-height: 55px; /* Helps position text within the height */
+    text-align: center;
+    vertical-align: bottom;
+}
+
+#psy-button:hover {
+    background-color: #FF4500;
+    transform: scale(1.05);
+    /* Hover effect for the start button */
+}
+
+/* elektron info button */
+#info-button {
+    display: block;
+    margin: 20px auto;
+padding: 40px 160px;
+  color: #fff;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    font-size: 19px;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(200, 200, 300, 0.6);
+    background-image: url('https://github.com/xtirachi/ixtiraci-web-app/blob/main/info.png?raw=true');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+      background-color: rgba(155, 99, 101, 0.8);
+    background-blend-mode: overlay;
+  position: relative;
+    height: 100px; /* Fixed height to ensure space for text positioning */
+    line-height: 55px; /* Helps position text within the height */
+    text-align: center;
+    vertical-align: bottom;
+}
+
+#info-button:hover {
     background-color: #FF4500;
     transform: scale(1.05);
     /* Hover effect for the start button */
@@ -365,15 +439,33 @@ button:hover {
         /* Buttons have smaller margins and padding on mobile */
     }
 
-    #back-button, #code-button {
+    #back-button {
         margin: 20px auto;
-        padding: 10px 20px;
+        padding: 40px 60px;
         font-size: 1em;
         /* Buttons for navigation and actions are scaled down for mobile */
     }
+  
+   #code-button {
+        margin: 20px auto;
+        padding: 40px 60px;
+        font-size: 1.1em;
+        /* Buttons for navigation and actions are scaled down for mobile */
+    }
+  
     #start-button {
     margin: 20px auto;
-    padding: 40px 25px;
+    padding: 40px 60px;
     font-size: 1.5em;
 }
   
+   #psy-button {
+    margin: 20px auto;
+    padding: 40px 60px;
+    font-size: 1.5em;
+}
+   #info-button {
+    margin: 20px auto;
+   padding: 40px 60px;
+    font-size: 1.15em;
+}
