@@ -141,7 +141,7 @@ h2 {
     border-radius: 25px;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s;
-    font-size: 29px;
+    font-size: 20px;
     font-weight: bold;
     box-shadow: 0 4px 10px rgba(200, 200, 300, 0.6);
     background-image: url('https://github.com/xtirachi/ixtiraci-web-app/blob/main/code.png?raw=true');
@@ -173,7 +173,7 @@ h2 {
     border-radius: 25px;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s;
-    font-size: 29px;
+    font-size: 20px;
     font-weight: bold;
     box-shadow: 0 4px 10px rgba(200, 200, 300, 0.6);
     background-image: url('https://github.com/xtirachi/ixtiraci-web-app/blob/main/start.png?raw=true');
@@ -205,7 +205,7 @@ padding: 40px 180px;
     border-radius: 25px;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s;
-    font-size: 29px;
+    font-size: 20px;
     font-weight: bold;
     box-shadow: 0 4px 10px rgba(200, 200, 300, 0.6);
     background-image: url('https://github.com/xtirachi/ixtiraci-web-app/blob/main/psy.png?raw=true');
@@ -456,16 +456,16 @@ button:hover {
     #start-button {
     margin: 20px auto;
     padding: 40px 60px;
-    font-size: 1.5em;
+    font-size: 1.1em;
 }
   
    #psy-button {
     margin: 20px auto;
     padding: 40px 60px;
-    font-size: 1.5em;
+    font-size: 1.1em;
 }
    #info-button {
     margin: 20px auto;
    padding: 40px 60px;
-    font-size: 1.15em;
+    font-size: 1.1em;
 }
