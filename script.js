@@ -3,12 +3,14 @@ let selectedCountry = '';
 function promptPassword(country, correctPassword) {
     const storedPassword = localStorage.getItem(country);
     if (storedPassword === correctPassword) {
-        navigateToLanguageSelection(country);
+       navigateToCountryOptions(country) {
+    window.location.href = `${country}-options-page-az.html`;
     } else {
         const password = prompt("Zəhmət olmasa " + country + " üçün gizli kodu qeyd edin:");
         if (password === correctPassword) {
             localStorage.setItem(country, correctPassword);
-            navigateToLanguageSelection(country);
+           navigateToCountryOptions(country) {
+    window.location.href = `${country}-options-page-az.html`;
         } else {
             alert("Gizli kodu yanlış qeyd etdiniz. Votsap vasitəsilə bizimlə əlaqə saxlayın!");
         }
