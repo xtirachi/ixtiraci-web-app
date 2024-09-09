@@ -418,6 +418,27 @@ button:hover {
     /* Hover effect for buttons */
 }
 
+#votsap-button {
+    margin: 5px auto;
+    background-color: #25D366;
+    color: #fff;
+    border: none;
+    padding: 15px 30px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 25px;
+    transition: background-color 0.3s, transform 0.3s;
+    margin-top: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    /* General button styling to ensure consistency */
+}
+
+#votsap-button:hover {
+    background-color: #25D366;
+    transform: scale(1.05);
+    /* Hover effect for buttons */
+}
+
 /* Mobile responsive styles */
 @media (max-width: 768px) {
     .page {
